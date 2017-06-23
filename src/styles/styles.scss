@@ -1,0 +1,380 @@
+/* Variables */
+$vin-blue: #5bb7db;
+$vin-green: #60b044;
+$vin-red: #ff0000;
+$navBlue: #96d4d3;
+$navGray: #f1f1f1;
+
+/* Styles */
+body {
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  color: #4d4d4d;
+  // min-width: 230px;
+  // max-width: 550px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  font-weight: 300;
+}
+
+td {
+  padding: 12px;
+}
+
+h2 {
+  color: $navBlue;
+}
+
+.nav-container{
+  padding:4px;
+  height:25px;
+  background-color: $navBlue;
+  color: #ffffff;
+}
+
+.nav-container a{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar-header{
+  float:left;
+}
+
+.navbar-header h3{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0px;
+  height: 100%;
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.navLeft{
+  float: left;
+  margin-left: 100px;
+  margin-top: 3px;
+}
+
+.navRight{
+  float: right;
+}
+
+.nav-container{
+  overflow: hidden;
+}
+
+// .floatingDropdown{
+//   position: absolute;
+//   top: 100px;
+//   left: 20px;
+//   z-index:1;
+// }
+
+.logoIcon{
+  height: 25px;
+  width: 25px;
+  margin-right: 10px
+}
+
+.savings { color: $vin-green; }
+.loss { color: $vin-red; }
+input.small { width: 46px; }
+td.fuel-savings-label { width: 175px; }
+
+#secondHeader{
+  width:100%;
+  height: 50px;
+  background-color: #ffffff;
+}
+
+.stylePreview {
+  width: 300px;
+  max-height: 200px;
+  height:200px;
+}
+
+.previewTitle{
+  font-size: 20px;
+  margin: 5px 0px 5px 0px;
+}
+
+.previewTitleHover{
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: 40%;
+}
+
+.mapStyleAuthorHover{
+  font-size: 12px;
+}
+
+.mapStyleDiv {
+  height: 250px;
+  width: 300px;
+  margin: 5px;
+  padding: 10px 0px 10px 0px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  transition-timing-function: ease-out;
+  -webkit-transition: all 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
+  box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
+  position: relative;
+}
+
+.mapStyleDiv:hover {
+  -webkit-box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
+  box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
+}
+
+.styleHover{
+  height:270px;
+  width: 300px;
+  opacity: 0;
+  background-color: #222222;
+  position: absolute;
+  top:0px;
+  transition: box-shadow 0.5s;
+  transition-timing-function: ease-out;
+  -webkit-transition: box-shadow 0.5s;
+  -webkit-transition-timing-function: ease-out;
+}
+
+.mapStyleAuthor{
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.styleHover:hover{
+  // opacity: 0.9;
+  box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
+}
+
+.openButton{
+  width: 100%;
+}
+
+.openButtonImage{
+  width:30px;
+  margin-top: 25px;
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.openButtonImage:hover{
+  cursor: pointer;
+}
+
+#currentBasemapTitle{
+  color: $navBlue;
+  font-size:22px;
+  margin: 14px;
+}
+
+.navbar-content{
+  font-size: 18px;
+  display: inline-block;
+  margin-left: 100px;
+  margin-top: 4px;
+}
+
+.optionsButton{
+  width: 35px;
+  position: absolute;
+  left: 5px;
+  margin-top: 5px;
+}
+
+.dotOptions{
+  line-height: 40px;
+  color: $navBlue;
+}
+
+
+/* ************ The animated overlay css ************** */
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
+  height: 0px;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  left: 0;
+  top: 0;
+  color: $navBlue;
+  font-size: 26px;
+  background-color: rgb(255,255,255); /* Black fallback color */
+  background-color: rgba(255,255,255, 0.95); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+
+/* ***************** Dropdown CSS ************* */
+.sub-menu-parent {
+  width: 200px;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: absolute;
+  left: 15px;
+  cursor: pointer;
+}
+
+.sub-menu {
+  visibility: hidden; /* hides sub-menu */
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-2em);
+  z-index: -1;
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+}
+
+.sub-menu-parent:hover .sub-menu {
+  visibility: visible; /* shows sub-menu */
+  opacity: 1;
+  z-index: 2;
+  border: 1px solid $navBlue;
+  transform: translateY(0%);
+  transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+}
+
+/* presentational */
+
+
+.navLeft a {
+  color: $navBlue;
+  display: block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  font-size: 14px;
+}
+.navLeft a:hover { color: #F55; }
+.navLeft ul,
+.navLeft ul li { list-style-type: none; padding: 0; margin: 0; }
+.navLeft li { list-style-type: none; padding: 0; margin: 0; }
+
+.navLeft > ul { text-align: center; }
+.navLeft > ul > li { display: inline-block; border-left: solid 1px #aaa; }
+li a.disabled { color: #cccccc; cursor: default;}
+li a.disabled:hover { color: #cccccc; cursor: default;}
+.navLeft > ul > li:first-child { border-left: none; }
+
+.sub-menu {
+  background: #ffffff;
+}
+
+
+.overlay.open{
+  height: 100%;
+}
+
+.overlay.close{
+  height: 0px;
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: $navBlue;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: $navGray;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  z-index: 1;
+}
+
+#jsonStyleViewer{
+  color: #96d4d3;
+  height: calc(100vh - 90px);
+  background-color: #ffffff;
+  z-index:1;
+  position: absolute;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+  overflow: auto;
+}
+
+#jsonStyleViewerContent{
+  padding:5px;
+}
+
+#jsonStyleViewerCloseSpan {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  font-size: 60px;
+}
+
+#jsonStyleViewerCloseSpan:hover { //here
+  color: $navGray;
+  cursor: pointer;
+}
+
+#jsonStyleViewer.close{
+  width: 0px;
+}
+
+#jsonStyleViewer.open{
+  width: 50%;
+}
+
+#jsonStyleViewerContent.close{
+  display: none;
+}
+
+#jsonStyleViewerContent.open{
+  display: block;
+}
+
+// pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
