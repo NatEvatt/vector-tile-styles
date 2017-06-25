@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const SecondHeader = (props) => {
 
-  const handleChange = (e) => {
-    props.onChange(e);
-  };
+  // const handleChange = (e) => {
+  //   props.onChange(e);
+  // };
 
   const handleOpen = (e) => {
     props.openOptions(e);

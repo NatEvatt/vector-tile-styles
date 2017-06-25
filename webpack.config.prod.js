@@ -40,15 +40,7 @@ export default {
       favicon: 'src/favicon.ico',
       minify: {
         removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
+        collapseWhitespace: true
       },
       inject: true,
       // Note that you can add custom options here if you need to handle other custom logic in index.html
@@ -57,10 +49,10 @@ export default {
     }),
 
     // Minify JS
-    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
+    // new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
 
     new webpack.LoaderOptionsPlugin({
-      minimize: true,
+      minimize: false,
       debug: false,
       noInfo: true, // set to false to see a list of every file being bundled.
       options: {

@@ -128,12 +128,26 @@ const MapStyles = [
    github: "https://github.com/mapbox/mapbox-gl-styles/blob/master/styles/satellite-v9.json"
  },
  {
+   name: "Moonlight",
+   url: "mapbox://styles/natevatt/cj4c28run05532so9qwwvktwv",
+   type: "Mapbox_Remote",
+   author: "Rasagy Sharma",
+   image: "https://api.mapbox.com/styles/v1/natevatt/cj4c28run05532so9qwwvktwv/static/-110.904158,32.235687,9.44,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+ },
+ {
    name: "Neon",
    url: "mapbox://styles/natevatt/cj0wknst000dg2smyysy56vjk",
    github:"https://github.com/NatEvatt/awesome-mapbox-gl-styles/tree/master/styles/Neon",
    type: "Mapbox_Remote",
    author: "Stephen Smith",
    image: "https://api.mapbox.com/styles/v1/natevatt/cj0wknst000dg2smyysy56vjk/static/139.755724,35.684667,12.63,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+ },
+ {
+   name: "North Star",
+   url: "mapbox://styles/natevatt/cj49edx972r632rp904oj4acj",
+   type: "Mapbox_Remote",
+   author: "Nat Slaughter",
+   image: "https://api.mapbox.com/styles/v1/natevatt/cj49edx972r632rp904oj4acj/static/-79.484681,21.398225,5.23,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
  },
  {
    name: "OSM Bright",

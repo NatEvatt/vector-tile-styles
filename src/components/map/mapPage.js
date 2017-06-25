@@ -7,7 +7,7 @@ import FirstHeader from '../home/firstHeader';
 import JsonStyleVierwer from '../styleViewer/jsonStyleViewer';
 import Overlay from '../home/overlay';
 import Map from './map';
-import JsonDisplayHelper from '../utils/jsonDisplayHelper';
+// import JsonDisplayHelper from '../utils/jsonDisplayHelper';
 
 const accessToken = "pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A";
 
@@ -70,7 +70,7 @@ export default class MapPage extends Component {
   jsonStyleOnclick(style){
     let styleStringOrObject = this.getStyleObjectOrString(style)[0];
     let styleJsonStringified = JSON.stringify(styleStringOrObject, null, 2);
-    let prettyJsonStyle = JsonDisplayHelper.syntaxHighlight(styleJsonStringified);
+    // let prettyJsonStyle = JsonDisplayHelper.syntaxHighlight(styleJsonStringified);
     this.setState({
       jsonStyleClass: "open",
       styleJsonStringified: styleJsonStringified
@@ -88,6 +88,7 @@ export default class MapPage extends Component {
     let styleArray = styleStringOrObject[0];
     let currentStyleOptions = styleStringOrObject[1];
     // debugger;
+    /*global  map */
     map.setStyle(styleArray);
     map.flyTo({center: [151.217572, -33.898142], zoom: 13, curve: 1, easing(t) {
         return t;
