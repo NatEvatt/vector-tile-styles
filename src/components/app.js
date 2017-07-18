@@ -1,10 +1,17 @@
 // This component handles the App template used on every page.
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, IndexLink } from 'react-router';
+
 
 class App extends React.Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div>
+        <IndexLink to="/">Home</IndexLink>
+        {' | '}
+        <Link to="/map">Map</Link>
+        <br/>
         {this.props.children}
       </div>
     );
@@ -12,7 +19,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.element
 };
 
 export default App;

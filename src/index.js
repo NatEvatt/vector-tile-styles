@@ -1,13 +1,35 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-// import configureStore from './store/configureStore';
+import { browserHistory } from 'react-router';
+import { AppContainer } from 'react-hot-loader';
+import configureStore from './store/configureStore';
+import Root from './components/root';
 // import {Provider} from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import routes from './routes';
 import './styles/styles.scss';
+import { syncHistoryWithStore } from 'react-router-redux';
+
+const store = configureStore();
+
+// Create an enhanced history that syncs navigation events with the store
+const history = syncHistoryWithStore(browserHistory, store);
+
 
 render(
-  <Router history={browserHistory} routes={routes} />,
+  <AppContainer>
+    <Root store={store} history={history} />
+  </AppContainer>,
   document.getElementById('app')
-)
+);
+
+if (module.hot) {
+  module.hot.accept('./components/root', () => {
+    const NewRoot = require('./components/root').default;
+    render(
+      <AppContainer>
+        <NewRoot store={store} history={history} />
+      </AppContainer>,
+      document.getElementById('app')
+    );
+  });
+}
