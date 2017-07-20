@@ -63,6 +63,7 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-react": "6.8.0",
     "eslint-watch": "2.1.14",
+    "esri-loader": "1.0.0",
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "0.9.0",
     "html-webpack-plugin": "2.24.1",

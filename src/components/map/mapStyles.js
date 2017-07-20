@@ -176,6 +176,13 @@ const MapStyles = [
    image: "https://camo.githubusercontent.com/770b247b80b22724342bd6265388b2934da1deb6/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f706f736974726f6e2f7374617469632f382e3631393138342c34372e3333363230332c31302e30372f363030783430304032782e706e67"
  },
  {
+   name: "Standard",
+   url: "mapbox://styles/natevatt/cj507c5iu05ub2spb79kqyojz",
+   type: "Mapbox_Remote",
+   author: "Saman Bemel Benurd",
+   image: "https://api.mapbox.com/styles/v1/natevatt/cj507c5iu05ub2spb79kqyojz/static/-97.449600,35.237294,12.65,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+ },
+ {
    name: "Swiss Ski",
    url: "mapbox://styles/natevatt/ciyrdiidq001e2rp4iq3ex34b",
    type: "Mapbox_Remote",
