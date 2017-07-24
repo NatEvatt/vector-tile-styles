@@ -1,5 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import React from 'react';
+import MapboxGeocoder from 'mapbox-gl-geocoder';
 // import FiordColor from './styles/fiord_color';
 
 export default class Map extends React.Component {
@@ -22,6 +23,9 @@ export default class Map extends React.Component {
       zoom: 3,
       hash: true
     })
+    map.addControl(new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken
+    }));
 
     map.flyTo({ center: this.props.center, zoom: this.props.zoom })
 
@@ -45,9 +49,9 @@ export default class Map extends React.Component {
 
     return (
       <div style={ this.props.containerStyle } ref={(x) => {
-        this.container = x
-      }}>
-      { map && children }
+          this.container = x
+        }}>
+        { map && children }
       </div>
     )
   }

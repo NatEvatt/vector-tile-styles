@@ -11,11 +11,6 @@ class HomePage extends React.Component {
           <h3>Mapbox-GL-Style-Viewer</h3>
         </div>
         </Link>
-        <div className="navbar-content">
-          <Link to="/map">Map</Link>
-          {' | '}
-          <Link to="/links">Links</Link>
-        </div>
       </div>
     );
   }
