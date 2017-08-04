@@ -1,48 +1,36 @@
-import * as esriLoader from 'esri-loader';
-import React from 'react';
+import React, { Component } from 'react';
+// import ReactMap from "react-mapbox-gl";
+import ESRIMap from './esriMap';
+// import JsonDisplayHelper from '../utils/jsonDisplayHelper';
 
-export default class ESRIMapPage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { active: false }
-    // this.handleMove = this.handleMove.bind(this)
-  }
+const accessToken = "pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A";
 
-  componentDidMount() {
-    // has the ArcGIS API been added to the page?
-    if (!esriLoader.isLoaded()) {
-      // no, lazy load it the ArcGIS API before using its classes
-      esriLoader.bootstrap((err) => {
-        if (err) {
-          console.error(err);
-        } else {
-          // once it's loaded, create the map
-          // createMap();
-          console.log('I am esri i am going to create the map');
-        }
-      }, {
-        // use a specific version instead of latest 4.x
-        // url: 'https://js.arcgis.com/3.20/'
-      });
-    } else {
-      // ArcGIS API is already loaded, just create the map
-      // createMap();
+export default class MapPage extends Component {
+
+  constructor(props, context){
+    super(props, context);
+
+    this.state = {
+      height: (window.innerHeight - 83) + 'px',
+      width: window.innerWidth + 'px'
     }
   }
 
+
+
   render() {
-    // const { children } = this.props
-    // const { map } = this.state
+
+    const containerStyle = {
+      height: this.state.height,
+      width: this.state.width
+    };
 
     return (
       <div>
-      <p>You are a butthole</p>
+        <ESRIMap
+          containerStyle={containerStyle} />
       </div>
-      // <div style={ this.props.containerStyle } ref={(x) => {
-      //   this.container = x
-      // }}>
-      // { map && children }
-      // </div>
-    )
+
+    );
   }
 }

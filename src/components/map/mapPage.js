@@ -6,6 +6,7 @@ import SecondHeader from '../home/secondHeader';
 import FirstHeader from '../home/firstHeader';
 import JsonStyleVierwer from '../styleViewer/jsonStyleViewer';
 import Overlay from '../home/overlay';
+import ESRIMap from './esriMap';
 import Map from './map';
 // import JsonDisplayHelper from '../utils/jsonDisplayHelper';
 
@@ -26,7 +27,10 @@ export default class MapPage extends Component {
       overlayClass: "overlay",
       zoom: 11,
       jsonStyleClass: "jsonStyleViewer close",
-      styleJsonStringified:""
+      styleJsonStringified:"",
+      mapboxHidden: "",
+      esriHidden: "hidden",
+      esriUrl: "http://www.arcgis.com/sharing/rest/content/items/95d4d6b61c0b4690adaf8cbdabb28196/resources/styles/root.json"
     };
 
     this.updateMapStyle = this.updateMapStyle.bind(this);
@@ -51,7 +55,11 @@ export default class MapPage extends Component {
 
   getStyleObjectOrString(styleName){
     let thisStyle = MapStyles.filter(style => style.name == styleName)[0];
-    let styleStringOrObject = (thisStyle.type == "Mapbox_Remote") ? thisStyle.url : require('./mapStyles/' + thisStyle.jsonStyle + '.json')
+    let styleStringOrObject = (thisStyle.type == "Mapbox_Remote") ? thisStyle.url:
+      (thisStyle.type == "ESRI") ? thisStyle.url :
+      require('./mapStyles/' + thisStyle.jsonStyle + '.json');
+
+    // let styleStringOrObject = (thisStyle.type == "Mapbox_Remote") ? thisStyle.url : require('./mapStyles/' + thisStyle.jsonStyle + '.json')
     return Array(styleStringOrObject, thisStyle);
   }
 
@@ -70,10 +78,14 @@ export default class MapPage extends Component {
   jsonStyleOnclick(style){
     let styleStringOrObject = this.getStyleObjectOrString(style)[0];
     let styleJsonStringified = JSON.stringify(styleStringOrObject, null, 2);
+    //here
+    // debugger;
     // let prettyJsonStyle = JsonDisplayHelper.syntaxHighlight(styleJsonStringified);
     this.setState({
       jsonStyleClass: "open",
-      styleJsonStringified: styleJsonStringified
+      styleJsonStringified: styleJsonStringified,
+      esriHidden: "",
+      mapboxHidden: "hidden"
     });
   }
 
@@ -85,28 +97,55 @@ export default class MapPage extends Component {
 
   updateMapStyle(mapStyle) {
     let styleStringOrObject = this.getStyleObjectOrString(mapStyle);
-    let styleArray = styleStringOrObject[0];
+    if(styleStringOrObject[1].type == "ESRI"){
+      this.updateESRI(styleStringOrObject);
+    } else {
+      this.updateMapbox(styleStringOrObject);
+    }
+  }
+
+  updateMapbox(styleStringOrObject){
     let currentStyleOptions = styleStringOrObject[1];
-    // debugger;
-    /*global  map */
-    map.setStyle(styleArray);
-    map.flyTo({center: [151.217572, -33.898142], zoom: 13, curve: 1, easing(t) {
-        return t;
-      }
-    });
+    map.setStyle(styleStringOrObject[0]);
     this.setState({
-      currentStyle: styleArray,
+      currentStyle: styleStringOrObject[0],
       currentStyleOptions: currentStyleOptions,
-      zoom: 12
+      zoom: 12,
+      esriHidden: "hidden",
+      mapboxHidden: ""
+    });
+  }
+
+  updateESRI(styleStringOrObject){
+    let currentStyleOptions = styleStringOrObject[1];
+    esriMap.removeAll();
+    let VTLayer = new VectorTileLayer({
+      url: currentStyleOptions.url
+    });
+    esriMap.add(VTLayer);
+
+    this.setState({
+      currentStyle: styleStringOrObject[0],
+      currentStyleOptions: currentStyleOptions,
+      zoom: 12,
+      esriHidden: "",
+      mapboxHidden: "hidden",
+      esriUrl: currentStyleOptions.url
     });
   }
 
   render() {
 
-    const containerStyle = {
+    let mapboxContainerStyle = {
       height: this.state.height,
       width: this.state.width
     };
+
+    let esriContainerStyle = {
+      height: this.state.height,
+      width: this.state.width
+    };
+
     return (
       <div>
         <Overlay
@@ -135,8 +174,19 @@ export default class MapPage extends Component {
           center={[-122.010406, 36.964643]}
           accessToken={accessToken}
           zoom={this.state.zoom}
-          containerStyle={containerStyle}>
+          containerStyle={mapboxContainerStyle}
+          hidden={this.state.mapboxHidden}>
         </Map>
+
+        <ESRIMap
+          style={this.state.currentStyle}
+          center={[-122.010406, 36.964643]}
+          accessToken={accessToken}
+          zoom={this.state.zoom}
+          containerStyle={esriContainerStyle}
+          hidden={this.state.esriHidden}
+          esriUrl={this.state.esriUrl}>
+        </ESRIMap>
 
       </div>
 

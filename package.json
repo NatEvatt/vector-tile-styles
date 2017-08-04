@@ -30,6 +30,10 @@
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
+    "esri-loader": "1.0.0",
+    "esri-loader-react": "1.0.1",
+    "mapbox-gl": "0.39.1",
+    "mapbox-gl-geocoder": "2.0.1",
     "object-assign": "4.1.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
@@ -46,6 +50,7 @@
     "babel-eslint": "7.1.1",
     "babel-jest": "18.0.0",
     "babel-loader": "6.2.10",
+    "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-react-constant-elements": "6.9.1",
     "babel-plugin-transform-react-remove-prop-types": "0.2.11",
     "babel-polyfill": "6.20.0",
@@ -127,6 +132,9 @@
         "presets": [
           "env",
           "react-hmre"
+        ],
+        "plugins": [
+          "transform-class-properties"
         ]
       },
       "production": {
@@ -142,7 +150,8 @@
         ],
         "plugins": [
           "transform-react-constant-elements",
-          "transform-react-remove-prop-types"
+          "transform-react-remove-prop-types",
+          "transform-class-properties"
         ]
       },
       "test": {

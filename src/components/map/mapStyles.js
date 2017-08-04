@@ -1,5 +1,12 @@
 const MapStyles = [
  {
+   name: "A Children's Map",
+   jsonStyle: "a_childredns_map",
+   url: "http://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Esri_Childrens_Map/VectorTileServer/resources/styles/root.json?f=pjson",
+   type: "ESRI",
+   image: "images/mapPreviews/a_childrens_map.png"
+ },
+ {
    name: "Blueprint",
    jsonStyle: "blueprint",
    url: "./mapStyles/blueprint.json",
@@ -126,6 +133,13 @@ const MapStyles = [
    author: "Mapbox",
    image: "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/-78.784725,22.574613,9.89,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A",
    github: "https://github.com/mapbox/mapbox-gl-styles/blob/master/styles/satellite-v9.json"
+ },
+ {
+   name: "Modern Antique",
+   jsonStyle: "modern_antique",
+   url: "http://www.arcgis.com/sharing/rest/content/items/95d4d6b61c0b4690adaf8cbdabb28196/resources/styles/root.json",
+   type: "ESRI",
+   image: "images/mapPreviews/modern_antique.png"
  },
  {
    name: "Moonlight",

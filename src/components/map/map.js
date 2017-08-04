@@ -27,7 +27,7 @@ export default class Map extends React.Component {
       accessToken: mapboxgl.accessToken
     }));
 
-    map.flyTo({ center: this.props.center, zoom: this.props.zoom })
+    // map.flyTo({ center: this.props.center, zoom: this.props.zoom })
 
     window.map = map
     this.setState({ active: true })
@@ -46,11 +46,14 @@ export default class Map extends React.Component {
   render() {
     const { children } = this.props
     const { map } = this.state
-
     return (
-      <div style={ this.props.containerStyle } ref={(x) => {
-          this.container = x
-        }}>
+      <div
+        style={ this.props.containerStyle }
+        className = { this.props.hidden }
+        ref={(mapDiv) => {
+          this.container = mapDiv
+        }}
+        >
         { map && children }
       </div>
     )
