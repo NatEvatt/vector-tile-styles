@@ -4,22 +4,22 @@ const MapStyles = [
     jsonStyle: "a_childredns_map",
     url: "http://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Esri_Childrens_Map/VectorTileServer/resources/styles/root.json",
     type: "ESRI",
+    author: "ESRI / Wesley Jones",
     image: "images/mapPreviews/a_childrens_map.png"
   },
   {
     name: "Autumn Canvas",
-    jsonStyle: "autumn_canvas",
     url: "http://www.arcgis.com/sharing/rest/content/items/ced56f9c9086489f8a3748bb7d0f842d/resources/styles/root.json",
     type: "ESRI",
-    type: "ESRI / Andrew Skinner",
-    image: "images/mapPreviews/a_childrens_map.png"
+    author: "ESRI / Andrew Skinner",
+    image: "images/mapPreviews/autumn.png"
   },
   {
     name: "Black and White Map",
     url: "http://www.arcgis.com/sharing/rest/content/items/4eb1a158191a451d89cb744878946273/resources/styles/root.json",
     type: "ESRI",
     author: "ESRI / Andrew Skinner",
-    image: "https://api.mapbox.com/styles/v1/natevatt/cj2bwqhdc002j2rqil74bpt1a/static/-71.063663,42.369393,15.45,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+    image: "images/mapPreviews/black_and_white.png"
   },
   {
     name: "Blueprint",
@@ -41,8 +41,8 @@ const MapStyles = [
   {
     name: "Dark Blue Canvas",
     url: "http://www.arcgis.com/sharing/rest/content/items/8e4423e88139420ca0f0a4edce03523c/resources/styles/root.json",
-    author: "ESRI",
-    type: "ESRI / Witt Lahub",
+    type: "ESRI",
+    author: "ESRI / Witt Lahub",
     image:"https://camo.githubusercontent.com/d53d4701fc55608696527fdbf4a46426e5890c7e/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f6461726b2d6d61747465722f7374617469632f382e3631393138342c34372e3333363230332c31302e30372f363030783430304032782e706e67"
   },
   {
@@ -113,7 +113,7 @@ const MapStyles = [
   },
   {
     name: "Light Gray Canvas",
-    url: "https://www.arcgis.com/sharing/rest/content/items/5dd75c1a544b46c3af01ba5736bfdfa0/resources/styles/root.json0",
+    url: "https://www.arcgis.com/sharing/rest/content/items/5dd75c1a544b46c3af01ba5736bfdfa0/resources/styles/root.json",
     jsonStyle: "light_gray_canvas",
     author: "ESRI",
     type: "ESRI",
@@ -271,13 +271,6 @@ const MapStyles = [
     type: "ESRI",
     author: "ESRI / Cindy Prostak",
     image: "images/mapPreviews/oyster.png"
-  },
-  {
-    name: "Pokemon Go",
-    url: "http://www.arcgis.com/sharing/rest/content/items/246b37111c1d4591a1756b7f21d4b3ac/resources/styles/root.json",
-    author: "ESRI",
-    type: "ESRI",
-    image: "https://camo.githubusercontent.com/770b247b80b22724342bd6265388b2934da1deb6/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f706f736974726f6e2f7374617469632f382e3631393138342c34372e3333363230332c31302e30372f363030783430304032782e706e67"
   },
   {
     name: "Positron",
