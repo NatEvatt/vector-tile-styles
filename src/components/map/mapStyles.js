@@ -43,7 +43,7 @@ const MapStyles = [
     url: "http://www.arcgis.com/sharing/rest/content/items/8e4423e88139420ca0f0a4edce03523c/resources/styles/root.json",
     type: "ESRI",
     author: "ESRI / Witt Lahub",
-    image:"https://camo.githubusercontent.com/d53d4701fc55608696527fdbf4a46426e5890c7e/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f6461726b2d6d61747465722f7374617469632f382e3631393138342c34372e3333363230332c31302e30372f363030783430304032782e706e67"
+    image:"images/mapPreviews/dark_blue_canvas.png"
   },
   {
     name: "Dark Gray Canvas",
@@ -51,7 +51,7 @@ const MapStyles = [
     url: "https://www.arcgis.com/sharing/rest/content/items/5ad3948260a147a993ef4865e3fad476/resources/styles/root.json",
     author: "ESRI",
     type: "ESRI",
-    image:"https://camo.githubusercontent.com/d53d4701fc55608696527fdbf4a46426e5890c7e/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f6461726b2d6d61747465722f7374617469632f382e3631393138342c34372e3333363230332c31302e30372f363030783430304032782e706e67"
+    image:"images/mapPreviews/dark_gray_canvas.png"
   },
   {
     name: "Dark Matter",
@@ -74,7 +74,7 @@ const MapStyles = [
     url: "http://www.arcgis.com/sharing/rest/content/items/961371bf763245eb8e828ab6a7225045/resources/styles/root.json",
     type: "ESRI",
     author: "ESRI / Andrew Skinner",
-    image: "https://api.mapbox.com/styles/v1/natevatt/cj2bx82lk002u2ssc92dwoxso/static/0.085015,51.480599,8.19,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+    image: "images/mapPreviews/esri_brand_map.png"
   },
   {
     name: "Fiord Color",
@@ -91,7 +91,7 @@ const MapStyles = [
     jsonStyle: "happy_holloween",
     author: "ESRI / Andrew Skinner",
     type: "ESRI",
-    image:"https://cloud.githubusercontent.com/assets/1288339/21714427/36bc28b0-d3ff-11e6-95ea-0ddf851ae678.png"
+    image:"images/mapPreviews/happy_holloween.png"
   },
   {
     name: "Klokantech 3D",
@@ -117,7 +117,7 @@ const MapStyles = [
     jsonStyle: "light_gray_canvas",
     author: "ESRI",
     type: "ESRI",
-    image: "images/mapPreviews/klokantech_terrain.png"
+    image: "images/mapPreviews/light_gray_canvas.png"
   },
   {
     name: "Klokantech Terrain",
@@ -193,7 +193,7 @@ const MapStyles = [
     url: "http://www.arcgis.com/sharing/rest/content/items/2557730096db4d2fa3e64980d431c29e/resources/styles/root.json",
     type: "ESRI",
     Author: "ESRI / Cindy Prostak",
-    image: "images/mapPreviews/modern_antique.png"
+    image: "images/mapPreviews/mid_century.png"
   },
   {
     name: "Modern Antique",
@@ -209,7 +209,7 @@ const MapStyles = [
     url: "http://www.arcgis.com/sharing/rest/content/items/dfcb45f8a2ad4b58a1a7547188a0a00c/resources/styles/root.json",
     type: "ESRI",
     uthor: "ESRI",
-    image: "images/mapPreviews/modern_antique.png"
+    image: "images/mapPreviews/merry_christmas.png"
   },
   {
     name: "Moonlight",
@@ -238,7 +238,7 @@ const MapStyles = [
     url: "http://www.arcgis.com/sharing/rest/content/items/86e885fac753433ea2e4bb1e2faa890f/resources/styles/root.json",
     type: "ESRI",
     author: "ESRI / Cindy Prostak",
-    image: "https://api.mapbox.com/styles/v1/natevatt/cj0wknst000dg2smyysy56vjk/static/139.755724,35.684667,12.63,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+    image: "images/mapPreviews/newspaper.png"
   },
   {
     name: "North Star",
@@ -270,7 +270,7 @@ const MapStyles = [
     jsonStyle: "pencil",
     type: "ESRI",
     author: "ESRI / Cindy Prostak",
-    image: "images/mapPreviews/oyster.png"
+    image: "images/mapPreviews/pencil.png"
   },
   {
     name: "Positron",
@@ -286,7 +286,7 @@ const MapStyles = [
     url: "http://www.arcgis.com/sharing/rest/content/items/d89f98318175488393ec41b10f958360/resources/styles/root.json",
     type: "ESRI",
     author: "ESRI / Andrew Skinner",
-    image: "https://api.mapbox.com/styles/v1/natevatt/cj507c5iu05ub2spb79kqyojz/static/-97.449600,35.237294,12.65,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+    image: "images/mapPreviews/spring_canvas.png"
   },
   {
     name: "Standard",
@@ -300,14 +300,14 @@ const MapStyles = [
     url: "https://www.arcgis.com/sharing/rest/content/items/a60a37a27cc140ddad15f919cd5a69f2/resources/styles/root.json",
     type: "ESRI",
     author: "ESRI",
-    image: "https://api.mapbox.com/styles/v1/natevatt/cj507c5iu05ub2spb79kqyojz/static/-97.449600,35.237294,12.65,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+    image: "images/mapPreviews/streets.png"
   },
   {
     name: "Summer Canvas",
     url: "http://www.arcgis.com/sharing/rest/content/items/71177fff2bde422ab099434030a37575/resources/styles/root.json",
     type: "ESRI",
     author: "ESRI / Andrew Skinner",
-    image: "images/mapPreviews/swiss_ski.png"
+    image: "images/mapPreviews/summer_canvas.png"
   },
   {
     name: "Swiss Ski",
@@ -332,7 +332,7 @@ const MapStyles = [
     jsonStyle: "topographic",
     author: "ESRI",
     type: "ESRI",
-    image: "images/mapPreviews/toner.png"
+    image: "images/mapPreviews/topographic.png"
   },
   {
     name: "Vintage",
@@ -355,7 +355,7 @@ const MapStyles = [
     url: "http://www.arcgis.com/sharing/rest/content/items/1b312a1bcd0749b48d99dc52eef59789/resources/styles/root.json",
     type: "ESRI",
     author: "ESRI / Andrew Skinner",
-    image: "https://api.mapbox.com/styles/v1/natevatt/ciysueqcy000i2sqvzsc3hcqc/static/-118.887473,34.697753,6.38,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+    image: "images/mapPreviews/winter_canvas.png"
   }
 ];
 
