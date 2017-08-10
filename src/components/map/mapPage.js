@@ -35,6 +35,7 @@ export default class MapPage extends Component {
 
     this.updateMapStyle = this.updateMapStyle.bind(this);
     this.styleReturned = this.styleReturned.bind(this);
+    this.searchKeyUp = this.searchKeyUp.bind(this);
     this.closeOptions = this.closeOptions.bind(this);
     this.closeJsonStyleViewer = this.closeJsonStyleViewer.bind(this);
     this.jsonStyleOnclick = this.jsonStyleOnclick.bind(this);
@@ -104,6 +105,13 @@ export default class MapPage extends Component {
     }
   }
 
+  searchKeyUp = (event) => {
+    debugger;
+    let searched = event.target.value;
+    console.log('Hiya hiya hiya ' + searched);
+  }
+
+/*eslint-disable */
   updateMapbox(styleStringOrObject){
     let currentStyleOptions = styleStringOrObject[1];
     map.setStyle(styleStringOrObject[0]);
@@ -133,6 +141,7 @@ export default class MapPage extends Component {
       esriUrl: currentStyleOptions.url
     });
   }
+  /*eslint-enable  */
 
   render() {
 
@@ -152,6 +161,7 @@ export default class MapPage extends Component {
           onClick={this.closeOptions}
           overlayClass={this.state.overlayClass}
           updateMapStyle={this.updateMapStyle}
+          searchKeyUp={this.searchKeyUp}
           mapStyles={MapStyles}/>
         <FirstHeader />
         <SecondHeader

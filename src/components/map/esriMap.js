@@ -13,7 +13,7 @@ class App extends Component {
 
   createMap = () => {
 
-    dojoRequire(['esri/Map', 'esri/views/MapView', "esri/layers/VectorTileLayer"], (Map, MapView, VectorTileLayer) => {
+    dojoRequire(['esri/Map', 'esri/views/MapView', "esri/layers/VectorTileLayer", "esri/widgets/Search"], (Map, MapView, VectorTileLayer, Search) => {
 
       let esriMap = new Map();
 
@@ -22,11 +22,22 @@ class App extends Component {
         map: esriMap,
         center: this.props.center,
         zoom: this.props.zoom
-      })
+      });
 
       let tileLyr = new VectorTileLayer({
         url: "http://www.arcgis.com/sharing/rest/content/items/95d4d6b61c0b4690adaf8cbdabb28196/resources/styles/root.json"
         // url: this.props.esriUrl
+      });
+
+      var searchWidget = new Search({
+        view: view
+      });
+
+      view.ui.move([ "zoom"], "bottom-right");
+
+      view.ui.add(searchWidget, {
+        position: "top-left",
+        index: 2
       });
 
       window.esriMap = esriMap;

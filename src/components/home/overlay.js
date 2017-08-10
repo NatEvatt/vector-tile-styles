@@ -7,6 +7,10 @@ const Overlay = (props) => {
     props.onClick();
   }
 
+  const handleOnKeyUp = () => {
+    props.searchKeyUp();
+  }
+
   const handleOnClick = (styleName) => {
     props.updateMapStyle(styleName);
     closeNav();
@@ -14,9 +18,15 @@ const Overlay = (props) => {
 
   return (
     <div id="myNav" className={props.overlayClass}>
+      <div id="searchDiv">
+        <label id="searchLabel" >Search</label>
+        <input id="searchInput" type="text" />
+      </div>
+
       <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
       <div className="overlay-content">
         {
+
           props.mapStyles.map((style, index) =>
           <div className="mapStyleDiv"
             key={index}

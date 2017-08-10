@@ -23,9 +23,8 @@ export default class Map extends React.Component {
       zoom: 3,
       hash: true
     })
-    map.addControl(new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken
-    }));
+    map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken}), "top-left");
+    map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
 
     // map.flyTo({ center: this.props.center, zoom: this.props.zoom })
 
