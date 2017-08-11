@@ -318,6 +318,13 @@ const MapStyles = [
     image: "images/mapPreviews/swiss_ski.png"
   },
   {
+    name: "Terminal",
+    url: "mapbox://styles/natevatt/cj656ldfx64zc2sk09nlour5x",
+    author: "Saman Bemel Benrud",
+    type: "Mapbox_Remote",
+    image: "https://api.mapbox.com/styles/v1/natevatt/cj656ldfx64zc2sk09nlour5x/static/2.336595,48.861079,14.05,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+  },
+  {
     name: "Toner",
     url: "./mapStyles/toner.json",
     jsonStyle: "toner",

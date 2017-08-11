@@ -35,7 +35,6 @@ export default class MapPage extends Component {
 
     this.updateMapStyle = this.updateMapStyle.bind(this);
     this.styleReturned = this.styleReturned.bind(this);
-    this.searchKeyUp = this.searchKeyUp.bind(this);
     this.closeOptions = this.closeOptions.bind(this);
     this.closeJsonStyleViewer = this.closeJsonStyleViewer.bind(this);
     this.jsonStyleOnclick = this.jsonStyleOnclick.bind(this);

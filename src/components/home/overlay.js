@@ -26,7 +26,6 @@ const Overlay = (props) => {
       <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
       <div className="overlay-content">
         {
-
           props.mapStyles.map((style, index) =>
           <div className="mapStyleDiv"
             key={index}
@@ -46,12 +45,10 @@ const Overlay = (props) => {
                 } />
               </div>
             </div>
-
           )
         }
       </div>
     </div>
-
   );
 };
 
