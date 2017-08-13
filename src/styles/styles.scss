@@ -243,7 +243,7 @@ td.fuel-savings-label { width: 175px; }
 .sub-menu-parent:hover .sub-menu {
   visibility: visible; /* shows sub-menu */
   opacity: 1;
-  z-index: 2;
+  z-index: 5;
   border: 1px solid $navBlue;
   transform: translateY(0%);
   transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
@@ -346,7 +346,7 @@ li a.disabled:hover { color: #cccccc; cursor: default;}
   color: #96d4d3;
   height: calc(100vh - 90px);
   background-color: #ffffff;
-  z-index:2;
+  z-index:5;
   position: absolute;
   border: 1px solid #ccc;
   transition: 0.3s;
@@ -544,6 +544,10 @@ li a.disabled:hover { color: #cccccc; cursor: default;}
   -moz-animation: rotate 400ms linear infinite;
   -ms-animation: rotate 400ms linear infinite;
   animation: rotate 400ms linear infinite;
+}
+
+.mapboxgl-ctrl-top-left{
+  position: relative;
 }
 
 // .mapboxgl-ctrl-top-left{

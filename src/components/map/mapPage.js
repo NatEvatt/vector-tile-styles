@@ -83,9 +83,7 @@ export default class MapPage extends Component {
     // let prettyJsonStyle = JsonDisplayHelper.syntaxHighlight(styleJsonStringified);
     this.setState({
       jsonStyleClass: "open",
-      styleJsonStringified: styleJsonStringified,
-      esriHidden: "",
-      mapboxHidden: "hidden"
+      styleJsonStringified: styleJsonStringified
     });
   }
 
