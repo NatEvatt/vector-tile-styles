@@ -1,60 +1,88 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const Overlay = (props) => {
+export default class Overlay extends Component {
+  // const Overlay = (props) => {
 
-  const closeNav = () => {
-    props.onClick();
+  constructor(props, context){
+    super(props, context);
+
+    this.state = {
+      mapStyles: this.props.mapStyles,
+      filteredMapStyles: this.props.mapStyles
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.closeNav = this.closeNav.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  const handleOnKeyUp = () => {
-    props.searchKeyUp();
+  closeNav(){
+    this.props.onClick();
+    this.setState({
+      filteredMapStyles: this.props.mapStyles
+    });
   }
 
-  const handleOnClick = (styleName) => {
-    props.updateMapStyle(styleName);
-    closeNav();
+  handleChange(event){
+    let regx = new RegExp(event.target.value, "i");
+    let filteredMapStyles = this.state.mapStyles.filter(function(style){
+      return regx.test(style.name);
+    });
+
+    this.setState({
+      filteredMapStyles: filteredMapStyles
+    });
+
+    // this.props.searchKeyUp(event.target.value);
   }
 
-  return (
-    <div id="myNav" className={props.overlayClass}>
-      <div id="searchDiv">
-        <label id="searchLabel" >Search</label>
-        <input id="searchInput" type="text" />
-      </div>
+  handleOnClick(styleName) {
+    this.props.updateMapStyle(styleName);
+    this.closeNav();
+  }
 
-      <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
-      <div className="overlay-content">
-        {
-          props.mapStyles.map((style, index) =>
-          <div className="mapStyleDiv"
-            key={index}
-            onClick={() => handleOnClick(style.name)}>
-            <div className="mapStyleDivContainer">
-              <h2 className="previewTitle">{
-                  style.name
-                }
-              </h2>
-              <p className="mapStyleAuthor">
-                Created By: {
-                  style.author
-                }
-              </p>
-              <img className="stylePreview" src={
-                  style.image
-                } />
+  render() {
+
+    return (
+      <div id="myNav" className={this.props.overlayClass}>
+        <div id="searchDiv">
+          <label id="searchLabel" >Search</label>
+          <input id="searchInput" type="text" onChange={this.handleChange} />
+        </div>
+
+        <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>
+        <div className="overlay-content">
+          {
+            this.state.filteredMapStyles.map((style, index) =>
+            <div className="mapStyleDiv"
+              key={index}
+              onClick={()=>this.handleOnClick(style.name)}>
+              <div className="mapStyleDivContainer">
+                <h2 className="previewTitle">{
+                    style.name
+                  }
+                </h2>
+                <p className="mapStyleAuthor">
+                  Created By: {
+                    style.author
+                  }
+                </p>
+                <img className="stylePreview" src={
+                    style.image
+                  } />
+                </div>
               </div>
-            </div>
-          )
-        }
+            )
+          }
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+
+  }
+}
 
 Overlay.propTypes = {
   overlayClass: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };
-
-export default Overlay;
