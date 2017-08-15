@@ -19,6 +19,7 @@ class JsonDisplayHelper {
         cls = "null";
       }
       return "<span className='" + cls + "'>" + match + "</span>";
+      // return "<span className={cls}>{match}</span>";
     });
   }
 }
