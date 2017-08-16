@@ -46,7 +46,6 @@ const SecondHeader = (props) => {
 };
 
 SecondHeader.propTypes = {
-  currentStyleName: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   openOptions: PropTypes.func.isRequired
 };

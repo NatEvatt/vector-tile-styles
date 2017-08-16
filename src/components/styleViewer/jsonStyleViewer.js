@@ -1,4 +1,5 @@
 import React from 'react';
+var Highlight = require('react-highlight');
 // import PropTypes from 'prop-types';
 
 const JsonStyleViewer = (props) => {
@@ -6,7 +7,9 @@ const JsonStyleViewer = (props) => {
     <div id="jsonStyleViewer" className={props.jsonStyleClass}>
       <div id="jsonStyleViewerContent" className={props.jsonStyleClass}>
         <span id="jsonStyleViewerCloseSpan" onClick={props.closeJsonStyleViewer}>&times;</span>
-        <pre>{props.styleJsonStringified}</pre>
+        <Highlight className='atom-one-light'>
+          {props.styleJsonStringified}
+        </Highlight>
       </div>
     </div>
   );

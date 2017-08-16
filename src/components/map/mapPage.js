@@ -87,9 +87,10 @@ export default class MapPage extends Component {
     });
   }
 
-  closeJsonStyleViewer(){
+  closeJsonStyleViewer(){//here
     this.setState({
-      jsonStyleClass: "close"
+      jsonStyleClass: "close",
+      styleJsonStringified:""
     });
   }
 
