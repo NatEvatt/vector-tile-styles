@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import ReactMap from "react-mapbox-gl";
-import MapStyles from './mapStyles';
+// import MapStyles from './mapStyles';
 import Dark_Matter from './mapStyles/dark_matter';
 import SecondHeader from '../home/secondHeader';
 import FirstHeader from '../home/firstHeader';
@@ -8,11 +8,12 @@ import JsonStyleVierwer from '../styleViewer/jsonStyleViewer';
 import Overlay from '../home/overlay';
 import ESRIMap from './esriMap';
 import Map from './map';
+import {connect} from 'react-redux';
 // import JsonDisplayHelper from '../utils/jsonDisplayHelper';
 
 const accessToken = "pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A";
 
-export default class MapPage extends Component {
+class MapPage extends Component {
 
   constructor(props, context){
     super(props, context);
@@ -23,7 +24,7 @@ export default class MapPage extends Component {
       currentStyleName: "Dark Matter",
       height: (window.innerHeight - 83) + 'px',
       width: window.innerWidth + 'px',
-      mapStyle: MapStyles,
+      mapStyle: this.props.mapStyles,
       overlayClass: "overlay",
       zoom: 11,
       jsonStyleClass: "jsonStyleViewer close",
@@ -54,7 +55,7 @@ export default class MapPage extends Component {
   }
 
   getStyleObjectOrString(styleName){
-    let thisStyle = MapStyles.filter(style => style.name == styleName)[0];
+    let thisStyle = this.state.MapStyles.filter(style => style.name == styleName)[0];
     let styleStringOrObject = (thisStyle.type == "Mapbox_Remote") ? thisStyle.url:
       (thisStyle.type == "ESRI") ? thisStyle.url :
       require('./mapStyles/' + thisStyle.jsonStyle + '.json');
@@ -160,11 +161,11 @@ export default class MapPage extends Component {
           overlayClass={this.state.overlayClass}
           updateMapStyle={this.updateMapStyle}
           searchKeyUp={this.searchKeyUp}
-          mapStyles={MapStyles}/>
+          mapStyles={this.props.MapStyles}/>
         <FirstHeader />
         <SecondHeader
           currentStyleOptions={this.state.currentStyleOptions}
-          mapStyles={MapStyles}
+          mapStyles={this.props.MapStyles}
           onChange={this.updateMapStyle}
           openOptions={this.openOptions}
           jsonStyleOnclick={this.jsonStyleOnclick}
@@ -201,3 +202,11 @@ export default class MapPage extends Component {
     );
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    mapStyles: state.mapStyles
+  }
+}
+
+export default connect(mapStateToProps)(MapPage);
