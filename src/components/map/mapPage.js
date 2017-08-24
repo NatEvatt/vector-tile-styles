@@ -9,6 +9,8 @@ import Overlay from '../home/overlay';
 import ESRIMap from './esriMap';
 import Map from './map';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as mapStyleActions from '../../actions/mapStyleActions';
 // import JsonDisplayHelper from '../utils/jsonDisplayHelper';
 
 const accessToken = "pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A";
@@ -24,7 +26,6 @@ class MapPage extends Component {
       currentStyleName: "Dark Matter",
       height: (window.innerHeight - 83) + 'px',
       width: window.innerWidth + 'px',
-      mapStyle: this.props.mapStyles,
       overlayClass: "overlay",
       zoom: 11,
       jsonStyleClass: "jsonStyleViewer close",
@@ -43,9 +44,7 @@ class MapPage extends Component {
   }
 
   componentDidMount(){
-    // map.setStyle(Dark_Matter);
-    // map.setStyle("mapbox://styles/mapbox/streets-v9");
-    this.updateMapStyle("Dark Matter");
+    // this.updateMapStyle("Dark Matter");
   }
 
   styleReturned(results){
@@ -55,7 +54,7 @@ class MapPage extends Component {
   }
 
   getStyleObjectOrString(styleName){
-    let thisStyle = this.state.MapStyles.filter(style => style.name == styleName)[0];
+    let thisStyle = this.props.mapStyles.filter(style => style.name == styleName)[0];
     let styleStringOrObject = (thisStyle.type == "Mapbox_Remote") ? thisStyle.url:
       (thisStyle.type == "ESRI") ? thisStyle.url :
       require('./mapStyles/' + thisStyle.jsonStyle + '.json');
@@ -80,7 +79,6 @@ class MapPage extends Component {
     let styleStringOrObject = this.getStyleObjectOrString(style)[0];
     let styleJsonStringified = JSON.stringify(styleStringOrObject, null, 2);
     //here
-    // debugger;
     // let prettyJsonStyle = JsonDisplayHelper.syntaxHighlight(styleJsonStringified);
     this.setState({
       jsonStyleClass: "open",
@@ -105,7 +103,6 @@ class MapPage extends Component {
   }
 
   searchKeyUp = (event) => {
-    debugger;
     let searched = event.target.value;
     console.log('Hiya hiya hiya ' + searched);
   }
@@ -153,7 +150,7 @@ class MapPage extends Component {
       height: this.state.height,
       width: this.state.width
     };
-
+    debugger;
     return (
       <div>
         <Overlay
@@ -161,11 +158,11 @@ class MapPage extends Component {
           overlayClass={this.state.overlayClass}
           updateMapStyle={this.updateMapStyle}
           searchKeyUp={this.searchKeyUp}
-          mapStyles={this.props.MapStyles}/>
+          mapStyles={this.props.mapStyles}/>
         <FirstHeader />
         <SecondHeader
           currentStyleOptions={this.state.currentStyleOptions}
-          mapStyles={this.props.MapStyles}
+          mapStyles={this.props.mapStyles}
           onChange={this.updateMapStyle}
           openOptions={this.openOptions}
           jsonStyleOnclick={this.jsonStyleOnclick}
@@ -196,17 +193,22 @@ class MapPage extends Component {
           hidden={this.state.esriHidden}
           esriUrl={this.state.esriUrl}>
         </ESRIMap>
-
       </div>
-
     );
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps (state, ownProps) {
   return {
     mapStyles: state.mapStyles
   }
 }
 
-export default connect(mapStateToProps)(MapPage);
+function mapDispatchToProps (dispatch) {
+  return {
+    actions: bindActionCreators(mapStyleActions, dispatch)
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapPage);

@@ -1,10 +1,10 @@
-import * as mapStyles from "./mapStyles";
+import MapStyles from './mapStyles';
 
 class MapStylesApi {
   static getMapStyles() {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(Object.assign([], mapStyles));
+        resolve(MapStyles);
       }, 500);
     });
   }

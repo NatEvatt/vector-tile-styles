@@ -6,7 +6,7 @@ export default class Overlay extends Component {
 
   constructor(props, context){
     super(props, context);
-
+    debugger;
     this.state = {
       mapStyles: this.props.mapStyles,
       filteredMapStyles: this.props.mapStyles
@@ -43,7 +43,7 @@ export default class Overlay extends Component {
   }
 
   render() {
-
+debugger;
     return (
       <div id="myNav" className={this.props.overlayClass}>
         <div id="searchDiv">
@@ -54,7 +54,7 @@ export default class Overlay extends Component {
         <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>
         <div className="overlay-content">
           {
-            this.state.filteredMapStyles.map((style, index) =>
+            this.props.mapStyles.map((style, index) =>
             <div className="mapStyleDiv"
               key={index}
               onClick={()=>this.handleOnClick(style.name)}>
