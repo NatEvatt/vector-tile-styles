@@ -150,7 +150,7 @@ class MapPage extends Component {
       height: this.state.height,
       width: this.state.width
     };
-    
+
     return (
       <div>
         <Overlay
@@ -198,7 +198,7 @@ class MapPage extends Component {
   }
 }
 
-function mapStateToProps (state, ownProps) {
+function mapStateToProps (state) {
   return {
     mapStyles: state.mapStyles
   }

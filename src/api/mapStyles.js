@@ -64,7 +64,7 @@ const MapStyles = [
   },
   {
     name: "Desert Planet",
-    url: ".mapbox://styles/natevatt/cj6p6o3dv2bsc2so4d8r3l520",
+    url: "mapbox://styles/natevatt/cj6p6o3dv2bsc2so4d8r3l520",
     author: "Saman Bemel Benurd",
     type: "Mapbox_Remote",
     image:"https://api.mapbox.com/styles/v1/natevatt/cj6p6o3dv2bsc2so4d8r3l520/static/-115.164364,36.168162,12.79,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
