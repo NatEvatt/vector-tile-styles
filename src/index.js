@@ -8,8 +8,10 @@ import Root from './components/root';
 // import {Provider} from 'react-redux';
 import './styles/styles.scss';
 import { syncHistoryWithStore } from 'react-router-redux';
+import {loadMapStyles} from './actions/mapStyleActions';
 
 const store = configureStore();
+store.dispatch(loadMapStyles());
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
