@@ -150,7 +150,7 @@ class MapPage extends Component {
       height: this.state.height,
       width: this.state.width
     };
-    debugger;
+    
     return (
       <div>
         <Overlay
