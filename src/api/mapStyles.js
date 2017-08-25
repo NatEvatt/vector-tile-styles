@@ -63,6 +63,13 @@ const MapStyles = [
     image:"https://camo.githubusercontent.com/d53d4701fc55608696527fdbf4a46426e5890c7e/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f6461726b2d6d61747465722f7374617469632f382e3631393138342c34372e3333363230332c31302e30372f363030783430304032782e706e67"
   },
   {
+    name: "Desert Planet",
+    url: ".mapbox://styles/natevatt/cj6p6o3dv2bsc2so4d8r3l520",
+    author: "Saman Bemel Benurd",
+    type: "Mapbox_Remote",
+    image:"https://api.mapbox.com/styles/v1/natevatt/cj6p6o3dv2bsc2so4d8r3l520/static/-115.164364,36.168162,12.79,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+  },
+  {
     name: "Emerald",
     url: "mapbox://styles/mapbox/emerald-v8",
     type: "Mapbox_Remote",
