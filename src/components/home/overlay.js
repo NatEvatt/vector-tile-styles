@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class Overlay extends Component {
-  // const Overlay = (props) => {
 
   constructor(props, context){
     super(props, context);
@@ -15,6 +14,13 @@ export default class Overlay extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.closeNav = this.closeNav.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
+  }
+
+  componentWillReceiveProps = function(newProps){
+    this.setState({
+      mapStyles: newProps.mapStyles,
+      filteredMapStyles: newProps.mapStyles
+    });
   }
 
   closeNav(){
@@ -33,8 +39,6 @@ export default class Overlay extends Component {
     this.setState({
       filteredMapStyles: filteredMapStyles
     });
-
-    // this.props.searchKeyUp(event.target.value);
   }
 
   handleOnClick(styleName) {
@@ -43,7 +47,6 @@ export default class Overlay extends Component {
   }
 
   render() {
-
     return (
       <div id="myNav" className={this.props.overlayClass}>
         <div id="searchDiv">
