@@ -9,7 +9,7 @@ export default class Overlay extends Component {
     this.state = {
       mapStyles: this.props.mapStyles,
       filteredMapStyles: this.props.mapStyles
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.closeNav = this.closeNav.bind(this);
@@ -87,5 +87,7 @@ export default class Overlay extends Component {
 
 Overlay.propTypes = {
   overlayClass: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  updateMapStyle: PropTypes.func.isRequired,
+  mapStyles: PropTypes.object.isRequired
 };

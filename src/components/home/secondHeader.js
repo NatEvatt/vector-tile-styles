@@ -16,7 +16,7 @@ const SecondHeader = (props) => {
 
   const handleOnClick = (styleName) => {
     props.jsonStyleOnclick(styleName);
-  }
+  };
 
   return (
     <div>
@@ -35,7 +35,7 @@ const SecondHeader = (props) => {
       </div>
       <span className="openButton"
         onClick={handleOpen}>
-        <img className="openButtonImage" src='../images/downArrowBlue.png' />
+        <img className="openButtonImage" src="../images/downArrowBlue.png" />
       </span>
       <div className="navRight">
         <div id="currentBasemapTitle">Current Basemap: {props.currentStyleOptions.name}</div>
@@ -47,7 +47,8 @@ const SecondHeader = (props) => {
 
 SecondHeader.propTypes = {
   onChange: PropTypes.func.isRequired,
-  openOptions: PropTypes.func.isRequired
+  openOptions: PropTypes.func.isRequired,
+  currentStyleOptions: PropTypes.object.isRequired
 };
 
 export default SecondHeader;

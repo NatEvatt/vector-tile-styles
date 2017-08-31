@@ -1,5 +1,5 @@
 import React from 'react';
-var Highlight = require('react-highlight');
+let Highlight = require('react-highlight');
 // import PropTypes from 'prop-types';
 
 const JsonStyleViewer = (props) => {

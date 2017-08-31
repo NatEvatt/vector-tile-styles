@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ReactMap from "react-mapbox-gl";
 import ESRIMap from './esriMap';
 // import JsonDisplayHelper from '../utils/jsonDisplayHelper';
 
@@ -11,7 +10,7 @@ export default class MapPage extends Component {
     this.state = {
       height: (window.innerHeight - 83) + 'px',
       width: window.innerWidth + 'px'
-    }
+    };
   }
 
   render() {

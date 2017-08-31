@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import './map.css';
 import { dojoRequire } from 'esri-loader';
 import EsriLoader from 'esri-loader-react';
+import PropTypes from 'prop-types';
 
-class App extends Component {
-
-  //
-  // componentWillReceiveProps = function(){
-  //   // debugger;
-  //   console.log(this.props.esriUrl);
-  // }
+class ESRIMap extends Component {
 
   createMap = () => {
 
@@ -29,7 +24,7 @@ class App extends Component {
         // url: this.props.esriUrl
       });
 
-      var searchWidget = new Search({
+      let searchWidget = new Search({
         view: view
       });
 
@@ -59,13 +54,21 @@ class App extends Component {
       <div className={`App ${this.props.hidden}`}>
         <EsriLoader options={options} ready={this.createMap} />
         <div
-          style={ this.props.containerStyle }
+          style={this.props.containerStyle}
           ref={node => this.mapContainer = node}
-          className="map-view">
-        </div>
+          className="map-view" />
       </div>
     );
   }
 }
 
-export default App;
+ESRIMap.propTypes = {
+  center: PropTypes.object.isRequired,
+  zoom: PropTypes.number.isRequired,
+  hidden: PropTypes.string.isRequired,
+  containerStyle: PropTypes.object.isRequired,
+
+};
+
+
+export default ESRIMap;

@@ -11,6 +11,7 @@ import Map from './map';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as mapStyleActions from '../../actions/mapStyleActions';
+import PropTypes from 'prop-types';
 // import JsonDisplayHelper from '../utils/jsonDisplayHelper';
 
 const accessToken = "pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A";
@@ -102,10 +103,9 @@ class MapPage extends Component {
     }
   }
 
-  searchKeyUp = (event) => {
-    let searched = event.target.value;
-    console.log('Hiya hiya hiya ' + searched);
-  }
+  // searchKeyUp = (event) => {
+  //   let searched = event.target.value;
+  // }
 
 /*eslint-disable */
   updateMapbox(styleStringOrObject){
@@ -157,23 +157,19 @@ class MapPage extends Component {
           onClick={this.closeOptions}
           overlayClass={this.state.overlayClass}
           updateMapStyle={this.updateMapStyle}
-          searchKeyUp={this.searchKeyUp}
-          mapStyles={this.props.mapStyles}/>
+          mapStyles={this.props.mapStyles} />
         <FirstHeader />
         <SecondHeader
           currentStyleOptions={this.state.currentStyleOptions}
           mapStyles={this.props.mapStyles}
           onChange={this.updateMapStyle}
           openOptions={this.openOptions}
-          jsonStyleOnclick={this.jsonStyleOnclick}
-          />
+          jsonStyleOnclick={this.jsonStyleOnclick} />
 
         <JsonStyleVierwer
           closeJsonStyleViewer={this.closeJsonStyleViewer}
           jsonStyleClass={this.state.jsonStyleClass}
-          styleJsonStringified={this.state.styleJsonStringified}
-          >
-        </JsonStyleVierwer>
+          styleJsonStringified={this.state.styleJsonStringified} />
 
         <Map
           style={this.state.currentStyle}
@@ -181,8 +177,7 @@ class MapPage extends Component {
           accessToken={accessToken}
           zoom={this.state.zoom}
           containerStyle={mapboxContainerStyle}
-          hidden={this.state.mapboxHidden}>
-        </Map>
+          hidden={this.state.mapboxHidden} />
 
         <ESRIMap
           style={this.state.currentStyle}
@@ -191,8 +186,7 @@ class MapPage extends Component {
           zoom={this.state.zoom}
           containerStyle={esriContainerStyle}
           hidden={this.state.esriHidden}
-          esriUrl={this.state.esriUrl}>
-        </ESRIMap>
+          esriUrl={this.state.esriUrl} />
       </div>
     );
   }
@@ -201,14 +195,17 @@ class MapPage extends Component {
 function mapStateToProps (state) {
   return {
     mapStyles: state.mapStyles
-  }
+  };
 }
 
 function mapDispatchToProps (dispatch) {
   return {
     actions: bindActionCreators(mapStyleActions, dispatch)
-  }
+  };
 }
 
+MapPage.propTypes = {
+  mapStyles: PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapPage);

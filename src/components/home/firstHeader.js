@@ -5,9 +5,9 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="container-fluid nav-container">
-        <Link to='/'>
+        <Link to="/">
         <div className="navbar-header">
-          <img className='logoIcon' src='../images/mapIcon3_white.png' />
+          <img className="logoIcon" src="../images/mapIcon3_white.png" />
           <h3>Mapbox-GL-Style-Viewer</h3>
         </div>
         </Link>
