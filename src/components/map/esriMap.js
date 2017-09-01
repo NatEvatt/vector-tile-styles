@@ -63,7 +63,7 @@ class ESRIMap extends Component {
 }
 
 ESRIMap.propTypes = {
-  center: PropTypes.object.isRequired,
+  center: PropTypes.array.isRequired,
   zoom: PropTypes.number.isRequired,
   hidden: PropTypes.string.isRequired,
   containerStyle: PropTypes.object.isRequired,

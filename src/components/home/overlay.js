@@ -89,5 +89,5 @@ Overlay.propTypes = {
   overlayClass: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   updateMapStyle: PropTypes.func.isRequired,
-  mapStyles: PropTypes.object.isRequired
+  mapStyles: PropTypes.array.isRequired
 };

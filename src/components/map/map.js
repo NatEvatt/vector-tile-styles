@@ -57,7 +57,7 @@ export default class Map extends React.Component {
 }
 
 Map.propTypes = {
-  center: PropTypes.object.isRequired,
+  center: PropTypes.array.isRequired,
   zoom: PropTypes.number.isRequired,
   hidden: PropTypes.string.isRequired,
   containerStyle: PropTypes.object.isRequired,

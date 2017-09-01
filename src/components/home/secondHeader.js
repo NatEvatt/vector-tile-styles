@@ -48,7 +48,7 @@ const SecondHeader = (props) => {
 SecondHeader.propTypes = {
   onChange: PropTypes.func.isRequired,
   openOptions: PropTypes.func.isRequired,
-  currentStyleOptions: PropTypes.object.isRequired
+  currentStyleOptions: PropTypes.array.isRequired
 };
 
 export default SecondHeader;

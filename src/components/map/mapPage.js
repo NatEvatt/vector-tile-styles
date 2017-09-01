@@ -205,7 +205,7 @@ function mapDispatchToProps (dispatch) {
 }
 
 MapPage.propTypes = {
-  mapStyles: PropTypes.object.isRequired
+  mapStyles: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapPage);
