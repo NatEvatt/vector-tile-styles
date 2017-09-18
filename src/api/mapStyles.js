@@ -60,7 +60,7 @@ const MapStyles = [
     author: "OpenMapTiles",
     type: "Local",
     github:"https://github.com/openmaptiles/dark-matter-gl-style",
-    image:"https://camo.githubusercontent.com/d53d4701fc55608696527fdbf4a46426e5890c7e/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f6461726b2d6d61747465722f7374617469632f382e3631393138342c34372e3333363230332c31302e30372f363030783430304032782e706e67"
+    image:"images/mapPreviews/dark_matter.png"
   },
   {
     name: "Desert Planet",
@@ -116,7 +116,7 @@ const MapStyles = [
     author: "OpenMapTiles",
     type: "Local",
     github:"https://github.com/openmaptiles/klokantech-basic-gl-style",
-    image:"https://camo.githubusercontent.com/08dcb3dd384c6083b02e6692c939d68c4114eb33/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f6b6c6f6b616e746563682d62617369632f7374617469632f382e3631393138342c34372e3333363230332c31302e30372f363030783430304032782e706e67"
+    image:"images/mapPreviews/klokantech_basic.png"
   },
   {
     name: "Light Gray Canvas",
@@ -259,7 +259,7 @@ const MapStyles = [
     url: "./mapStyles/osm_bright.json",
     jsonStyle: "osm_bright",
     github: "https://github.com/openmaptiles/osm-bright-gl-style",
-    image: "https://camo.githubusercontent.com/45a3002c9f042d205d6792f9afc651bf1a21fa1f/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f6f736d2d6272696768742f7374617469632f382e3534303538372c34372e3337303535352c31352e30382f363030783430304032782e706e67",
+    image: "images/mapPreviews/osm_bright.png",
     author: "OpenMapTiles",
     type: "Local"
   },
@@ -286,7 +286,7 @@ const MapStyles = [
     author: "OpenMapTiles",
     type: "Local",
     github: "https://github.com/openmaptiles/positron-gl-style",
-    image: "https://camo.githubusercontent.com/770b247b80b22724342bd6265388b2934da1deb6/687474703a2f2f64656d6f2e74696c657365727665722e6f72672f7374796c65732f706f736974726f6e2f7374617469632f382e3631393138342c34372e3333363230332c31302e30372f363030783430304032782e706e67"
+    image: "images/mapPreviews/positron.png"
   },
   {
     name: "Spring Canvas",
