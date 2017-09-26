@@ -2,6 +2,7 @@ import mapboxgl from 'mapbox-gl';
 import React from 'react';
 import MapboxGeocoder from 'mapbox-gl-geocoder';
 import PropTypes from 'prop-types';
+import Config from '../../config';
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class Map extends React.Component {
   }
 
   componentDidMount() {
-    mapboxgl.accessToken = "pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A";
+    mapboxgl.accessToken = Config.mapboxToken;
     if (!mapboxgl.supported()) {
       // console.log('WARNING: Your browser is not officailly supported by Mapbox GL');
     }

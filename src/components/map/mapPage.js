@@ -12,9 +12,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as mapStyleActions from '../../actions/mapStyleActions';
 import PropTypes from 'prop-types';
+import Config from '../../config';
 // import JsonDisplayHelper from '../utils/jsonDisplayHelper';
 
-const accessToken = "pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A";
+const accessToken = Config.mapboxToken;
 
 class MapPage extends Component {
 
