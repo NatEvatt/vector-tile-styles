@@ -1,13 +1,13 @@
-import MapStyles from './mapStyles';
+// import MapStyles from './mapStyles';
 
 class MapStylesApi {
-  static getMapStyles() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(MapStyles);
-      }, 500);
-    });
-  }
+    static getMapStyles() {
+          return fetch('http://awesome.dev/git/vt-api/public/get_mapstyles')
+          .then((response) => response.json())
+          .then((responseJson) => {
+            return responseJson;
+          })
+    }
 }
 
 export default MapStylesApi;
