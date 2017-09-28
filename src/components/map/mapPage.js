@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import ReactMap from "react-mapbox-gl";
-// import MapStyles from './mapStyles';
 import Dark_Matter from './mapStyles/dark_matter';
 import SecondHeader from '../home/secondHeader';
 import FirstHeader from '../home/firstHeader';
@@ -10,7 +8,7 @@ import ESRIMap from './esriMap';
 import Map from './map';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as mapStyleActions from '../../actions/mapStyleActions';
+import * as mapActions from '../../actions/mapActions';
 import PropTypes from 'prop-types';
 import Config from '../../config';
 // import JsonDisplayHelper from '../utils/jsonDisplayHelper';
@@ -56,7 +54,7 @@ class MapPage extends Component {
   }
 
   getStyleObjectOrString(styleName){
-    let thisStyle = this.props.mapStyles.filter(style => style.name == styleName)[0];
+    let thisStyle = this.props.mapState.mapStyles.filter(style => style.name == styleName)[0];
     let styleStringOrObject = (thisStyle.type == "Mapbox_Remote") ? thisStyle.url:
       (thisStyle.type == "ESRI") ? thisStyle.url :
       require('./mapStyles/' + thisStyle.jsonStyle + '.json');
@@ -138,6 +136,22 @@ class MapPage extends Component {
       esriUrl: currentStyleOptions.url
     });
   }
+
+  handleMove() {
+      console.log(this.props.mapMovements);
+      let mapMovements = {
+          zoom: map.getZoom().toPrecision(3),
+          center: map.getCenter()
+      };
+      this.props.actions.trackMapMovement(mapMovements);
+
+      // store.zoom = map.getZoom().toPrecision(3)
+      // store.center = map.getCenter()
+      // store.lat = store.center.lat.toPrecision(6)
+      // store.lng = fixLongitude(store.center.lng).toPrecision(6)
+      // store.pitch = Math.floor(map.getPitch())
+      // store.bearing = Math.floor(map.getBearing())
+  }
   /*eslint-enable  */
 
   render() {
@@ -151,18 +165,19 @@ class MapPage extends Component {
       height: this.state.height,
       width: this.state.width
     };
-
+    
     return (
       <div>
         <Overlay
           onClick={this.closeOptions}
           overlayClass={this.state.overlayClass}
           updateMapStyle={this.updateMapStyle}
-          mapStyles={this.props.mapStyles} />
+          mapStyles={this.props.mapState.mapStyles} />
+
         <FirstHeader />
+
         <SecondHeader
           currentStyleOptions={this.state.currentStyleOptions}
-          mapStyles={this.props.mapStyles}
           onChange={this.updateMapStyle}
           openOptions={this.openOptions}
           jsonStyleOnclick={this.jsonStyleOnclick} />
@@ -178,7 +193,8 @@ class MapPage extends Component {
           accessToken={accessToken}
           zoom={this.state.zoom}
           containerStyle={mapboxContainerStyle}
-          hidden={this.state.mapboxHidden} />
+          hidden={this.state.mapboxHidden}
+          mapMovements={this.props.mapState.mapMovements}/>
 
         <ESRIMap
           style={this.state.currentStyle}
@@ -195,18 +211,19 @@ class MapPage extends Component {
 
 function mapStateToProps (state) {
   return {
-    mapStyles: state.mapStyles
+    mapState: state.mapState
   };
 }
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(mapStyleActions, dispatch)
+    actions: bindActionCreators(mapActions, dispatch)
   };
 }
 
 MapPage.propTypes = {
-  mapStyles: PropTypes.array.isRequired
+   mapState: PropTypes.object.isRequired,
+   actions: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapPage);

@@ -8,7 +8,7 @@ import Root from './components/root';
 // import {Provider} from 'react-redux';
 import './styles/styles.scss';
 import { syncHistoryWithStore } from 'react-router-redux';
-import {loadMapStyles} from './actions/mapStyleActions';
+import {loadMapStyles} from './actions/mapActions';
 
 const store = configureStore();
 store.dispatch(loadMapStyles());
