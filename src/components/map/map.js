@@ -3,9 +3,9 @@ import React from 'react';
 import MapboxGeocoder from 'mapbox-gl-geocoder';
 import PropTypes from 'prop-types';
 import Config from '../../config';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as mapActions from '../../actions/mapActions';
+// import {connect} from 'react-redux';
+// import {bindActionCreators} from 'redux';
+// import * as mapActions from '../../actions/mapActions';
 
 class Map extends React.Component {
     constructor(props) {
@@ -14,7 +14,6 @@ class Map extends React.Component {
             active: false,
             mapMovements: this.props.mapMovements,
         };
-        this.handleMove = this.handleMove.bind(this);
     }
 
     componentDidMount() {
@@ -36,22 +35,7 @@ class Map extends React.Component {
 
         window.map = map;
         this.setState({ active: true });
-        map.on('moveend', this.handleMove);
-    }
-
-    handleMove() {
-        let mapMovements = {
-            zoom: map.getZoom().toPrecision(3),
-            center: map.getCenter()
-        };
-        this.props.actions.trackMapMovement(mapMovements);
-
-        // store.zoom = map.getZoom().toPrecision(3)
-        // store.center = map.getCenter()
-        // store.lat = store.center.lat.toPrecision(6)
-        // store.lng = fixLongitude(store.center.lng).toPrecision(6)
-        // store.pitch = Math.floor(map.getPitch())
-        // store.bearing = Math.floor(map.getBearing())
+        map.on('moveend', this.props.handleMove);
     }
 
     render() {
@@ -76,19 +60,20 @@ Map.propTypes = {
     containerStyle: PropTypes.object.isRequired,
     style: PropTypes.object.isRequired,
     mapMovements: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
+    handleMove: PropTypes.func.isRequired
 };
 
-function mapDispatchToProps (dispatch) {
-    return {
-        actions: bindActionCreators(mapActions, dispatch)
-    };
-}
+// function mapDispatchToProps (dispatch) {
+//     return {
+//         actions: bindActionCreators(mapActions, dispatch)
+//     };
+// }
+//
+// function mapStateToProps (state) {
+//     return {
+//         mapMovements: state.mapState.mapMovements
+//     };
+// }
 
-function mapStateToProps (state) {
-    return {
-        mapMovements: state.mapState.mapMovements
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+// export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default Map;

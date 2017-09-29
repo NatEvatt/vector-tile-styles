@@ -41,6 +41,7 @@ class MapPage extends Component {
     this.closeJsonStyleViewer = this.closeJsonStyleViewer.bind(this);
     this.jsonStyleOnclick = this.jsonStyleOnclick.bind(this);
     this.openOptions = this.openOptions.bind(this);
+    this.handleMove = this.handleMove.bind(this);
   }
 
   componentDidMount(){
@@ -138,19 +139,14 @@ class MapPage extends Component {
   }
 
   handleMove() {
-      console.log(this.props.mapMovements);
+      console.log(this.props.mapState.mapMovements);
       let mapMovements = {
           zoom: map.getZoom().toPrecision(3),
-          center: map.getCenter()
+          center: map.getCenter(),
+          pitch: Math.floor(map.getPitch()),
+          bearing: Math.floor(map.getBearing())
       };
       this.props.actions.trackMapMovement(mapMovements);
-
-      // store.zoom = map.getZoom().toPrecision(3)
-      // store.center = map.getCenter()
-      // store.lat = store.center.lat.toPrecision(6)
-      // store.lng = fixLongitude(store.center.lng).toPrecision(6)
-      // store.pitch = Math.floor(map.getPitch())
-      // store.bearing = Math.floor(map.getBearing())
   }
   /*eslint-enable  */
 
@@ -165,7 +161,7 @@ class MapPage extends Component {
       height: this.state.height,
       width: this.state.width
     };
-    
+
     return (
       <div>
         <Overlay
@@ -194,7 +190,8 @@ class MapPage extends Component {
           zoom={this.state.zoom}
           containerStyle={mapboxContainerStyle}
           hidden={this.state.mapboxHidden}
-          mapMovements={this.props.mapState.mapMovements}/>
+          mapMovements={this.props.mapState.mapMovements}
+          handleMove={this.handleMove} />
 
         <ESRIMap
           style={this.state.currentStyle}
