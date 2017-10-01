@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import CreateStyle from '../modals/createStyle';
+import CreateMapStyle from '../modals/createMapStyle';
 import InitialState from '../../reducers/initialState';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as mapActions from '../../actions/mapActions';
-
-const customStyles = {
-    overlay : {
-       zIndex               : '10'
-     },
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
-    }
-};
+import createMapStyleStyle from '../modals/createMapStyleStyle';
 
 class Overlay extends Component {
 
@@ -89,11 +76,12 @@ class Overlay extends Component {
     saveStyle(){
         event.preventDefault();
         this.setState({saving: true});
-        this.props.actions.saveNewStyle(this.state.newStyle)
-      .then(() => this.setState({modalIsOpen: false}))
-      .catch(error => {
-        this.setState({saving: false});
-      })
+        this.props.actions.saveNewStyle(this.state.newStyle);
+        this.setState({modalIsOpen: false});
+    //   .then(() => this.setState({modalIsOpen: false}))
+    //   .catch(error => {
+    //     this.setState({saving: false});
+    //   })
     }
 
     updateNewStyleState(event) {
@@ -110,24 +98,24 @@ class Overlay extends Component {
                     isOpen={this.state.modalIsOpen}
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
-                    style={customStyles}
+                    style={createMapStyleStyle}
                     contentLabel="Example Modal"
                     >
-                    <CreateStyle
+                    <CreateMapStyle
                         newStyle={this.state.newStyle}
                         onChange={this.updateNewStyleState} />
 
-                    <button onClick={this.closeModal} id="closeButton">CLOSE</button>
-                    <button onClick={this.saveStyle}>SAVE</button>
+                    <button className="myButtons" onClick={this.closeModal} id="closeButton">CLOSE</button>
+                    <button className="myButtons" onClick={this.saveStyle}>SAVE</button>
 
                 </Modal>
                 <div id="myNav" className={this.props.overlayClass}>
+                    <button id="createMapStyleButton" className="myButtons" onClick={this.openModal}>Add A Style</button>
+
                     <div id="searchDiv">
                         <label className="title" >Search</label>
                         <input id="searchInput" className="inputBox" type="text" onChange={this.handleChange} />
                     </div>
-
-                    <button onClick={this.openModal}>OpenModal</button>
 
                     <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>
                     <div className="overlay-content">
@@ -165,7 +153,8 @@ Overlay.propTypes = {
     overlayClass: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     updateMapStyle: PropTypes.func.isRequired,
-    mapStyles: PropTypes.array.isRequired
+    mapStyles: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps (state) {

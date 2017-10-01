@@ -8,6 +8,8 @@ export default {
       "url": "",
       "author": "",
       "image": "",
-      "github": ""
+      "github": "",
+      "jsonStyle": "",
+      "type": "Mapbox_Remote"
   }
 };

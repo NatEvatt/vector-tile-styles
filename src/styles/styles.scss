@@ -112,7 +112,7 @@ td.fuel-savings-label { width: 175px; }
 }
 
 .mapStyleDiv {
-    height: 270px;
+    height: 250px;
     width: 300px;
     margin: 5px;
     padding: 10px 0px 10px 0px;
@@ -270,6 +270,7 @@ td.fuel-savings-label { width: 175px; }
 
 .inputBox.sml{
     width: 200px;
+    height: 30px;
 }
 
 .title{
@@ -554,7 +555,7 @@ pre{
     position: relative;
 }
 
-button{
+.myButtons{
     width: 125px;
     border-radius: 4px;
     color: #fff !important;
@@ -570,6 +571,25 @@ button{
 
 #closeButton{
     float:right;
+}
+
+.radioButton{
+    float: left;
+}
+
+.radioButtonLabel{
+    float: left;
+    margin-right: 10px;
+}
+
+#createMapStyleTable td{
+    padding: 6px;
+}
+
+#createMapStyleButton{
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 // .mapboxgl-ctrl-top-left{

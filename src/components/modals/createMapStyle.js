@@ -1,11 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CreateStyle = ({newStyle, onChange}) => {
 
     return (
         <div>
             <h2 className="title">Add New Map Style</h2>
-            <table>
+            <div id="mapStyleTypeDiv">
+                <input type="radio"
+                    className="radioButton"
+                    name="type"
+                    value="Mapbox_Remote"
+                    onChange={onChange} />
+                    <label className="radioButtonLabel">Mapbox</label>
+                <input type="radio"
+                    className="radioButton"
+                    name="type"
+                    value="ESRI"
+                    onChange={onChange} />
+                    <label className="radioButtonLabel">ESRI</label>
+                <input type="radio"
+                    className="radioButton"
+                    name="type"
+                    value="Local"
+                    onChange={onChange} />
+                    <label className="radioButtonLabel">OpenMapTiles</label>
+            </div>
+            <table id="createMapStyleTable">
             <tr>
                 <td><label>NAME</label></td>
                 <td>
@@ -59,6 +80,11 @@ const CreateStyle = ({newStyle, onChange}) => {
             </table>
         </div>
     );
+};
+
+CreateStyle.propTypes = {
+    newStyle: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired
 };
 
 export default CreateStyle;
