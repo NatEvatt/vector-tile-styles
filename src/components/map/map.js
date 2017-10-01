@@ -39,8 +39,6 @@ class Map extends React.Component {
     }
 
     render() {
-        // const { children } = this.props;
-        // const { map } = this.state;
         return (
             <div
                 style={this.props.containerStyle}

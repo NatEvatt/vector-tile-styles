@@ -9,6 +9,10 @@ export function trackMapMovementSuccess(mapMovements){
   return { type: types.TRACK_MAP_MOVE_SUCCESS, mapMovements};
 }
 
+export function saveNewStyleSuccess(newStyle){
+  return { type: types.SAVE_NEW_STYLE_SUCCESS, newStyle};
+}
+
 export function loadMapStyles(){
   return function(dispatch) {
     return mapStylesApi.getMapStyles().then(mapStyles => {
@@ -22,5 +26,10 @@ export function loadMapStyles(){
 export function trackMapMovement(mapMovements){
   return function(dispatch) {
       dispatch(trackMapMovementSuccess(mapMovements));
+  };
+}
+export function saveNewStyle(newStyle){
+  return function(dispatch) {
+      dispatch(saveNewStyleSuccess(newStyle));
   };
 }
