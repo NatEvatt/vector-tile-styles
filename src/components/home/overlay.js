@@ -6,7 +6,7 @@ import InitialState from '../../reducers/initialState';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as mapActions from '../../actions/mapActions';
-import createMapStyleStyle from '../modals/createMapStyleStyle';
+import ModalStyles from '../modals/modalStyles';
 
 class Overlay extends Component {
 
@@ -24,7 +24,6 @@ class Overlay extends Component {
         this.closeNav = this.closeNav.bind(this);
         this.handleOnClick = this.handleOnClick.bind(this);
         this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.saveStyle = this.saveStyle.bind(this);
         this.updateNewStyleState = this.updateNewStyleState.bind(this);
@@ -64,11 +63,6 @@ class Overlay extends Component {
         this.setState({modalIsOpen: true});
     }
 
-    afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        // this.subtitle.style.color = '#f00';
-    }
-
     closeModal() {
         this.setState({modalIsOpen: false});
     }
@@ -98,7 +92,7 @@ class Overlay extends Component {
                     isOpen={this.state.modalIsOpen}
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
-                    style={createMapStyleStyle}
+                    style={ModalStyles}
                     contentLabel="Example Modal"
                     >
                     <CreateMapStyle

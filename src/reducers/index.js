@@ -1,11 +1,13 @@
 // Set up your root reducer here...
  import { combineReducers } from 'redux';
  import {routerReducer} from 'react-router-redux';
- import mapStyles from './mapReducer';
+ import MapStyles from './mapReducer';
+ import User from './userReducer';
 
  const rootReducer = combineReducers({
    routing: routerReducer,
-   mapState: mapStyles
+   mapState: MapStyles,
+   user: User
  });
 
  export default rootReducer;

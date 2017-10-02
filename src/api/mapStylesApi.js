@@ -16,8 +16,8 @@ class MapStylesApi {
             body: JSON.stringify(newStyle)
         }).then((response) => response.json())
         .then((responseJson) => {
-            return responseJson
-        })
+            return responseJson;
+        });
     }
 }
 

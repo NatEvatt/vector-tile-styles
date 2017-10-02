@@ -19,6 +19,14 @@ body {
     font-weight: 300;
 }
 
+button {
+    outline: none;
+}
+
+div {
+    outline: none;
+}
+
 td {
     padding: 12px;
 }
@@ -78,6 +86,28 @@ h2 {
     width: 25px;
     margin-right: 10px
 }
+
+#loginButton{
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#userSpan{
+    position: absolute;
+    top: 6px;
+    right: 80px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
 
 .savings { color: $vin-green; }
 .loss { color: $vin-red; }
@@ -590,6 +620,53 @@ pre{
     position: absolute;
     top: 20px;
     left: 20px;
+}
+.modalHeader {
+    color: $navBlue;
+    text-align: center;
+}
+/* ********** Login Buttons ********** */
+.google-login {
+    display: block;
+    background: white;
+    color: #444;
+    height: 36px;
+    width: 120px;
+    border: thin solid #ccc;
+    white-space: nowrap;
+    padding:0px;
+    box-shadow: 0px 0px 3px rgba(204,204,204,0.5);
+    transition: box-shadow 0.1s ease-in-out;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.google-login:hover {
+    box-shadow: 0px 0px 5px rgba(0,191,255,0.75);
+    cursor: pointer;
+}
+
+span.label {
+    font-family: serif;
+    font-weight: normal;
+}
+.googleIcon {
+    background: url('/images/googleIcon.png') transparent 5px 50% no-repeat;
+    display: inline-block;
+    // vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    float:left;
+}
+span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 6px;
+    padding-top: 8px;
+    /* padding-right: 42px; */
+    font-size: 14px;
+    /* font-weight: bold; */
+    font-family: 'Roboto', sans-serif;
 }
 
 // .mapboxgl-ctrl-top-left{

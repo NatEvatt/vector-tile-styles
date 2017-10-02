@@ -11,5 +11,11 @@ export default {
       "github": "",
       "jsonStyle": "",
       "type": "Mapbox_Remote"
+  },
+  user: {
+      "name": "",
+      "image": "",
+      "email": "",
+      "id_token": ""
   }
 };
