@@ -24,6 +24,8 @@ render(
   document.getElementById('app')
 );
 
+// export store;
+
 if (module.hot) {
   module.hot.accept('./components/root', () => {
     const NewRoot = require('./components/root').default;

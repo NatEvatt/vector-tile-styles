@@ -139,7 +139,6 @@ class MapPage extends Component {
   }
 
   handleMove() {
-      console.log(this.props.mapState.mapMovements);
       let mapMovements = {
           zoom: map.getZoom().toPrecision(3),
           center: map.getCenter(),

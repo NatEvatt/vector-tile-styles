@@ -38,6 +38,7 @@ class FirstHeader extends React.Component {
             "email": profile.getEmail(),
             "id_token": id_token
         }
+        console.log(id_token);
         this.props.actions.loadUserData(userData);
     }
 

@@ -29,8 +29,10 @@ export function trackMapMovement(mapMovements){
     };
 }
 export function saveNewStyle(newStyle){
-    return function(dispatch) {
-        return mapStylesApi.saveNewMapStyle(newStyle).then(id => {
+    return function(dispatch, getState) {
+        let state = getState();
+        let token = state.user.id_token;
+        return mapStylesApi.saveNewMapStyle(newStyle, token).then(id => {
             newStyle['id'] = id;
             dispatch(saveNewStyleSuccess(newStyle));
         }).catch(error => {
