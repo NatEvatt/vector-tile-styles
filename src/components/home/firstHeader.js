@@ -13,12 +13,15 @@ class FirstHeader extends React.Component {
         super(props, context);
 
         this.state = {
-            modalIsOpen: false
+            modalIsOpen: false,
+            loginVisible: true,
+            logoutVisible: false
         };
 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.responseGoogle = this.responseGoogle.bind(this);
+        this.logoutGoogle = this.logoutGoogle.bind(this);
     }
 
     openModal() {
@@ -27,6 +30,15 @@ class FirstHeader extends React.Component {
 
     closeModal() {
         this.setState({modalIsOpen: false});
+    }
+
+    logoutGoogle() {
+        this.props.actions.clearUserData();
+        this.setState({
+            loginVisible: true,
+            logoutVisible: false
+        });
+        this.closeModal();
     }
 
     responseGoogle (googleUser) {
@@ -38,10 +50,13 @@ class FirstHeader extends React.Component {
             "email": profile.getEmail(),
             "id_token": id_token
         }
-        console.log(id_token);
         this.props.actions.loadUserData(userData);
+        this.setState({
+            loginVisible: false,
+            logoutVisible: true
+        });
+        this.closeModal();
     }
-
 
     render() {
         return (
@@ -53,9 +68,12 @@ class FirstHeader extends React.Component {
                     contentLabel="Create Map Style"
                     >
                     <LoginModal
-                        responseGoogle={this.responseGoogle}/>
+                        responseGoogle={this.responseGoogle}
+                        logoutGoogle={this.logoutGoogle}
+                        loginVisible={this.state.loginVisible}
+                        logoutVisible={this.state.logoutVisible} />
+
                     <button className="myButtons" onClick={this.closeModal} id="closeButton">CLOSE</button>
-                    <button className="myButtons" onClick={this.saveStyle}>SAVE</button>
 
                 </Modal>
                 <div className="container-fluid nav-container">

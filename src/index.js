@@ -9,9 +9,13 @@ import Root from './components/root';
 import './styles/styles.scss';
 import { syncHistoryWithStore } from 'react-router-redux';
 import {loadMapStyles} from './actions/mapActions';
+import {persistStore} from 'redux-persist';
 
 const store = configureStore();
 store.dispatch(loadMapStyles());
+
+// begin periodically persisting the store
+persistStore(store);
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);

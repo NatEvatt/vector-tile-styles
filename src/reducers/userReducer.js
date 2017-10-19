@@ -7,6 +7,10 @@ export default function UserReducer(state = initialState.user, action) {
             return action.userData;
         }
 
+        case types.CLEAR_USER_DATA_SUCCESS:{
+            return initialState.user;
+        }
+
         default:{
             return state;
         }
