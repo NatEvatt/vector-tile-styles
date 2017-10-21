@@ -39,8 +39,6 @@ class Map extends React.Component {
     }
 
     render() {
-        // const { children } = this.props;
-        // const { map } = this.state;
         return (
             <div
                 style={this.props.containerStyle}
@@ -63,17 +61,4 @@ Map.propTypes = {
     handleMove: PropTypes.func.isRequired
 };
 
-// function mapDispatchToProps (dispatch) {
-//     return {
-//         actions: bindActionCreators(mapActions, dispatch)
-//     };
-// }
-//
-// function mapStateToProps (state) {
-//     return {
-//         mapMovements: state.mapState.mapMovements
-//     };
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Map);
 export default Map;

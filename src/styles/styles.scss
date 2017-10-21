@@ -7,63 +7,71 @@ $navGray: #f1f1f1;
 
 /* Styles */
 body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.4em;
-  color: #4d4d4d;
-  // min-width: 230px;
-  // max-width: 550px;
-  margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  font-weight: 300;
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.4em;
+    color: #4d4d4d;
+    // min-width: 230px;
+    // max-width: 550px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    font-weight: 300;
+}
+
+button {
+    outline: none;
+}
+
+div {
+    outline: none;
 }
 
 td {
-  padding: 12px;
+    padding: 12px;
 }
 
 h2 {
-  color: $navBlue;
+    color: $navBlue;
 }
 
 .nav-container{
-  padding:4px;
-  height:25px;
-  background-color: $navBlue;
-  color: #ffffff;
+    padding:4px;
+    height:25px;
+    background-color: $navBlue;
+    color: #ffffff;
 }
 
 .nav-container a{
-  color: #ffffff;
-  text-decoration: none;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .navbar-header{
-  float:left;
+    float:left;
 }
 
 .navbar-header h3{
-  display: inline-block;
-  vertical-align: top;
-  margin: 0px;
-  height: 100%;
-  font-size: 20px;
-  margin-top: 3px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px;
+    height: 100%;
+    font-size: 20px;
+    margin-top: 3px;
 }
 
 .navLeft{
-  float: left;
-  margin-left: 100px;
-  margin-top: 3px;
+    float: left;
+    margin-left: 100px;
+    margin-top: 3px;
 }
 
 .navRight{
-  float: right;
+    float: right;
 }
 
 .nav-container{
-  overflow: hidden;
+    overflow: hidden;
 }
 
 // .floatingDropdown{
@@ -74,10 +82,32 @@ h2 {
 // }
 
 .logoIcon{
-  height: 25px;
-  width: 25px;
-  margin-right: 10px
+    height: 25px;
+    width: 25px;
+    margin-right: 10px
 }
+
+#loginButton{
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#userSpan{
+    position: absolute;
+    top: 6px;
+    right: 80px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
 
 .savings { color: $vin-green; }
 .loss { color: $vin-red; }
@@ -85,202 +115,207 @@ input.small { width: 46px; }
 td.fuel-savings-label { width: 175px; }
 
 #secondHeader{
-  width:100%;
-  height: 50px;
-  background-color: #ffffff;
+    width:100%;
+    height: 50px;
+    background-color: #ffffff;
 }
 
 .stylePreview {
-  width: 300px;
-  max-height: 200px;
-  height:200px;
+    width: 300px;
+    max-height: 200px;
+    height:200px;
 }
 
 .previewTitle{
-  font-size: 20px;
-  margin: 5px 0px 5px 0px;
+    font-size: 20px;
+    margin: 5px 0px 5px 0px;
 }
 
 .previewTitleHover{
-  color: #ffffff;
-  font-size: 20px;
-  margin-top: 40%;
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 40%;
 }
 
 .mapStyleAuthorHover{
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .mapStyleDiv {
-  height: 250px;
-  width: 300px;
-  margin: 5px;
-  padding: 10px 0px 10px 0px;
-  cursor: pointer;
-  transition: box-shadow 0.2s;
-  transition-timing-function: ease-out;
-  -webkit-transition: all 0.2s;
-  -webkit-transition-timing-function: ease-out;
-  -webkit-box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
-  -moz-box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
-  box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
-  position: relative;
+    height: 250px;
+    width: 300px;
+    margin: 5px;
+    padding: 10px 0px 10px 0px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    transition-timing-function: ease-out;
+    -webkit-transition: all 0.2s;
+    -webkit-transition-timing-function: ease-out;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
+    box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
+    position: relative;
 }
 
 .mapStyleDiv:hover {
-  -webkit-box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
-  -moz-box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
-  box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
+    box-shadow: 0px 0px 5px 5px rgba(204,204,204,1);
 }
 
 .styleHover{
-  height:270px;
-  width: 300px;
-  opacity: 0;
-  background-color: #222222;
-  position: absolute;
-  top:0px;
-  transition: box-shadow 0.5s;
-  transition-timing-function: ease-out;
-  -webkit-transition: box-shadow 0.5s;
-  -webkit-transition-timing-function: ease-out;
+    height:270px;
+    width: 300px;
+    opacity: 0;
+    background-color: #222222;
+    position: absolute;
+    top:0px;
+    transition: box-shadow 0.5s;
+    transition-timing-function: ease-out;
+    -webkit-transition: box-shadow 0.5s;
+    -webkit-transition-timing-function: ease-out;
 }
 
 .mapStyleAuthor{
-  margin-top: 5px;
-  font-size: 14px;
+    margin-top: 5px;
+    font-size: 14px;
 }
 
 .styleHover:hover{
-  // opacity: 0.9;
-  box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
+    // opacity: 0.9;
+    box-shadow: 0px 0px 3px 0px rgba(170,170,170,1);
 }
 
 .openButton{
-  width: 100%;
+    width: 100%;
 }
 
 .openButtonImage{
-  width:30px;
-  margin-top: 25px;
-  position: absolute;
-  left: 50%;
-  transform: translatex(-50%);
+    width:30px;
+    margin-top: 25px;
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
 }
 
 .openButtonImage:hover{
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #currentBasemapTitle{
-  color: $navBlue;
-  font-size:22px;
-  margin: 14px;
+    color: $navBlue;
+    font-size:22px;
+    margin: 14px;
 }
 
 .navbar-content{
-  font-size: 18px;
-  display: inline-block;
-  margin-left: 100px;
-  margin-top: 4px;
+    font-size: 18px;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 4px;
 }
 
 .optionsButton{
-  width: 35px;
-  position: absolute;
-  left: 5px;
-  margin-top: 5px;
+    width: 35px;
+    position: absolute;
+    left: 5px;
+    margin-top: 5px;
 }
 
 .dotOptions{
-  line-height: 40px;
-  color: $navBlue;
+    line-height: 40px;
+    color: $navBlue;
 }
 
 
 /* ************ The animated overlay css ************** */
 /* The Overlay (background) */
 .overlay {
-  /* Height & width depends on how you want to reveal the overlay (see JS below) */
-  height: 0px;
-  width: 100%;
-  position: fixed; /* Stay in place */
-  z-index: 3; /* Sit on top */
-  left: 0;
-  top: 0;
-  color: $navBlue;
-  font-size: 26px;
-  background-color: rgb(255,255,255); /* Black fallback color */
-  background-color: rgba(255,255,255, 0.95); /* Black w/opacity */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */
+    height: 0px;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Sit on top */
+    left: 0;
+    top: 0;
+    color: $navBlue;
+    font-size: 26px;
+    background-color: rgb(255,255,255); /* Black fallback color */
+    background-color: rgba(255,255,255, 0.95); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
 }
 
 
 /* ***************** Dropdown CSS ************* */
 .sub-menu-parent {
-  width: 200px;
-  font-size: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  position: absolute;
-  left: 15px;
-  cursor: pointer;
+    width: 200px;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: absolute;
+    left: 15px;
+    cursor: pointer;
 }
 
 .sub-menu {
-  visibility: hidden; /* hides sub-menu */
-  opacity: 0;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  transform: translateY(-2em);
-  z-index: -1;
-  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    visibility: hidden; /* hides sub-menu */
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-2em);
+    z-index: -1;
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
 }
 
 .sub-menu-parent:hover .sub-menu {
-  visibility: visible; /* shows sub-menu */
-  opacity: 1;
-  z-index: 5;
-  border: 1px solid $navBlue;
-  transform: translateY(0%);
-  transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+    visibility: visible; /* shows sub-menu */
+    opacity: 1;
+    z-index: 5;
+    border: 1px solid $navBlue;
+    transform: translateY(0%);
+    transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
 }
 
 #searchDiv {
-  padding: 20px;
-  margin-left: auto;
-  display: block;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    padding: 20px;
+    margin-left: auto;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#searchInput{
-  width: 300px;
-  height: 36px;
-  border-radius: 4px;
-  background-color: #fff;
-  box-shadow: inset 0 1px 4px 0 rgba(0,0,0,.3);
-  border: 1px solid #979797;
-  padding-left: 6px;
+.inputBox{
+    width: 300px;
+    height: 36px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 4px 0 rgba(0,0,0,.3);
+    border: 1px solid #979797;
+    padding-left: 6px;
 }
 
-#searchLabel{
-  font-size: 40px;
-  margin-right: 10px;
+.inputBox.sml{
+    width: 200px;
+    height: 30px;
+}
+
+.title{
+    font-size: 30px;
+    margin-right: 10px;
 }
 /* presentational */
 
 
 .navLeft a {
-  color: $navBlue;
-  display: block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  font-size: 14px;
+    color: $navBlue;
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    font-size: 14px;
 }
 .navLeft a:hover { color: #F55; }
 .navLeft ul,
@@ -294,97 +329,97 @@ li a.disabled:hover { color: #cccccc; cursor: default;}
 .navLeft > ul > li:first-child { border-left: none; }
 
 .sub-menu {
-  background: #ffffff;
+    background: #ffffff;
 }
 
 
 .overlay.open{
-  height: 100%;
+    height: 100%;
 }
 
 .overlay.close{
-  height: 0px;
+    height: 0px;
 }
 
 /* Position the content inside the overlay */
 .overlay-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  width: 100%; /* 100% width */
-  text-align: center; /* Centered text/links */
-  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
 }
 
 /* The navigation links inside the overlay */
 .overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: $navBlue;
-  display: block; /* Display block instead of inline */
-  transition: 0.3s; /* Transition effects on hover (color) */
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: $navBlue;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
 }
 
 /* When you mouse over the navigation links, change their color */
 .overlay a:hover, .overlay a:focus {
-  color: $navGray;
+    color: $navGray;
 }
 
 /* Position the close button (top right corner) */
 .overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-  z-index: 1;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    z-index: 1;
 }
 
 #jsonStyleViewer{
-  color: #96d4d3;
-  height: calc(100vh - 90px);
-  background-color: #ffffff;
-  z-index:5;
-  position: absolute;
-  border: 1px solid #ccc;
-  transition: 0.3s;
-  overflow: auto;
+    color: #96d4d3;
+    height: calc(100vh - 90px);
+    background-color: #ffffff;
+    z-index:5;
+    position: absolute;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+    overflow: auto;
 }
 
 pre{
-  margin: 0px;
+    margin: 0px;
 }
 
 #jsonStyleViewerCloseSpan {
-  position: absolute;
-  top: 20px;
-  right: 10px;
-  font-size: 60px;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 60px;
 }
 
 #jsonStyleViewerCloseSpan:hover { //here
-  color: $navGray;
-  cursor: pointer;
+    color: $navGray;
+    cursor: pointer;
 }
 
 #jsonStyleViewer.close{
-  width: 0px;
-  border: 0px solid #ccc;
+    width: 0px;
+    border: 0px solid #ccc;
 }
 
 #jsonStyleViewer.open{
-  width: 50%;
-  border: 1px solid #ccc;
+    width: 50%;
+    border: 1px solid #ccc;
 }
 
 #jsonStyleViewerContent.close{
-  display: none;
+    display: none;
 }
 
 #jsonStyleViewerContent.open{
-  display: block;
+    display: block;
 }
 
 // pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
@@ -396,12 +431,12 @@ pre{
 
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
 @media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
 }
 
 /* Basics */
@@ -409,113 +444,113 @@ pre{
 .mapboxgl-ctrl-geocoder *,
 .mapboxgl-ctrl-geocoder *:after,
 .mapboxgl-ctrl-geocoder *:before {
-  -webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-  box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
 }
 .mapboxgl-ctrl-geocoder {
-  font:15px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  position:relative;
-  background-color:white;
-  width:33.3333%;
-  min-width:240px;
-  max-width:360px;
-  top: 10px;
-  left: 5px;
-  z-index:1;
-  border-radius:3px;
+    font:15px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    position:relative;
+    background-color:white;
+    width:33.3333%;
+    min-width:240px;
+    max-width:360px;
+    top: 10px;
+    left: 5px;
+    z-index:1;
+    border-radius:3px;
 }
 
 .mapboxgl-ctrl-geocoder input[type='text'] {
-  font-size:12px;
-  width:100%;
-  border:0;
-  background-color:transparent;
-  height:40px;
-  margin:0;
-  color:rgba(0,0,0,.5);
-  padding:10px 10px 10px 40px;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  overflow:hidden;
+    font-size:12px;
+    width:100%;
+    border:0;
+    background-color:transparent;
+    height:40px;
+    margin:0;
+    color:rgba(0,0,0,.5);
+    padding:10px 10px 10px 40px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
 }
 .mapboxgl-ctrl-geocoder input:focus {
-  color:rgba(0,0,0,.75);
-  outline:0;
-  box-shadow:none;
-  outline:thin dotted\8;
+    color:rgba(0,0,0,.75);
+    outline:0;
+    box-shadow:none;
+    outline:thin dotted\8;
 }
 
 .mapboxgl-ctrl-geocoder .geocoder-icon-search {
-  position:absolute;
-  top:10px;
-  left:10px;
+    position:absolute;
+    top:10px;
+    left:10px;
 }
 .mapboxgl-ctrl-geocoder button {
-  padding:0;
-  margin:0;
-  background-color:#fff;
-  border:none;
-  cursor:pointer;
+    padding:0;
+    margin:0;
+    background-color:#fff;
+    border:none;
+    cursor:pointer;
 }
 .mapboxgl-ctrl-geocoder .geocoder-pin-right * {
-  background-color:#fff;
-  z-index:2;
-  position:absolute;
-  right:10px;
-  top:10px;
-  display:none;
+    background-color:#fff;
+    z-index:2;
+    position:absolute;
+    right:10px;
+    top:10px;
+    display:none;
 }
 
 .mapboxgl-ctrl-geocoder,
 .mapboxgl-ctrl-geocoder ul {
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
 }
 
 /* Suggestions */
 .mapboxgl-ctrl-geocoder ul {
-  background-color:#fff;
-  border-radius: 0 0 3px 3px;
-  left:0;
-  list-style:none;
-  margin:0;
-  padding:0;
-  position:absolute;
-  width:100%;
-  top:100%;
-  z-index:1000;
-  overflow:hidden;
-  font-size:12px;
+    background-color:#fff;
+    border-radius: 0 0 3px 3px;
+    left:0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    position:absolute;
+    width:100%;
+    top:100%;
+    z-index:1000;
+    overflow:hidden;
+    font-size:12px;
 }
 .mapboxgl-ctrl-bottom-left .mapboxgl-ctrl-geocoder ul,
 .mapboxgl-ctrl-bottom-right .mapboxgl-ctrl-geocoder ul {
-  top:auto;
-  bottom:100%;
+    top:auto;
+    bottom:100%;
 }
 .mapboxgl-ctrl-geocoder ul > li > a {
-  clear:both;
-  cursor:default;
-  display:block;
-  padding:5px 10px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  border-bottom:1px solid rgba(0,0,0,0.1);
-  color:#404040;
+    clear:both;
+    cursor:default;
+    display:block;
+    padding:5px 10px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    border-bottom:1px solid rgba(0,0,0,0.1);
+    color:#404040;
 }
 .mapboxgl-ctrl-geocoder ul > li:last-child > a { border-bottom:none; }
 .mapboxgl-ctrl-geocoder ul > li > a:hover {
-  color:#202020;
-  background-color:#f3f3f3;
-  text-decoration:none;
-  cursor:pointer;
+    color:#202020;
+    background-color:#f3f3f3;
+    text-decoration:none;
+    cursor:pointer;
 }
 .mapboxgl-ctrl-geocoder ul > li.active > a {
-  color:#202020;
-  background-color:#e3e3e3;
-  text-decoration:none;
-  cursor:pointer;
+    color:#202020;
+    background-color:#e3e3e3;
+    text-decoration:none;
+    cursor:pointer;
 }
 
 @-webkit-keyframes rotate { from { -webkit-transform: rotate(0deg); } to { -webkit-transform: rotate(360deg); } }
@@ -525,29 +560,113 @@ pre{
 
 /* icons */
 .geocoder-icon {
-  display:inline-block;
-  width:20px;
-  height:20px;
-  vertical-align:middle;
-  speak:none;
-  background-repeat:no-repeat;
+    display:inline-block;
+    width:20px;
+    height:20px;
+    vertical-align:middle;
+    speak:none;
+    background-repeat:no-repeat;
 }
 .geocoder-icon-search {
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmVyc2lvbj0iMS4xIj4NCiAgPHBhdGggZD0iTTguNSA0QzYgNCA0IDYgNCA4LjUgNCAxMSA2IDEzIDguNSAxMyA5LjQgMTMgMTAuMiAxMi44IDEwLjggMTIuM0wxMC45IDEyLjMgMTQuMyAxNS43QzE0LjUgMTUuOSAxNC43IDE2IDE1IDE2IDE1LjYgMTYgMTYgMTUuNiAxNiAxNSAxNiAxNC43IDE1LjkgMTQuNSAxNS43IDE0LjNMMTIuMyAxMC45IDEyLjMgMTAuOEMxMi44IDEwLjIgMTMgOS40IDEzIDguNSAxMyA2IDExIDQgOC41IDR6TTguNSA1LjVDMTAuMiA1LjUgMTEuNSA2LjggMTEuNSA4LjUgMTEuNSAxMC4yIDEwLjIgMTEuNSA4LjUgMTEuNSA2LjggMTEuNSA1LjUgMTAuMiA1LjUgOC41IDUuNSA2LjggNi44IDUuNSA4LjUgNS41eiIgZmlsbD0iIzAwMCIvPg0KPC9zdmc+);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmVyc2lvbj0iMS4xIj4NCiAgPHBhdGggZD0iTTguNSA0QzYgNCA0IDYgNCA4LjUgNCAxMSA2IDEzIDguNSAxMyA5LjQgMTMgMTAuMiAxMi44IDEwLjggMTIuM0wxMC45IDEyLjMgMTQuMyAxNS43QzE0LjUgMTUuOSAxNC43IDE2IDE1IDE2IDE1LjYgMTYgMTYgMTUuNiAxNiAxNSAxNiAxNC43IDE1LjkgMTQuNSAxNS43IDE0LjNMMTIuMyAxMC45IDEyLjMgMTAuOEMxMi44IDEwLjIgMTMgOS40IDEzIDguNSAxMyA2IDExIDQgOC41IDR6TTguNSA1LjVDMTAuMiA1LjUgMTEuNSA2LjggMTEuNSA4LjUgMTEuNSAxMC4yIDEwLjIgMTEuNSA4LjUgMTEuNSA2LjggMTEuNSA1LjUgMTAuMiA1LjUgOC41IDUuNSA2LjggNi44IDUuNSA4LjUgNS41eiIgZmlsbD0iIzAwMCIvPg0KPC9zdmc+);
 }
 .geocoder-icon-close {
-  background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCIgdmVyc2lvbj0iMS4xIiBoZWlnaHQ9IjIwIiB3aWR0aD0iMjAiPg0KICA8cGF0aCBkPSJtNSA1IDAgMS41IDMuNSAzLjUtMy41IDMuNSAwIDEuNSAxLjUgMCAzLjUtMy41IDMuNSAzLjUgMS41IDAgMC0xLjUtMy41LTMuNSAzLjUtMy41IDAtMS41LTEuNSAwLTMuNSAzLjUtMy41LTMuNS0xLjUgMHoiIGZpbGw9IiMwMDAiLz4NCjwvc3ZnPg==);
+    background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCIgdmVyc2lvbj0iMS4xIiBoZWlnaHQ9IjIwIiB3aWR0aD0iMjAiPg0KICA8cGF0aCBkPSJtNSA1IDAgMS41IDMuNSAzLjUtMy41IDMuNSAwIDEuNSAxLjUgMCAzLjUtMy41IDMuNSAzLjUgMS41IDAgMC0xLjUtMy41LTMuNSAzLjUtMy41IDAtMS41LTEuNSAwLTMuNSAzLjUtMy41LTMuNS0xLjUgMHoiIGZpbGw9IiMwMDAiLz4NCjwvc3ZnPg==);
 }
 .geocoder-icon-loading {
-  background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB2aWV3Qm94PSIwIDAgMjAgMjAiPjxwYXRoIGQ9Im0xMCAyIDAgMy4zYzIuNiAwIDQuNyAyLjEgNC43IDQuN2wzLjMgMGMwLTQuNC0zLjYtOC04LTh6IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTEwIDJDNi44IDIgMy43IDQuMSAyLjYgNy4xIDEuNCAxMCAyLjEgMTMuNiA0LjUgMTUuOGMyLjQgMi40IDYuNCAyLjkgOS40IDEuMiAyLjUtMS40IDQuMi00LjIgNC4yLTctMS4xIDAtMi4yIDAtMy4zIDAgMC4xIDIuMi0xLjcgNC4zLTMuOCA0LjZDOC43IDE1IDYuNCAxMy44IDUuNyAxMS43IDQuOCA5LjcgNS42IDcuMSA3LjYgNiA4LjMgNS42IDkuMSA1LjMgMTAgNS4zYzAtMS4xIDAtMi4yIDAtMy4zeiIgc3R5bGU9ImZpbGw6IzAwMDtvcGFjaXR5OjAuMiIvPjwvc3ZnPg==);
-  -webkit-animation: rotate 400ms linear infinite;
-  -moz-animation: rotate 400ms linear infinite;
-  -ms-animation: rotate 400ms linear infinite;
-  animation: rotate 400ms linear infinite;
+    background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB2aWV3Qm94PSIwIDAgMjAgMjAiPjxwYXRoIGQ9Im0xMCAyIDAgMy4zYzIuNiAwIDQuNyAyLjEgNC43IDQuN2wzLjMgMGMwLTQuNC0zLjYtOC04LTh6IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTEwIDJDNi44IDIgMy43IDQuMSAyLjYgNy4xIDEuNCAxMCAyLjEgMTMuNiA0LjUgMTUuOGMyLjQgMi40IDYuNCAyLjkgOS40IDEuMiAyLjUtMS40IDQuMi00LjIgNC4yLTctMS4xIDAtMi4yIDAtMy4zIDAgMC4xIDIuMi0xLjcgNC4zLTMuOCA0LjZDOC43IDE1IDYuNCAxMy44IDUuNyAxMS43IDQuOCA5LjcgNS42IDcuMSA3LjYgNiA4LjMgNS42IDkuMSA1LjMgMTAgNS4zYzAtMS4xIDAtMi4yIDAtMy4zeiIgc3R5bGU9ImZpbGw6IzAwMDtvcGFjaXR5OjAuMiIvPjwvc3ZnPg==);
+    -webkit-animation: rotate 400ms linear infinite;
+    -moz-animation: rotate 400ms linear infinite;
+    -ms-animation: rotate 400ms linear infinite;
+    animation: rotate 400ms linear infinite;
 }
 
 .mapboxgl-ctrl-top-left{
-  position: relative;
+    position: relative;
+}
+
+.myButtons{
+    width: 125px;
+    border-radius: 4px;
+    color: #fff !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+    background-color: #96d4d3;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0;
+    border: none;
+    margin: 0px 6px;
+}
+
+#closeButton{
+    float:right;
+}
+
+.radioButton{
+    float: left;
+}
+
+.radioButtonLabel{
+    float: left;
+    margin-right: 10px;
+}
+
+#createMapStyleTable td{
+    padding: 6px;
+}
+
+#createMapStyleButton{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.modalHeader {
+    color: $navBlue;
+    text-align: center;
+}
+/* ********** Login Buttons ********** */
+.googleButton {
+    display: block;
+    background: white;
+    color: #444;
+    height: 36px;
+    width: 120px;
+    border: thin solid #ccc;
+    white-space: nowrap;
+    padding:0px;
+    box-shadow: 0px 0px 3px rgba(204,204,204,0.5);
+    transition: box-shadow 0.1s ease-in-out;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.googleButton:hover {
+    box-shadow: 0px 0px 5px rgba(0,191,255,0.75);
+    cursor: pointer;
+}
+
+span.label {
+    font-family: serif;
+    font-weight: normal;
+}
+.googleIcon {
+    background: url('/images/googleIcon.png') transparent 5px 50% no-repeat;
+    display: inline-block;
+    // vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    float:left;
+}
+span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 6px;
+    padding-top: 8px;
+    /* padding-right: 42px; */
+    font-size: 14px;
+    /* font-weight: bold; */
+    font-family: 'Roboto', sans-serif;
 }
 
 // .mapboxgl-ctrl-top-left{
