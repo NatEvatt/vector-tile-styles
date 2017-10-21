@@ -17,5 +17,9 @@ export default {
       "image": "",
       "email": "",
       "id_token": ""
+  },
+  buttonDisplay:{
+      loginVisible: "block",
+      logoutVisible: "none"
   }
 };

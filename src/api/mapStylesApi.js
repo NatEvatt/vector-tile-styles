@@ -1,11 +1,4 @@
-import React from 'react';
 import Congfig from '../config';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import PropTypes from 'prop-types';
-import configureStore from '../store/configureStore';
-
-
 
 class MapStylesApi {
 
@@ -18,7 +11,6 @@ class MapStylesApi {
     }
 
     static saveNewMapStyle(newStyle, token) {
-        const store = configureStore();
         return fetch(Congfig.apiRoot + 'vts-api/public/save_new_map_style', {
             method: 'POST',
             body: JSON.stringify(newStyle),

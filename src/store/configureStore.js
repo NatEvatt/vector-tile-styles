@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import {autoRehydrate} from 'redux-persist';
 
-function configureStoreProd(initialState) {
+function configureStoreProd() {
   const middlewares = [
     // Add other middleware on this line...
 
@@ -20,7 +20,7 @@ function configureStoreProd(initialState) {
   );
 }
 
-function configureStoreDev(initialState) {
+function configureStoreDev() {
   const middlewares = [
     // Add other middleware on this line...
 

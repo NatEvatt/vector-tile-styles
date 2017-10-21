@@ -5,7 +5,8 @@ import ModalStyles from '../modals/modalStyles';
 import LoginModal from '../modals/loginModal';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as mapActions from '../../actions/userActions';
+import * as MapActions from '../../actions/userActions';
+import * as ButtonStateActions from '../../actions/buttonStateActions';
 import PropTypes from 'prop-types';
 
 class FirstHeader extends React.Component {
@@ -13,9 +14,7 @@ class FirstHeader extends React.Component {
         super(props, context);
 
         this.state = {
-            modalIsOpen: false,
-            loginVisible: true,
-            logoutVisible: false
+            modalIsOpen: false
         };
 
         this.openModal = this.openModal.bind(this);
@@ -34,27 +33,21 @@ class FirstHeader extends React.Component {
 
     logoutGoogle() {
         this.props.actions.clearUserData();
-        this.setState({
-            loginVisible: true,
-            logoutVisible: false
-        });
+        this.props.actions.toggleLoginButtons();
         this.closeModal();
     }
 
     responseGoogle (googleUser) {
-        var id_token = googleUser.getAuthResponse().id_token;
-        var profile = googleUser.getBasicProfile();
+        let id_token = googleUser.getAuthResponse().id_token;
+        let profile = googleUser.getBasicProfile();
         let userData = {
             "name": profile.getName(),
             "image": profile.getImageUrl(),
             "email": profile.getEmail(),
             "id_token": id_token
-        }
+        };
         this.props.actions.loadUserData(userData);
-        this.setState({
-            loginVisible: false,
-            logoutVisible: true
-        });
+        this.props.actions.toggleLoginButtons();
         this.closeModal();
     }
 
@@ -70,8 +63,8 @@ class FirstHeader extends React.Component {
                     <LoginModal
                         responseGoogle={this.responseGoogle}
                         logoutGoogle={this.logoutGoogle}
-                        loginVisible={this.state.loginVisible}
-                        logoutVisible={this.state.logoutVisible} />
+                        loginVisible={this.props.buttonState.loginVisible}
+                        logoutVisible={this.props.buttonState.logoutVisible} />
 
                     <button className="myButtons" onClick={this.closeModal} id="closeButton">CLOSE</button>
 
@@ -92,20 +85,22 @@ class FirstHeader extends React.Component {
 }
 
 function mapStateToProps (state) {
-  return {
-    userData: state.user
-  };
+    return {
+        buttonState: state.buttonState,
+        userData: state.user
+    };
 }
 
 function mapDispatchToProps (dispatch) {
-  return {
-    actions: bindActionCreators(mapActions, dispatch)
-  };
+    return {
+        actions: bindActionCreators(Object.assign({}, ButtonStateActions, MapActions), dispatch)
+    };
 }
 
 FirstHeader.propTypes = {
-   actions: PropTypes.object.isRequired,
-   userData: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    userData: PropTypes.object.isRequired,
+    buttonState: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FirstHeader);
