@@ -77,8 +77,20 @@ class FirstHeader extends React.Component {
                         </div>
                     </Link>
                 </div>
-                <div id="loginButton" onClick={this.openModal}>Login</div>
-                <span id="userSpan" >{this.props.userData.name.toUpperCase()}</span>
+                <div id="headerButtonPanel">
+                    <div
+                        className="loginButton"
+                        onClick={this.openModal}
+                        style={{display: this.props.buttonState.loginVisible}} >
+                        Login
+                    </div>
+                    <div className="loginButton"
+                        onClick={this.openModal}
+                        style={{display: this.props.buttonState.logoutVisible}} >
+                        Logout
+                    </div>
+                    <span id="userSpan" >{this.props.userData.name.toUpperCase()}</span>
+                </div>
             </div>
         );
     }

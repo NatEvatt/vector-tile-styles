@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 const LoginModal = ({responseGoogle, logoutGoogle, loginVisible, logoutVisible}) => {
     return (
         <div>
-            <h1 className="modalHeader">Login</h1>
+            <h1 className="modalHeader" style={{display: loginVisible}}>Login</h1>
+            <h1 className="modalHeader" style={{display: logoutVisible}}>Logout</h1>
             <p>Please login to add a new vector tile style<br />
             Using google: </p>
 

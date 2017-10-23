@@ -87,24 +87,32 @@ h2 {
     margin-right: 10px
 }
 
-#loginButton{
-    position: absolute;
-    top: 6px;
-    right: 10px;
+.loginButton{
+    // position: absolute;
+    // top: 6px;
+    // right: 10px;
     color: #ffffff;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+    float: right;
+    padding-left: 20px;
+}
+
+#headerButtonPanel{
+    position: absolute;
+    top: 6px;
+    right: 0px;
+    width: 50%;
+    padding-right: 10px;
 }
 
 #userSpan{
-    position: absolute;
-    top: 6px;
-    right: 80px;
     color: #ffffff;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+    float: right;
 }
 
 

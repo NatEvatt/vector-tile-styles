@@ -70,12 +70,27 @@ class Overlay extends Component {
     saveStyle(){
         event.preventDefault();
         this.setState({saving: true});
-        this.props.actions.saveNewStyle(this.state.newStyle);
-        this.setState({modalIsOpen: false});
-    //   .then(() => this.setState({modalIsOpen: false}))
-    //   .catch(error => {
-    //     this.setState({saving: false});
-    //   })
+        this.props.actions.saveNewStyle(this.state.newStyle)
+        .then(() => {
+            debugger;
+            console.log(InitialState);
+            this.setState({
+                modalIsOpen: false,
+                newStyle: {
+                    "name": "",
+                    "url": "",
+                    "author": "",
+                    "image": "",
+                    "github": "",
+                    "jsonStyle": "",
+                    "type": "Mapbox_Remote"
+                },
+            });
+        })
+        .catch(error => {
+            debugger;
+            this.setState({saving: false});
+        })
     }
 
     updateNewStyleState(event) {
@@ -83,7 +98,7 @@ class Overlay extends Component {
         let newStyle = this.state.newStyle;
         newStyle[field] = event.target.value;
         return this.setState({newStyle: newStyle});
-      }
+    }
 
     render() {
         return (
@@ -152,15 +167,15 @@ Overlay.propTypes = {
 };
 
 function mapStateToProps (state) {
-  return {
-    mapState: state.mapState
-  };
+    return {
+        mapState: state.mapState
+    };
 }
 
 function mapDispatchToProps (dispatch) {
-  return {
-    actions: bindActionCreators(mapActions, dispatch)
-  };
+    return {
+        actions: bindActionCreators(mapActions, dispatch)
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Overlay);
