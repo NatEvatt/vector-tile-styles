@@ -16,7 +16,8 @@ export default {
       "name": "",
       "image": "",
       "email": "",
-      "id_token": ""
+      "id_token": "",
+      "id": ""
   },
   buttonDisplay:{
       loginVisible: "block",

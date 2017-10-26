@@ -21,7 +21,7 @@ class MapPage extends Component {
     super(props, context);
 
     this.state = {
-      currentStyleOptions: [],
+      currentStyleOptions: {},
       currentStyle: Dark_Matter,
       currentStyleName: "Dark Matter",
       height: (window.innerHeight - 83) + 'px',
@@ -36,22 +36,11 @@ class MapPage extends Component {
     };
 
     this.updateMapStyle = this.updateMapStyle.bind(this);
-    this.styleReturned = this.styleReturned.bind(this);
     this.closeOptions = this.closeOptions.bind(this);
     this.closeJsonStyleViewer = this.closeJsonStyleViewer.bind(this);
     this.jsonStyleOnclick = this.jsonStyleOnclick.bind(this);
     this.openOptions = this.openOptions.bind(this);
     this.handleMove = this.handleMove.bind(this);
-  }
-
-  componentDidMount(){
-    // this.updateMapStyle("Dark Matter");
-  }
-
-  styleReturned(results){
-    this.setState({
-      currentStyle: results.data,
-    });
   }
 
   getStyleObjectOrString(styleName){
@@ -102,10 +91,6 @@ class MapPage extends Component {
       this.updateMapbox(styleStringOrObject);
     }
   }
-
-  // searchKeyUp = (event) => {
-  //   let searched = event.target.value;
-  // }
 
 /*eslint-disable */
   updateMapbox(styleStringOrObject){
@@ -175,7 +160,8 @@ class MapPage extends Component {
           currentStyleOptions={this.state.currentStyleOptions}
           onChange={this.updateMapStyle}
           openOptions={this.openOptions}
-          jsonStyleOnclick={this.jsonStyleOnclick} />
+          jsonStyleOnclick={this.jsonStyleOnclick}
+          userData={this.props.userData} />
 
         <JsonStyleVierwer
           closeJsonStyleViewer={this.closeJsonStyleViewer}
@@ -207,7 +193,8 @@ class MapPage extends Component {
 
 function mapStateToProps (state) {
   return {
-    mapState: state.mapState
+    mapState: state.mapState,
+    userData: state.user
   };
 }
 
@@ -219,7 +206,8 @@ function mapDispatchToProps (dispatch) {
 
 MapPage.propTypes = {
    mapState: PropTypes.object.isRequired,
-   actions: PropTypes.object.isRequired
+   actions: PropTypes.object.isRequired,
+   userData: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapPage);
