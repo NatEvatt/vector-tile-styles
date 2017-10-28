@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import ModalStyles from "../modals/modalStyles";
 import CreateMapStyle from "../modals/createMapStyle";
 import Modal from "react-modal";
-import InitialState from "../../reducers/initialState";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as mapActions from "../../actions/mapActions";
@@ -176,7 +175,8 @@ SecondHeader.propTypes = {
   openOptions: PropTypes.func.isRequired,
   currentStyleOptions: PropTypes.object.isRequired,
   jsonStyleOnclick: PropTypes.func.isRequired,
-  userData: PropTypes.object.isRequired
+  userData: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
