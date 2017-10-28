@@ -81,10 +81,9 @@ class SecondHeader extends Component {
     const jsonStyleDisabled = this.props.currentStyleOptions.jsonStyle
       ? ""
       : "disabled";
-    const editDisabled =
-      this.props.userData.id === this.props.currentStyleOptions.user_id
-        ? ""
-        : "disabled";
+    const editDisabled = this.props.currentStyleOptions.editable
+      ? ""
+      : "disabled";
 
     return (
       <div>

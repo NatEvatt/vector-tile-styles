@@ -13,12 +13,15 @@ import {loadButtonState} from './actions/buttonStateActions';
 import {persistStore} from 'redux-persist';
 
 const store = configureStore();
-store.dispatch(loadMapStyles());
+
 store.dispatch(loadButtonState());
 
 // begin periodically persisting the store
 persistStore(store);
 
+setTimeout(function(){
+    store.dispatch(loadMapStyles());
+},200);
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
 

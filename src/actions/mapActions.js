@@ -14,8 +14,11 @@ export function saveNewStyleSuccess(newStyle){
 }
 
 export function loadMapStyles(){
-    return function(dispatch) {
-        return mapStylesApi.getMapStyles().then(mapStyles => {
+    return function(dispatch, getState) {
+        let state = getState();
+        let token = (state.user) ? state.user.id_token : false;
+        let equation = mapStylesApi.getMapStylesToken(token);
+        return equation.then(mapStyles => {
             dispatch(loadMapStylesSuccess(mapStyles));
         }).catch(error => {
             throw(error);

@@ -5,7 +5,8 @@ import ModalStyles from "../modals/modalStyles";
 import LoginModal from "../modals/loginModal";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as MapActions from "../../actions/userActions";
+import * as UserActions from "../../actions/userActions";
+import * as MapActions from "../../actions/mapActions";
 import * as ButtonStateActions from "../../actions/buttonStateActions";
 import PropTypes from "prop-types";
 
@@ -74,6 +75,7 @@ class FirstHeader extends React.Component {
     };
     this.props.actions.loadUserData(userData);
     this.props.actions.toggleLoginButtons();
+    this.props.actions.loadMapStyles();
     this.closeModal();
   }
 
@@ -141,7 +143,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      Object.assign({}, ButtonStateActions, MapActions),
+      Object.assign({}, ButtonStateActions, MapActions, UserActions),
       dispatch
     )
   };
