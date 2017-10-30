@@ -97,6 +97,30 @@ class Overlay extends Component {
     return this.setState({ newStyle: newStyle });
   }
 
+//   browserClick()
+//
+//   $('#mapContent').on('click', '.twonPopup .js-browseLink', function () {
+//     $(this).next().trigger('click');
+// });
+//
+//
+// $('#mapContent').on('change', '.twonPopup .js-photoFileInput', function () {
+//     var input = $(this);
+//     if (this.files) {
+//         //  check file type, this is just a fall-back,
+//         //      the input field already has accept="image/*"
+//         for (var i = 0; i < this.files.length; i++) {
+//             if (this.files[i].type.match(/image\/.*/) === null) {
+//                 alert('Unsupported File Type');
+//                 return;
+//             }
+//         }
+//     }
+//     var groupId = sessionStorage.activeGroupId;
+//     Actions.uploadPhotos(currentIdbmp, this.files);
+//     input.val(''); // reset the input field
+// });
+
   render() {
     return (
       <div>

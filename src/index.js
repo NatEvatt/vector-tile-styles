@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 import Root from './components/root';
 // import {Provider} from 'react-redux';
 import './styles/styles.scss';
+import './styles/modalStyles.scss';
 import { syncHistoryWithStore } from 'react-router-redux';
 import {loadMapStyles} from './actions/mapActions';
 import {loadButtonState} from './actions/buttonStateActions';

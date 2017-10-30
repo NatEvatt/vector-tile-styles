@@ -103,6 +103,26 @@ const CreateStyle = ({ newStyle, onChange }) => {
               />
             </td>
           </tr>
+          <tr>
+            <td>
+              <label>UPLOAD AN IMAGE</label>
+            </td>
+            <td>
+              <a className="js-browseLink" href="#">
+                <label htmlFor="photoFileInput">
+                  Browse
+                  <img src="images/folder.svg" className="uploadFolder" />
+                </label>
+              </a>
+              <input
+                multiple
+                className="js-photoFileInput hide"
+                type="file"
+                accept="image/*"
+                id="photoFileInput"
+              />
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
