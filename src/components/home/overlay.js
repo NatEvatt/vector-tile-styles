@@ -5,7 +5,8 @@ import CreateMapStyle from "../modals/createMapStyle";
 import InitialState from "../../reducers/initialState";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as mapActions from "../../actions/mapActions";
+import * as MapActions from "../../actions/mapActions";
+import * as UploadActions from "../../actions/uploadActions";
 import ModalStyles from "../modals/modalStyles";
 
 class Overlay extends Component {
@@ -26,6 +27,7 @@ class Overlay extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.saveStyle = this.saveStyle.bind(this);
     this.updateNewStyleState = this.updateNewStyleState.bind(this);
+    this.imageUploadChange = this.imageUploadChange.bind(this);
   }
 
   componentWillReceiveProps = function(newProps) {
@@ -97,29 +99,44 @@ class Overlay extends Component {
     return this.setState({ newStyle: newStyle });
   }
 
-//   browserClick()
-//
-//   $('#mapContent').on('click', '.twonPopup .js-browseLink', function () {
-//     $(this).next().trigger('click');
-// });
-//
-//
-// $('#mapContent').on('change', '.twonPopup .js-photoFileInput', function () {
-//     var input = $(this);
-//     if (this.files) {
-//         //  check file type, this is just a fall-back,
-//         //      the input field already has accept="image/*"
-//         for (var i = 0; i < this.files.length; i++) {
-//             if (this.files[i].type.match(/image\/.*/) === null) {
-//                 alert('Unsupported File Type');
-//                 return;
-//             }
-//         }
-//     }
-//     var groupId = sessionStorage.activeGroupId;
-//     Actions.uploadPhotos(currentIdbmp, this.files);
-//     input.val(''); // reset the input field
-// });
+  //   browserClick()
+  //
+  //   $('#mapContent').on('click', '.twonPopup .js-browseLink', function () {
+  //     $(this).next().trigger('click');
+  // });
+  //
+  //
+  imageUploadChange(files) {
+    if (files) {
+      //  check file type, this is just a fall-back,
+      //      the input field already has accept="image/*"
+      for (var i = 0; i < files.length; i++) {
+        if (files[i].type.match(/image\/.*/) === null) {
+          alert("Unsupported File Type");
+          return;
+        }
+      }
+    }
+    this.props.actions.uploadImage(files).then(() => {
+      console.log("blymee");
+    });
+  }
+  // $('#mapContent').on('change', '.twonPopup .js-photoFileInput', function () {
+  //     var input = $(this);
+  // if (this.files) {
+  //     //  check file type, this is just a fall-back,
+  //     //      the input field already has accept="image/*"
+  //     for (var i = 0; i < this.files.length; i++) {
+  //         if (this.files[i].type.match(/image\/.*/) === null) {
+  //             alert('Unsupported File Type');
+  //             return;
+  //         }
+  //     }
+  // }
+  // var groupId = sessionStorage.activeGroupId;
+  // Actions.uploadPhotos(currentIdbmp, this.files);
+  //     input.val(''); // reset the input field
+  // });
 
   render() {
     return (
@@ -134,6 +151,7 @@ class Overlay extends Component {
           <CreateMapStyle
             newStyle={this.state.newStyle}
             onChange={this.updateNewStyleState}
+            imageUploadChange={this.imageUploadChange}
           />
 
           <button
@@ -210,7 +228,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(mapActions, dispatch)
+    actions: bindActionCreators(
+      Object.assign({}, MapActions, UploadActions),
+      dispatch
+    )
   };
 }
 

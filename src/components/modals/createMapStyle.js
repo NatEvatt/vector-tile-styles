@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CreateStyle = ({ newStyle, onChange }) => {
+const CreateStyle = ({ newStyle, onChange, imageUploadChange }) => {
   return (
     <div>
       <h2 className="title">Add New Map Style</h2>
@@ -120,6 +120,7 @@ const CreateStyle = ({ newStyle, onChange }) => {
                 type="file"
                 accept="image/*"
                 id="photoFileInput"
+                onChange={e => imageUploadChange(e.target.files)}
               />
             </td>
           </tr>

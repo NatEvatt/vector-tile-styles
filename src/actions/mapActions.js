@@ -31,6 +31,7 @@ export function trackMapMovement(mapMovements){
         dispatch(trackMapMovementSuccess(mapMovements));
     };
 }
+
 export function saveNewStyle(newStyle){
     return function(dispatch, getState) {
         let state = getState();
