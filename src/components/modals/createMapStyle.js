@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CreateStyle = ({ newStyle, onChange, imageUploadChange }) => {
+const CreateStyle = ({ newStyle, onChange, display }) => {
   return (
-    <div>
+    <div style={{ display: display }}>
       <h2 className="title">Add New Map Style</h2>
       <div id="mapStyleTypeDiv">
         <input
@@ -31,7 +31,7 @@ const CreateStyle = ({ newStyle, onChange, imageUploadChange }) => {
         />
         <label className="radioButtonLabel">OpenMapTiles</label>
       </div>
-      <table id="createMapStyleTable">
+      <table className="createMapStyleTable">
         <tbody>
           <tr>
             <td>
@@ -100,27 +100,6 @@ const CreateStyle = ({ newStyle, onChange, imageUploadChange }) => {
                 name="github"
                 value={newStyle.github}
                 onChange={onChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label>UPLOAD AN IMAGE</label>
-            </td>
-            <td>
-              <a className="js-browseLink" href="#">
-                <label htmlFor="photoFileInput">
-                  Browse
-                  <img src="images/folder.svg" className="uploadFolder" />
-                </label>
-              </a>
-              <input
-                multiple
-                className="js-photoFileInput hide"
-                type="file"
-                accept="image/*"
-                id="photoFileInput"
-                onChange={e => imageUploadChange(e.target.files)}
               />
             </td>
           </tr>

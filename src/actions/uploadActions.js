@@ -5,7 +5,7 @@ export function uploadImageSuccess(newStyle) {
   return { type: types.SAVE_NEW_STYLE_SUCCESS, newStyle };
 }
 
-export function uploadImage(files) {
+export function uploadImage(files, mapStyle) {
   var formData = new FormData();
   var list, i;
 
@@ -20,9 +20,13 @@ export function uploadImage(files) {
       let state = getState();
       let token = state.user.id_token;
       debugger;
-      return UploadApi.uploadImage(formData, token)
+      return UploadApi.uploadImage(formData, token, mapStyle)
         .then(id => {
-          newStyle["id"] = id;
+            debugger;
+            return UploadApi.getImage(token).then(function(){
+                console.log('hi there');
+            })
+        //   newStyle["id"] = id;
           dispatch(uploadImageSuccess(newStyle));
         })
         .catch(error => {

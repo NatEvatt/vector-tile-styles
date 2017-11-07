@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
 import CreateMapStyle from "../modals/createMapStyle";
+import UploadImage from "../modals/uploadImage";
 import InitialState from "../../reducers/initialState";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -17,7 +18,9 @@ class Overlay extends Component {
       mapStyles: this.props.mapStyles,
       filteredMapStyles: this.props.mapStyles,
       modalIsOpen: false,
-      newStyle: InitialState.newStyle
+      newStyle: InitialState.newStyle,
+      createStyleDisplay: "block",
+      uploadImageDisplay: "none"
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -69,13 +72,15 @@ class Overlay extends Component {
   }
 
   saveStyle() {
+      debugger;
     event.preventDefault();
     this.setState({ saving: true });
     this.props.actions
       .saveNewStyle(this.state.newStyle)
       .then(() => {
         this.setState({
-          modalIsOpen: false,
+          createStyleDisplay: "none",
+          uploadImageDisplay: "block",
           newStyle: {
             name: "",
             url: "",
@@ -99,13 +104,6 @@ class Overlay extends Component {
     return this.setState({ newStyle: newStyle });
   }
 
-  //   browserClick()
-  //
-  //   $('#mapContent').on('click', '.twonPopup .js-browseLink', function () {
-  //     $(this).next().trigger('click');
-  // });
-  //
-  //
   imageUploadChange(files) {
     if (files) {
       //  check file type, this is just a fall-back,
@@ -117,7 +115,8 @@ class Overlay extends Component {
         }
       }
     }
-    this.props.actions.uploadImage(files).then(() => {
+    let thisMapStyleName = "Coolio_map_Style";
+    this.props.actions.uploadImage(files, thisMapStyleName).then(() => {
       console.log("blymee");
     });
   }
@@ -151,8 +150,29 @@ class Overlay extends Component {
           <CreateMapStyle
             newStyle={this.state.newStyle}
             onChange={this.updateNewStyleState}
-            imageUploadChange={this.imageUploadChange}
+            display={this.state.createStyleDisplay}
           />
+
+          <UploadImage
+            imageUploadChange={this.imageUploadChange}
+            display={this.state.uploadImageDisplay}
+          />
+
+      <button id="nextButton"
+            className="myButtons"
+            onClick={this.saveStyle}
+            style={{ display: this.state.createStyleDisplay }}
+          >
+            Next
+          </button>
+
+          <button id="saveButton"
+            className="myButtons"
+            style={{ display: this.state.uploadImageDisplay }}
+            onClick={this.saveStyle}
+          >
+            Save
+          </button>
 
           <button
             className="myButtons"
@@ -160,9 +180,6 @@ class Overlay extends Component {
             id="closeButton"
           >
             CLOSE
-          </button>
-          <button className="myButtons" onClick={this.saveStyle}>
-            SAVE
           </button>
         </Modal>
         <div id="myNav" className={this.props.overlayClass}>
