@@ -64,7 +64,11 @@ class Overlay extends Component {
   }
 
   openModal() {
-    this.setState({ modalIsOpen: true });
+    this.setState({
+      modalIsOpen: true,
+      createStyleDisplay: "block",
+      uploadImageDisplay: "none"
+    });
   }
 
   closeModal() {
@@ -72,7 +76,6 @@ class Overlay extends Component {
   }
 
   saveStyle() {
-      debugger;
     event.preventDefault();
     this.setState({ saving: true });
     this.props.actions
@@ -116,8 +119,8 @@ class Overlay extends Component {
       }
     }
     let thisMapStyleName = "Coolio_map_Style";
-    this.props.actions.uploadImage(files, thisMapStyleName).then(() => {
-      console.log("blymee");
+    debugger;
+    this.props.actions.uploadImage(files, this.props.mapState.newStyle).then(() => {
     });
   }
   // $('#mapContent').on('change', '.twonPopup .js-photoFileInput', function () {
@@ -158,20 +161,22 @@ class Overlay extends Component {
             display={this.state.uploadImageDisplay}
           />
 
-      <button id="nextButton"
+          <button
+            id="nextButton"
             className="myButtons"
             onClick={this.saveStyle}
             style={{ display: this.state.createStyleDisplay }}
           >
-            Next
+            NEXT
           </button>
 
-          <button id="saveButton"
+          <button
+            id="saveButton"
             className="myButtons"
             style={{ display: this.state.uploadImageDisplay }}
             onClick={this.saveStyle}
           >
-            Save
+            SAVE
           </button>
 
           <button

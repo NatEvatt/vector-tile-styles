@@ -2,16 +2,23 @@ import Congfig from "../config";
 
 class UploadApi {
   static uploadImage(formData, token, mapStyle) {
-    return fetch(Congfig.apiRoot + "vts-api/public/upload_image/" + mapStyle, {
-      method: "POST",
-      body: formData,
-      cache: false,
-      contentType: false,
-      processData: false,
-      headers: {
-        Authorization: "Bearer " + token
+    return fetch(
+      Congfig.apiRoot +
+        "vts-api/public/" +
+        mapStyle.id +
+        "/upload_image/" +
+        mapStyle.name,
+      {
+        method: "POST",
+        body: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        headers: {
+          Authorization: "Bearer " + token
+        }
       }
-    })
+    )
       .then(response => response.json())
       .then(responseJson => {
         return responseJson;

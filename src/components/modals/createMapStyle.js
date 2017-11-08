@@ -77,20 +77,6 @@ const CreateStyle = ({ newStyle, onChange, display }) => {
           </tr>
           <tr>
             <td>
-              <label>IMAGE LINK</label>
-            </td>
-            <td>
-              <input
-                type="text"
-                className="inputBox sml"
-                name="image"
-                value={newStyle.image}
-                onChange={onChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
               <label>GITHUB LINK</label>
             </td>
             <td>
