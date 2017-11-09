@@ -26,7 +26,6 @@ class UploadApi {
   }
 
   static getImage(token) {
-    debugger;
     return fetch(
       Congfig.apiRoot +
         "vts-api/public/getPreview/bmp_Coolio_map_Style/thumbs/mapIcon.png",

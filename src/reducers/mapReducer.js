@@ -16,7 +16,6 @@ export default function mapReducer(state = initialState.mapState, action) {
     }
 
     case types.SAVE_NEW_STYLE_SUCCESS: {
-      debugger;
       let newState = Object.assign({}, state);
       let updatedMapStyles = [
         ...newState.mapStyles,

@@ -118,27 +118,13 @@ class Overlay extends Component {
         }
       }
     }
-    let thisMapStyleName = "Coolio_map_Style";
-    debugger;
-    this.props.actions.uploadImage(files, this.props.mapState.newStyle).then(() => {
+    this.props.actions.uploadImage(files, this.props.mapState.newStyle).then((imageList) => {
+        debugger;
+        this.props.actions.downloadImage(imageList.download).then((image) => {
+            console.log('oh my godness');
+        })
     });
   }
-  // $('#mapContent').on('change', '.twonPopup .js-photoFileInput', function () {
-  //     var input = $(this);
-  // if (this.files) {
-  //     //  check file type, this is just a fall-back,
-  //     //      the input field already has accept="image/*"
-  //     for (var i = 0; i < this.files.length; i++) {
-  //         if (this.files[i].type.match(/image\/.*/) === null) {
-  //             alert('Unsupported File Type');
-  //             return;
-  //         }
-  //     }
-  // }
-  // var groupId = sessionStorage.activeGroupId;
-  // Actions.uploadPhotos(currentIdbmp, this.files);
-  //     input.val(''); // reset the input field
-  // });
 
   render() {
     return (
@@ -174,9 +160,9 @@ class Overlay extends Component {
             id="saveButton"
             className="myButtons"
             style={{ display: this.state.uploadImageDisplay }}
-            onClick={this.saveStyle}
+            onClick={this.closeModal}
           >
-            SAVE
+            FINISH
           </button>
 
           <button
