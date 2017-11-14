@@ -20,7 +20,8 @@ class Overlay extends Component {
       modalIsOpen: false,
       newStyle: InitialState.newStyle,
       createStyleDisplay: "block",
-      uploadImageDisplay: "none"
+      uploadImageDisplay: "none",
+      uploadedImage: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -118,12 +119,17 @@ class Overlay extends Component {
         }
       }
     }
-    this.props.actions.uploadImage(files, this.props.mapState.newStyle).then((imageList) => {
+    this.props.actions
+      .uploadImage(files, this.props.mapState.newStyle)
+      .then(imageList => {
         debugger;
-        this.props.actions.downloadImage(imageList.download).then((image) => {
-            console.log('oh my godness');
-        })
-    });
+        this.setState({
+          uploadedImage: imageList.download
+        });
+        // this.props.actions.downloadImage(imageList.download).then(image => {
+        //   console.log("oh my godness");
+        // });
+      });
   }
 
   render() {
@@ -145,6 +151,7 @@ class Overlay extends Component {
           <UploadImage
             imageUploadChange={this.imageUploadChange}
             display={this.state.uploadImageDisplay}
+            uploadedImage={this.state.uploadedImage}
           />
 
           <button

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const UploadImage = ({ imageUploadChange, display }) => {
+const UploadImage = ({ imageUploadChange, display, uploadedImage }) => {
   // const divDisplay = display ? "block" : "none";
   return (
     <div style={{ display: display }}>
@@ -32,6 +32,8 @@ const UploadImage = ({ imageUploadChange, display }) => {
           </tr>
         </tbody>
       </table>
+
+      <img src={ uploadedImage } />
       <p className="modalTip">
         For best results, upload an image that is 300px wide and 200px tall.
         Otherwise, the program will resize and crop it for you
