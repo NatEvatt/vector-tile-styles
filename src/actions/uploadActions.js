@@ -6,20 +6,16 @@ export function uploadImageSuccess(newStyle) {
 }
 
 export function uploadImage(files, mapStyle) {
-  var formData = new FormData();
-  var list, i;
+  let formData = new FormData();
 
   if (files && files.length) {
     formData.append("photo-" + 0, files[0]);
-    let thisFormData = formData;
 
     return function(dispatch, getState) {
       let state = getState();
       let token = state.user.id_token;
       return UploadApi.uploadImage(formData, token, mapStyle)
         .then(list => {
-            debugger;
-        //   dispatch(uploadImageSuccess(newStyle));
           return list[0];
         })
         .catch(error => {
@@ -27,9 +23,4 @@ export function uploadImage(files, mapStyle) {
         });
     };
   }
-}
-
-export function downloadImage(downloadLink){
-    debugger;
-    console.log(downloadLink);
 }

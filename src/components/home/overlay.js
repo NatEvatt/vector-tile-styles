@@ -112,7 +112,7 @@ class Overlay extends Component {
     if (files) {
       //  check file type, this is just a fall-back,
       //      the input field already has accept="image/*"
-      for (var i = 0; i < files.length; i++) {
+      for (let i = 0; i < files.length; i++) {
         if (files[i].type.match(/image\/.*/) === null) {
           alert("Unsupported File Type");
           return;
@@ -122,13 +122,13 @@ class Overlay extends Component {
     this.props.actions
       .uploadImage(files, this.props.mapState.newStyle)
       .then(imageList => {
-        debugger;
+        let i = this.state.mapStyles.length - 1; // number of newly added style
+        let newMapStyles = this.state.mapStyles;
+        newMapStyles[i]['image'] = imageList.download;
         this.setState({
-          uploadedImage: imageList.download
+          uploadedImage: imageList.download,
+          mapStyles: newMapStyles
         });
-        // this.props.actions.downloadImage(imageList.download).then(image => {
-        //   console.log("oh my godness");
-        // });
       });
   }
 
@@ -232,7 +232,8 @@ Overlay.propTypes = {
   onClick: PropTypes.func.isRequired,
   updateMapStyle: PropTypes.func.isRequired,
   mapStyles: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  mapState: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

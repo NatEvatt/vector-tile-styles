@@ -33,7 +33,7 @@ const UploadImage = ({ imageUploadChange, display, uploadedImage }) => {
         </tbody>
       </table>
 
-      <img src={ uploadedImage } />
+      <img src={uploadedImage} />
       <p className="modalTip">
         For best results, upload an image that is 300px wide and 200px tall.
         Otherwise, the program will resize and crop it for you
@@ -44,7 +44,8 @@ const UploadImage = ({ imageUploadChange, display, uploadedImage }) => {
 
 UploadImage.propTypes = {
   imageUploadChange: PropTypes.func.isRequired,
-  display: PropTypes.string.isRequired
+  display: PropTypes.string.isRequired,
+  uploadedImage: PropTypes.string.isRequired
 };
 
 export default UploadImage;
