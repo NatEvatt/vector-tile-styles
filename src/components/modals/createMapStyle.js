@@ -98,7 +98,7 @@ const CreateStyle = ({ newStyle, onChange, display }) => {
 CreateStyle.propTypes = {
   newStyle: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  display: PropTypes.object.isRequired
+  display: PropTypes.string.isRequired
 };
 
 export default CreateStyle;

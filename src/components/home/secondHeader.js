@@ -13,7 +13,8 @@ class SecondHeader extends Component {
 
     this.state = {
       modalIsOpen: false,
-      newStyle: this.props.currentStyleOptions
+      newStyle: this.props.currentStyleOptions,
+      createStyleDisplay: "block"
     };
 
     this.updateNewStyleState = this.updateNewStyleState.bind(this);
@@ -96,6 +97,7 @@ class SecondHeader extends Component {
           <CreateMapStyle
             newStyle={this.state.newStyle}
             onChange={this.updateNewStyleState}
+            display={this.state.createStyleDisplay}
           />
 
           <button

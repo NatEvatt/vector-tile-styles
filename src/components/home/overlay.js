@@ -132,6 +132,7 @@ class Overlay extends Component {
       });
   }
 
+debugger;
   render() {
     return (
       <div>
