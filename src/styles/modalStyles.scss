@@ -79,6 +79,12 @@ $navBlue: #96d4d3;
   float: right;
 }
 
+button:disabled,
+button[disabled] {
+  cursor: not-allowed;
+  background-color: #cccccc;
+}
+
 /* ********** Login Buttons ********** */
 .googleButton {
   display: block;

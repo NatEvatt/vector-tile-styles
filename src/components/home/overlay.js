@@ -21,7 +21,8 @@ class Overlay extends Component {
       newStyle: InitialState.newStyle,
       createStyleDisplay: "block",
       uploadImageDisplay: "none",
-      uploadedImage: ""
+      uploadedImage: "",
+      formValidated: true
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,6 +33,7 @@ class Overlay extends Component {
     this.saveStyle = this.saveStyle.bind(this);
     this.updateNewStyleState = this.updateNewStyleState.bind(this);
     this.imageUploadChange = this.imageUploadChange.bind(this);
+    this.validateForm = this.validateForm.bind(this);
   }
 
   componentWillReceiveProps = function(newProps) {
@@ -105,7 +107,24 @@ class Overlay extends Component {
     const field = event.target.name;
     let newStyle = this.state.newStyle;
     newStyle[field] = event.target.value;
+    this.validateForm(newStyle);
     return this.setState({ newStyle: newStyle });
+  }
+
+  validateForm(newStyle) {
+    if (
+      newStyle.name.length >= 1 &&
+      newStyle.author.length >= 1 &&
+      newStyle.url.length >= 1
+    ) {
+      this.setState({
+        formValidated: false
+      });
+    } else {
+      this.setState({
+        formValidated: true
+      });
+    }
   }
 
   imageUploadChange(files) {
@@ -124,7 +143,7 @@ class Overlay extends Component {
       .then(imageList => {
         let i = this.state.mapStyles.length - 1; // number of newly added style
         let newMapStyles = this.state.mapStyles;
-        newMapStyles[i]['image'] = imageList.download;
+        newMapStyles[i]["image"] = imageList.download;
         this.setState({
           uploadedImage: imageList.download,
           mapStyles: newMapStyles
@@ -132,7 +151,7 @@ class Overlay extends Component {
       });
   }
 
-debugger;
+  debugger;
   render() {
     return (
       <div>
@@ -147,6 +166,7 @@ debugger;
             newStyle={this.state.newStyle}
             onChange={this.updateNewStyleState}
             display={this.state.createStyleDisplay}
+            formValidated={this.state.formValidated}
           />
 
           <UploadImage
@@ -158,6 +178,7 @@ debugger;
           <button
             id="nextButton"
             className="myButtons"
+            disabled={this.state.formValidated}
             onClick={this.saveStyle}
             style={{ display: this.state.createStyleDisplay }}
           >

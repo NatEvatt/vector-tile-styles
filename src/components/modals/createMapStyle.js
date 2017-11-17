@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CreateStyle = ({ newStyle, onChange, display }) => {
+const CreateStyle = ({ newStyle, onChange, display, formValidated}) => {
   return (
     <div style={{ display: display }}>
       <h2 className="title">Add New Map Style</h2>
@@ -35,7 +35,7 @@ const CreateStyle = ({ newStyle, onChange, display }) => {
         <tbody>
           <tr>
             <td>
-              <label>NAME</label>
+              <label>NAME*</label>
             </td>
             <td>
               <input
@@ -49,7 +49,7 @@ const CreateStyle = ({ newStyle, onChange, display }) => {
           </tr>
           <tr>
             <td>
-              <label>URL</label>
+              <label>URL*</label>
             </td>
             <td>
               <input
@@ -63,7 +63,7 @@ const CreateStyle = ({ newStyle, onChange, display }) => {
           </tr>
           <tr>
             <td>
-              <label>AUTHOR</label>
+              <label>AUTHOR*</label>
             </td>
             <td>
               <input
