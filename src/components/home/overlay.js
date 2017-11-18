@@ -78,6 +78,25 @@ class Overlay extends Component {
     this.setState({ modalIsOpen: false });
   }
 
+  finish() {
+    this.setState({
+      modalIsOpen: false,
+      uploadedImage: imageList.download,
+      mapStyles: newMapStyles,
+      newStyle: {
+        name: "",
+        url: "",
+        author: "",
+        image: "",
+        github: "",
+        jsonStyle: "",
+        type: "Mapbox_Remote"
+      },
+      createStyleDisplay: "block",
+      uploadImageDisplay: "none"
+    });
+  }
+
   saveStyle() {
     event.preventDefault();
     this.setState({ saving: true });
@@ -151,7 +170,6 @@ class Overlay extends Component {
       });
   }
 
-  debugger;
   render() {
     return (
       <div>

@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ModalStyles from "../modals/modalStyles";
 import CreateMapStyle from "../modals/createMapStyle";
+import UploadImage from "../modals/uploadImage";
 import Modal from "react-modal";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as mapActions from "../../actions/mapActions";
+import * as MapActions from "../../actions/mapActions";
+import * as UploadActions from "../../actions/uploadActions";
 
 class SecondHeader extends Component {
   constructor(props, context) {
@@ -13,12 +15,16 @@ class SecondHeader extends Component {
 
     this.state = {
       modalIsOpen: false,
-      newStyle: this.props.currentStyleOptions,
-      createStyleDisplay: "block"
+      newStyle: {},
+      createStyleDisplay: "block",
+      uploadImageDisplay: "none",
+      formValidated: true
     };
 
     this.updateNewStyleState = this.updateNewStyleState.bind(this);
     this.saveStyle = this.saveStyle.bind(this);
+    this.imageUploadChange = this.imageUploadChange.bind(this);
+    this.validateForm = this.validateForm.bind(this);
   }
 
   componentWillReceiveProps = function(newProps) {
@@ -39,27 +45,49 @@ class SecondHeader extends Component {
     this.setState({ modalIsOpen: true });
   };
 
+  imageUploadChange(files) {
+    if (files) {
+      //  check file type, this is just a fall-back,
+      //      the input field already has accept="image/*"
+      for (let i = 0; i < files.length; i++) {
+        if (files[i].type.match(/image\/.*/) === null) {
+          alert("Unsupported File Type");
+          return;
+        }
+      }
+    }
+    this.props.actions
+      .uploadImage(files, this.props.mapState.newStyle)
+      .then(imageList => {
+        let thisStyle = this.state.newStyle;
+        thisStyle["image"] = imageList.download;
+        this.setState({
+          newStyle: thisStyle
+        });
+      });
+  }
+
   closeModal = () => {
     this.setState({ modalIsOpen: false });
+  };
+
+  finish = () => {
+    this.setState({
+      modalIsOpen: false,
+      createStyleDisplay: "block",
+      uploadImageDisplay: "none"
+    });
   };
 
   saveStyle() {
     event.preventDefault();
     this.setState({ saving: true });
     this.props.actions
-      .saveNewStyle(this.state.newStyle)
+      .editStyle(this.state.newStyle)
       .then(() => {
         this.setState({
-          modalIsOpen: false,
-          newStyle: {
-            name: "",
-            url: "",
-            author: "",
-            image: "",
-            github: "",
-            jsonStyle: "",
-            type: "Mapbox_Remote"
-          }
+          createStyleDisplay: "none",
+          uploadImageDisplay: "block"
         });
       })
       .catch(() => {
@@ -71,7 +99,24 @@ class SecondHeader extends Component {
     const field = event.target.name;
     let newStyle = this.state.newStyle;
     newStyle[field] = event.target.value;
+    this.validateForm(newStyle);
     return this.setState({ newStyle: newStyle });
+  }
+
+  validateForm(newStyle) {
+    if (
+      newStyle.name.length >= 1 &&
+      newStyle.author.length >= 1 &&
+      newStyle.url.length >= 1
+    ) {
+      this.setState({
+        formValidated: false
+      });
+    } else {
+      this.setState({
+        formValidated: true
+      });
+    }
   }
 
   render() {
@@ -98,7 +143,33 @@ class SecondHeader extends Component {
             newStyle={this.state.newStyle}
             onChange={this.updateNewStyleState}
             display={this.state.createStyleDisplay}
+            formValidated={this.state.formValidated}
           />
+
+          <UploadImage
+            imageUploadChange={this.imageUploadChange}
+            display={this.state.uploadImageDisplay}
+            uploadedImage={this.state.newStyle.image}
+          />
+
+          <button
+            id="nextButton"
+            className="myButtons"
+            disabled={this.state.formValidated}
+            onClick={this.saveStyle}
+            style={{ display: this.state.createStyleDisplay }}
+          >
+            NEXT
+          </button>
+
+          <button
+            id="saveButton"
+            className="myButtons"
+            style={{ display: this.state.uploadImageDisplay }}
+            onClick={this.finish}
+          >
+            FINISH
+          </button>
 
           <button
             className="myButtons"
@@ -106,9 +177,6 @@ class SecondHeader extends Component {
             id="closeButton"
           >
             CLOSE
-          </button>
-          <button className="myButtons" onClick={this.saveStyle}>
-            SAVE
           </button>
         </Modal>
 
@@ -178,7 +246,7 @@ SecondHeader.propTypes = {
   currentStyleOptions: PropTypes.object.isRequired,
   jsonStyleOnclick: PropTypes.func.isRequired,
   userData: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
@@ -189,7 +257,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(mapActions, dispatch)
+    actions: bindActionCreators(
+      Object.assign({}, MapActions, UploadActions),
+      dispatch
+    )
   };
 }
 

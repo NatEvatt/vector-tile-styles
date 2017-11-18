@@ -44,3 +44,15 @@ export function saveNewStyle(newStyle){
         });
     };
 }
+
+export function editStyle(edittedStyle){
+    return function(dispatch, getState) {
+        let state = getState();
+        let token = state.user.id_token;
+        return mapStylesApi.editMapStyle(edittedStyle, token).then(id => {
+            dispatch(saveNewStyleSuccess(edittedStyle));
+        }).catch(error => {
+            throw(error);
+        });
+    };
+}

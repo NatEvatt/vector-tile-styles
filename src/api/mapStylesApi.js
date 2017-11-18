@@ -36,6 +36,21 @@ class MapStylesApi {
         return responseJson;
       });
   }
+
+  static editMapStyle(edittedStyle, token) {
+    return fetch(Congfig.apiRoot + "vts-api/public/edit_map_style", {
+      method: "POST",
+      body: JSON.stringify(edittedStyle),
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      return responseJson;
+    });
+  }
 }
 
 export default MapStylesApi;
