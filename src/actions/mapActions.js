@@ -13,6 +13,10 @@ export function saveNewStyleSuccess(newStyle){
     return { type: types.SAVE_NEW_STYLE_SUCCESS, newStyle};
 }
 
+export function deleteMapStyleSuccess(deletedStyle){
+    return { type: types.DELETE_MAP_STYLE_SUCCESS, deletedStyle};
+}
+
 export function loadMapStyles(){
     return function(dispatch, getState) {
         let state = getState();
@@ -62,7 +66,7 @@ export function deleteStyle(mapStyle){
         let state = getState();
         let token = state.user.id_token;
         return mapStylesApi.deleteMapStyle(mapStyle, token).then(id => {
-            dispatch(saveNewStyleSuccess(mapStyle));
+            dispatch(deleteMapStyleSuccess(mapStyle));
         }).catch(error => {
             throw(error);
         });

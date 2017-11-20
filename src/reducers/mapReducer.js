@@ -26,6 +26,15 @@ export default function mapReducer(state = initialState.mapState, action) {
       return newState;
     }
 
+    case types.DELETE_MAP_STYLE_SUCCESS: {
+      let newState = Object.assign({}, state);
+      let updatedMapStyles = newState.mapStyles.filter(function(mapStyle){
+          return mapStyle.id !== action.deletedStyle.id
+      });
+      newState["mapStyles"] = updatedMapStyles;
+      return newState;
+    }
+
     default: {
       return state;
     }

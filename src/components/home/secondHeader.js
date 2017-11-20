@@ -116,6 +116,11 @@ class SecondHeader extends Component {
   deleteStyle() {
     let thisMapStyle = this.state.newStyle;
     this.props.actions.deleteStyle(thisMapStyle).then(() => {
+    //   let id = thisMapStyle.id;//here
+    //   let mapStyles = this.state.mapStyles;
+    //   var filtered = items.filter(function(item) {
+    //     return item.id !== 123;
+    //   });
       this.setState({
         deleteModalIsOpen: false
       });
