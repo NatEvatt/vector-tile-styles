@@ -319,8 +319,9 @@ td.fuel-savings-label {
 .title {
   font-size: 30px;
   margin-right: 10px;
+  display: flex;
+  justify-content: center;
 }
-/* presentational */
 
 .navLeft a {
   color: $navBlue;
@@ -662,8 +663,6 @@ pre {
 .mapboxgl-ctrl-top-left {
   position: relative;
 }
-
-
 
 // .mapboxgl-ctrl-top-left{
 //   top: 85px;

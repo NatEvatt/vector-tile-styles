@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ModalStyles from "../modals/modalStyles";
 import CreateMapStyle from "../modals/createMapStyle";
+import DeleteStyle from "../modals/deleteStyle";
 import UploadImage from "../modals/uploadImage";
 import Modal from "react-modal";
 import { connect } from "react-redux";
@@ -15,6 +16,7 @@ class SecondHeader extends Component {
 
     this.state = {
       modalIsOpen: false,
+      deleteModalIsOpen: false,
       newStyle: {},
       createStyleDisplay: "block",
       uploadImageDisplay: "none",
@@ -25,6 +27,7 @@ class SecondHeader extends Component {
     this.saveStyle = this.saveStyle.bind(this);
     this.imageUploadChange = this.imageUploadChange.bind(this);
     this.validateForm = this.validateForm.bind(this);
+    this.deleteStyle = this.deleteStyle.bind(this);
   }
 
   componentWillReceiveProps = function(newProps) {
@@ -43,6 +46,10 @@ class SecondHeader extends Component {
 
   editStyleOnClick = () => {
     this.setState({ modalIsOpen: true });
+  };
+
+  deleteStyleCheckOnClick = () => {
+    this.setState({ deleteModalIsOpen: true });
   };
 
   imageUploadChange(files) {
@@ -68,7 +75,10 @@ class SecondHeader extends Component {
   }
 
   closeModal = () => {
-    this.setState({ modalIsOpen: false });
+    this.setState({
+      modalIsOpen: false,
+      deleteModalIsOpen: false
+    });
   };
 
   finish = () => {
@@ -101,6 +111,15 @@ class SecondHeader extends Component {
     newStyle[field] = event.target.value;
     this.validateForm(newStyle);
     return this.setState({ newStyle: newStyle });
+  }
+
+  deleteStyle() {
+    let thisMapStyle = this.state.newStyle;
+    this.props.actions.deleteStyle(thisMapStyle).then(() => {
+      this.setState({
+        deleteModalIsOpen: false
+      });
+    });
   }
 
   validateForm(newStyle) {
@@ -180,6 +199,30 @@ class SecondHeader extends Component {
           </button>
         </Modal>
 
+        <Modal
+          isOpen={this.state.deleteModalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={ModalStyles}
+        >
+          <DeleteStyle newStyle={this.state.newStyle} />
+          <button
+            id="closeButton"
+            className="myButtons"
+            onClick={this.closeModal}
+          >
+            CANCEL
+          </button>
+
+          <button
+            id="closeButton"
+            className="deleteWarning"
+            onClick={this.deleteStyle}
+          >
+            YES, DELETE THIS STYLE
+          </button>
+        </Modal>
+
         <div id="secondHeader">
           <div className="navLeft">
             <li className="sub-menu-parent">
@@ -211,13 +254,17 @@ class SecondHeader extends Component {
                 <li>
                   <a
                     className={editDisabled}
-                    onClick={() =>
-                      this.editStyleOnClick(
-                        this.props.currentStyleOptions.name
-                      )}
+                    onClick={() => this.editStyleOnClick()}
                     href="#"
                   >
-                    Edit Style Details
+                    Edit Style
+                  </a>
+                  <a
+                    className={editDisabled}
+                    onClick={() => this.deleteStyleCheckOnClick()}
+                    href="#"
+                  >
+                    Delete Style
                   </a>
                 </li>
               </ul>

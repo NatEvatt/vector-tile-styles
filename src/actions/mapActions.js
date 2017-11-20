@@ -56,3 +56,15 @@ export function editStyle(edittedStyle){
         });
     };
 }
+
+export function deleteStyle(mapStyle){
+    return function(dispatch, getState) {
+        let state = getState();
+        let token = state.user.id_token;
+        return mapStylesApi.deleteMapStyle(mapStyle, token).then(id => {
+            dispatch(saveNewStyleSuccess(mapStyle));
+        }).catch(error => {
+            throw(error);
+        });
+    };
+}

@@ -51,6 +51,20 @@ class MapStylesApi {
       return responseJson;
     });
   }
+
+  static deleteMapStyle(mapStyle, token) {
+    return fetch(Congfig.apiRoot + "vts-api/public/delete_map_style", {
+      method: "POST",
+      body: JSON.stringify(mapStyle),
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    })
+    .then(response => {
+      return response;
+    });
+  }
 }
 
 export default MapStylesApi;

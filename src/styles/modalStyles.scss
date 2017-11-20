@@ -40,6 +40,25 @@ $navBlue: #96d4d3;
   margin: 0px 6px;
 }
 
+.deleteWarning {
+  background-color: #ffd6b4;
+  width: 250px;
+  float: right;
+  border-radius: 4px;
+  color: #fff !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  height: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0;
+  border: none;
+  margin: 0px 6px;
+}
+
+.deleteText{
+    margin:10px 6px; 
+}
+
 .radioButton {
   float: left;
 }
