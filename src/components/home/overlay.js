@@ -171,6 +171,8 @@ class Overlay extends Component {
   }
 
   render() {
+    const defaultImage =
+      "http://awesome.dev/git/natevatt/vts-api/public/mapPreviews/no_image/thumbs/mapNoImage.png";
     return (
       <div>
         <Modal
@@ -256,7 +258,10 @@ class Overlay extends Component {
                 <div className="mapStyleDivContainer">
                   <h2 className="previewTitle">{style.name}</h2>
                   <p className="mapStyleAuthor">Created By: {style.author}</p>
-                  <img className="stylePreview" src={style.image} />
+                  <img
+                    className="stylePreview"
+                    src={style.image.length > 1 ? style.image : defaultImage}
+                  />
                 </div>
               </div>
             ))}

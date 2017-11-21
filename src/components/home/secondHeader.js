@@ -47,6 +47,7 @@ class SecondHeader extends Component {
   };
 
   editStyleOnClick = () => {
+    this.validateForm(this.state.newStyle);
     this.setState({ modalIsOpen: true });
   };
 
