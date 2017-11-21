@@ -12,6 +12,7 @@ const CreateStyle = ({ newStyle, onChange, display, formValidated}) => {
           name="type"
           value="Mapbox_Remote"
           onChange={onChange}
+          checked={newStyle.type === 'Mapbox_Remote'}
         />
         <label className="radioButtonLabel">Mapbox</label>
         <input
@@ -20,14 +21,16 @@ const CreateStyle = ({ newStyle, onChange, display, formValidated}) => {
           name="type"
           value="ESRI"
           onChange={onChange}
+          checked={newStyle.type === 'ESRI'}
         />
         <label className="radioButtonLabel">ESRI</label>
         <input
           type="radio"
           className="radioButton"
           name="type"
-          value="Local"
+          value="OpenMapTiles"
           onChange={onChange}
+          checked={newStyle.type === 'OpenMapTiles'}
         />
         <label className="radioButtonLabel">OpenMapTiles</label>
       </div>

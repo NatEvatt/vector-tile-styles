@@ -28,8 +28,24 @@ export default function mapReducer(state = initialState.mapState, action) {
 
     case types.DELETE_MAP_STYLE_SUCCESS: {
       let newState = Object.assign({}, state);
-      let updatedMapStyles = newState.mapStyles.filter(function(mapStyle){
-          return mapStyle.id !== action.deletedStyle.id
+      let updatedMapStyles = newState.mapStyles.filter(function(mapStyle) {
+        return mapStyle.id !== action.deletedStyle.id;
+      });
+      newState["mapStyles"] = updatedMapStyles;
+      return newState;
+    }
+
+    case types.EDIT_MAP_STYLE_SUCCESS: {
+      let newState = Object.assign({}, state);
+      let updatedMapStyles = newState.mapStyles.map(function(mapStyle) {
+        if (mapStyle.id !== action.editedStyle.id) {
+          return mapStyle;
+        }
+        // Otherwise, this is the one we want - return an updated value
+        return {
+          ...mapStyle,
+          ...action.editedStyle
+        };
       });
       newState["mapStyles"] = updatedMapStyles;
       return newState;

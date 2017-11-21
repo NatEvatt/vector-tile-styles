@@ -31,8 +31,10 @@ class SecondHeader extends Component {
   }
 
   componentWillReceiveProps = function(newProps) {
+    // let newStyle = newProps.currentStyleOptions;
+    let newStyle = Object.assign({}, newProps.currentStyleOptions);
     this.setState({
-      newStyle: newProps.currentStyleOptions
+      newStyle: newStyle
     });
   };
 
@@ -77,7 +79,9 @@ class SecondHeader extends Component {
   closeModal = () => {
     this.setState({
       modalIsOpen: false,
-      deleteModalIsOpen: false
+      deleteModalIsOpen: false,
+      createStyleDisplay: "block",
+      uploadImageDisplay: "none"
     });
   };
 
@@ -91,7 +95,7 @@ class SecondHeader extends Component {
 
   saveStyle() {
     event.preventDefault();
-    this.setState({ saving: true });
+    // this.setState({ saving: true });
     this.props.actions
       .editStyle(this.state.newStyle)
       .then(() => {
@@ -101,7 +105,7 @@ class SecondHeader extends Component {
         });
       })
       .catch(() => {
-        this.setState({ saving: false });
+        // this.setState({ saving: false });
       });
   }
 
@@ -116,11 +120,6 @@ class SecondHeader extends Component {
   deleteStyle() {
     let thisMapStyle = this.state.newStyle;
     this.props.actions.deleteStyle(thisMapStyle).then(() => {
-    //   let id = thisMapStyle.id;//here
-    //   let mapStyles = this.state.mapStyles;
-    //   var filtered = items.filter(function(item) {
-    //     return item.id !== 123;
-    //   });
       this.setState({
         deleteModalIsOpen: false
       });
@@ -161,7 +160,7 @@ class SecondHeader extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={ModalStyles}
-          contentLabel="Example Modal"
+          contentLabel="Edit MapStyle Modal"
         >
           <CreateMapStyle
             newStyle={this.state.newStyle}
@@ -209,6 +208,7 @@ class SecondHeader extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={ModalStyles}
+          contentLabel="Delete MapStyle Modal"
         >
           <DeleteStyle newStyle={this.state.newStyle} />
           <button

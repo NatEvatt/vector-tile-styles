@@ -45,7 +45,7 @@ const UploadImage = ({ imageUploadChange, display, uploadedImage }) => {
 UploadImage.propTypes = {
   imageUploadChange: PropTypes.func.isRequired,
   display: PropTypes.string.isRequired,
-  uploadedImage: PropTypes.string.isRequired
+  uploadedImage: PropTypes.string
 };
 
 export default UploadImage;
