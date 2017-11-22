@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CreateStyle = ({ newStyle, onChange, display, formValidated}) => {
+const CreateStyle = ({ newStyle, onChange, display}) => {
   return (
     <div style={{ display: display }}>
       <h2 className="title">Add New Map Style</h2>

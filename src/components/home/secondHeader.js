@@ -167,7 +167,6 @@ class SecondHeader extends Component {
             newStyle={this.state.newStyle}
             onChange={this.updateNewStyleState}
             display={this.state.createStyleDisplay}
-            formValidated={this.state.formValidated}
           />
 
           <UploadImage
@@ -299,7 +298,8 @@ SecondHeader.propTypes = {
   currentStyleOptions: PropTypes.object.isRequired,
   jsonStyleOnclick: PropTypes.func.isRequired,
   userData: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  mapState: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

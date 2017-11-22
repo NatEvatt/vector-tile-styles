@@ -57,7 +57,7 @@ export function editStyle(edittedStyle){
     return function(dispatch, getState) {
         let state = getState();
         let token = state.user.id_token;
-        return mapStylesApi.editMapStyle(edittedStyle, token).then(id => {
+        return mapStylesApi.editMapStyle(edittedStyle, token).then(() => {
             dispatch(editStyleSuccess(edittedStyle));
         }).catch(error => {
             throw(error);
@@ -69,7 +69,7 @@ export function deleteStyle(mapStyle){
     return function(dispatch, getState) {
         let state = getState();
         let token = state.user.id_token;
-        return mapStylesApi.deleteMapStyle(mapStyle, token).then(id => {
+        return mapStylesApi.deleteMapStyle(mapStyle, token).then(() => {
             dispatch(deleteMapStyleSuccess(mapStyle));
         }).catch(error => {
             throw(error);

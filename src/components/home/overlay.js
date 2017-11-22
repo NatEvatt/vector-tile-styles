@@ -78,24 +78,24 @@ class Overlay extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  finish() {
-    this.setState({
-      modalIsOpen: false,
-      uploadedImage: imageList.download,
-      mapStyles: newMapStyles,
-      newStyle: {
-        name: "",
-        url: "",
-        author: "",
-        image: "",
-        github: "",
-        jsonStyle: "",
-        type: "Mapbox_Remote"
-      },
-      createStyleDisplay: "block",
-      uploadImageDisplay: "none"
-    });
-  }
+  // finish() {
+  //   this.setState({
+  //     modalIsOpen: false,
+  //     uploadedImage: imageList.download,
+  //     mapStyles: newMapStyles,
+  //     newStyle: {
+  //       name: "",
+  //       url: "",
+  //       author: "",
+  //       image: "",
+  //       github: "",
+  //       jsonStyle: "",
+  //       type: "Mapbox_Remote"
+  //     },
+  //     createStyleDisplay: "block",
+  //     uploadImageDisplay: "none"
+  //   });
+  // }
 
   saveStyle() {
     event.preventDefault();
@@ -186,7 +186,6 @@ class Overlay extends Component {
             newStyle={this.state.newStyle}
             onChange={this.updateNewStyleState}
             display={this.state.createStyleDisplay}
-            formValidated={this.state.formValidated}
           />
 
           <UploadImage
