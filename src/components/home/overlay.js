@@ -230,6 +230,8 @@ class Overlay extends Component {
             Add A Style
           </button>
 
+          <h2 className="overlayHeader">Choose a Map Style to Explore</h2>
+
           <div id="searchDiv">
             <label className="title">Search</label>
             <input

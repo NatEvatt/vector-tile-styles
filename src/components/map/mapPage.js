@@ -22,12 +22,18 @@ class MapPage extends Component {
     super(props, context);
 
     this.state = {
-      currentStyleOptions: {},
-      currentStyle: Dark_Matter,
-      currentStyleName: "Dark Matter",
+      currentStyleOptions: {
+        name: "Mapbox Light",
+        url: "mapbox://styles/mapbox/light-v9",
+        type: "Mapbox_Remote",
+        author: "Mapbox",
+        image:
+          "https://api.mapbox.com/styles/v1/mapbox/light-v9/static/-70.878491,6.049648,4.41,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
+      }, //here
+      currentStyle: "mapbox://styles/mapbox/light-v9",
       height: window.innerHeight - 83 + "px",
       width: window.innerWidth + "px",
-      overlayClass: "overlay",
+      overlayClass: "overlay open",
       zoom: 11,
       jsonStyleClass: "jsonStyleViewer close",
       styleJsonStringified: "",
@@ -102,6 +108,7 @@ class MapPage extends Component {
 
   /*eslint-disable */
   updateMapbox(styleStringOrObject) {
+    debugger;
     let currentStyleOptions = styleStringOrObject[1];
     map.setStyle(styleStringOrObject[0]);
     this.setState({

@@ -275,12 +275,13 @@ class SecondHeader extends Component {
               </ul>
             </li>
           </div>
-          <span className="openButton" onClick={this.handleOpen}>
+          <div className="openButton" onClick={this.handleOpen}>
+            <p>Select a Map Style</p>
             <img
               className="openButtonImage"
               src="../images/downArrowBlue.png"
             />
-          </span>
+          </div>
           <div className="navRight">
             <div id="currentBasemapTitle">
               Current Basemap: {this.props.currentStyleOptions.name}
