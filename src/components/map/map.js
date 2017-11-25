@@ -56,7 +56,7 @@ Map.propTypes = {
     zoom: PropTypes.number.isRequired,
     hidden: PropTypes.string.isRequired,
     containerStyle: PropTypes.object.isRequired,
-    style: PropTypes.object.isRequired,
+    style: PropTypes.string.isRequired,
     mapMovements: PropTypes.object.isRequired,
     handleMove: PropTypes.func.isRequired
 };

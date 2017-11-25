@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Dark_Matter from "./mapStyles/dark_matter";
 import SecondHeader from "../home/secondHeader";
 import FirstHeader from "../home/firstHeader";
 import JsonStyleVierwer from "../styleViewer/jsonStyleViewer";
@@ -108,7 +107,6 @@ class MapPage extends Component {
 
   /*eslint-disable */
   updateMapbox(styleStringOrObject) {
-    debugger;
     let currentStyleOptions = styleStringOrObject[1];
     map.setStyle(styleStringOrObject[0]);
     this.setState({

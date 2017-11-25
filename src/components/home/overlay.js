@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Modal from "react-modal";
 import CreateMapStyle from "../modals/createMapStyle";
 import UploadImage from "../modals/uploadImage";
+import PleaseLogin from "../modals/pleaseLogin";
 import InitialState from "../../reducers/initialState";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -186,12 +187,17 @@ class Overlay extends Component {
             newStyle={this.state.newStyle}
             onChange={this.updateNewStyleState}
             display={this.state.createStyleDisplay}
+            formVisible={this.props.buttonState.logoutVisible}
           />
 
           <UploadImage
             imageUploadChange={this.imageUploadChange}
             display={this.state.uploadImageDisplay}
             uploadedImage={this.state.uploadedImage}
+          />
+
+      <PleaseLogin
+            notSignedInVisible={this.props.buttonState.loginVisible}
           />
 
           <button
@@ -279,12 +285,14 @@ Overlay.propTypes = {
   updateMapStyle: PropTypes.func.isRequired,
   mapStyles: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  mapState: PropTypes.object.isRequired
+  mapState: PropTypes.object.isRequired,
+  buttonState: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    mapState: state.mapState
+    mapState: state.mapState,
+    buttonState: state.buttonState
   };
 }
 

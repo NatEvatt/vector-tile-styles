@@ -211,26 +211,28 @@ td.fuel-savings-label {
   width: 100%;
   color: #96d4d3;
   margin-left: auto;
-  width: 122px;
+  width: 140px;
   display: block;
   margin-right: auto;
   cursor: pointer;
 }
 
 .openButton p {
+  font-size: 16px;
   padding-top: 4px;
   margin-bottom: 2px;
   margin: 0px 2px 2px 2px;
 }
 
 .openButtonImage {
-  width: 25px;
+  width: 22px;
   -webkit-transform: translatex(-50%);
   transform: translatex(-50%);
   // margin-left: auto;
   display: block;
   // margin-right: auto;
-  margin-left: 60px;
+  margin-left: 70px;
+  padding-top: 2px;
 }
 
 .openButtonImage:hover {
