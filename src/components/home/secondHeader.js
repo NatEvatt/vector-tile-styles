@@ -66,7 +66,6 @@ class SecondHeader extends Component {
         }
       }
     }
-    debugger;
     this.props.actions
       .uploadImage(files, this.state.newStyle)
       .then(imageList => {
@@ -168,6 +167,7 @@ class SecondHeader extends Component {
             newStyle={this.state.newStyle}
             onChange={this.updateNewStyleState}
             display={this.state.createStyleDisplay}
+            formVisible={this.props.buttonState.logoutVisible}
           />
 
           <UploadImage
@@ -301,12 +301,14 @@ SecondHeader.propTypes = {
   jsonStyleOnclick: PropTypes.func.isRequired,
   userData: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
-  mapState: PropTypes.object.isRequired
+  mapState: PropTypes.object.isRequired,
+  buttonState: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    mapState: state.mapState
+    mapState: state.mapState,
+    buttonState: state.buttonState
   };
 }
 

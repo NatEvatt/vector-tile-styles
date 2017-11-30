@@ -103,7 +103,8 @@ const CreateStyle = ({ newStyle, onChange, display, formVisible }) => {
 CreateStyle.propTypes = {
   newStyle: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  display: PropTypes.string.isRequired
+  display: PropTypes.string.isRequired,
+  formVisible: PropTypes.string.isRequired
 };
 
 export default CreateStyle;

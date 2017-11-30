@@ -63,7 +63,6 @@ class Overlay extends Component {
   }
 
   handleOnClick(styleName) {
-    debugger;
     this.props.updateMapStyle(styleName);
     this.closeNav();
   }
@@ -160,7 +159,7 @@ class Overlay extends Component {
       }
     }
     this.props.actions
-      .uploadImage(files, this.props.mapState.newStyle)
+      .uploadImage(files, this.state.newStyle)
       .then(imageList => {
         let i = this.state.mapStyles.length - 1; // number of newly added style
         let newMapStyles = this.state.mapStyles;
