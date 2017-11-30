@@ -97,6 +97,7 @@ class MapPage extends Component {
   }
 
   updateMapStyle(mapStyle) {
+      debugger;
     let styleStringOrObject = this.getStyleObjectOrString(mapStyle);
     if (styleStringOrObject[1].type == "ESRI") {
       this.updateESRI(styleStringOrObject);
@@ -202,6 +203,7 @@ class MapPage extends Component {
           containerStyle={esriContainerStyle}
           hidden={this.state.esriHidden}
           esriUrl={this.state.esriUrl}
+          mapMovements={this.props.mapState.mapMovements}
         />
 
         <Helmet>

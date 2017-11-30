@@ -63,6 +63,7 @@ class Overlay extends Component {
   }
 
   handleOnClick(styleName) {
+    debugger;
     this.props.updateMapStyle(styleName);
     this.closeNav();
   }

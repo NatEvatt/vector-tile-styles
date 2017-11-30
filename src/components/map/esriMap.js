@@ -11,12 +11,13 @@ class ESRIMap extends Component {
     dojoRequire(['esri/Map', 'esri/views/MapView', "esri/layers/VectorTileLayer", "esri/widgets/Search"], (Map, MapView, VectorTileLayer, Search) => {
 
       let esriMap = new Map();
+      debugger;
 
       let view = new MapView({
         container: this.mapContainer,
         map: esriMap,
-        center: this.props.center,
-        zoom: this.props.zoom
+        center: this.props.mapMovements.center,
+        zoom: Number(this.props.mapMovements.zoom)
       });
 
       let tileLyr = new VectorTileLayer({
@@ -67,7 +68,7 @@ ESRIMap.propTypes = {
   zoom: PropTypes.number.isRequired,
   hidden: PropTypes.string.isRequired,
   containerStyle: PropTypes.object.isRequired,
-
+  mapMovements: PropTypes.object.isRequired
 };
 
 

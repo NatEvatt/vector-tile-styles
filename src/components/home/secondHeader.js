@@ -66,8 +66,9 @@ class SecondHeader extends Component {
         }
       }
     }
+    debugger;
     this.props.actions
-      .uploadImage(files, this.props.mapState.newStyle)
+      .uploadImage(files, this.state.newStyle)
       .then(imageList => {
         let thisStyle = this.state.newStyle;
         thisStyle["image"] = imageList.download;
