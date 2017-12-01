@@ -11,11 +11,10 @@ class ESRIMap extends Component {
     dojoRequire(['esri/Map', 'esri/views/MapView', "esri/layers/VectorTileLayer", "esri/widgets/Search"], (Map, MapView, VectorTileLayer, Search) => {
 
       let esriMap = new Map();
-
       let view = new MapView({
         container: this.mapContainer,
         map: esriMap,
-        center: this.props.mapMovements.center,
+        center: [this.props.mapMovements.center.lng, this.props.mapMovements.center.lat],
         zoom: Number(this.props.mapMovements.zoom)
       });
 
@@ -36,6 +35,7 @@ class ESRIMap extends Component {
       });
 
       window.esriMap = esriMap;
+      window.mapView = view;
       window.VectorTileLayer = VectorTileLayer;
       // window.VTLayer = tileLyr;
 

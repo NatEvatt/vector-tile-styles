@@ -125,6 +125,13 @@ class MapPage extends Component {
       url: currentStyleOptions.url
     });
     esriMap.add(VTLayer);
+    mapView.goTo({
+      center: [
+        this.props.mapState.mapMovements.center.lng,
+        this.props.mapState.mapMovements.center.lat
+      ],
+      zoom: Number(this.props.mapState.mapMovements.zoom)
+    });
 
     this.setState({
       currentStyle: styleStringOrObject[0],
