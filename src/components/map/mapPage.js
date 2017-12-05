@@ -120,27 +120,27 @@ class MapPage extends Component {
 
   updateESRI(styleStringOrObject) {
     let currentStyleOptions = styleStringOrObject[1];
-    esriMap.removeAll();
-    let VTLayer = new VectorTileLayer({
-      url: currentStyleOptions.url
-    });
-    esriMap.add(VTLayer);
-    mapView.goTo({
-      center: [
-        this.props.mapState.mapMovements.center.lng,
-        this.props.mapState.mapMovements.center.lat
-      ],
-      zoom: Number(this.props.mapState.mapMovements.zoom)
-    });
+    // esriMap.removeAll();
+    // let VTLayer = new VectorTileLayer({
+    //   url: currentStyleOptions.url
+    // });
+    // esriMap.add(VTLayer);
+    // mapView.goTo({
+    //   center: [
+    //     this.props.mapState.mapMovements.center.lng,
+    //     this.props.mapState.mapMovements.center.lat
+    //   ],
+    //   zoom: Number(this.props.mapState.mapMovements.zoom)
+    // });
 
     this.setState({
       currentStyle: styleStringOrObject[0],
       currentStyleOptions: currentStyleOptions,
       zoom: 12,
       esriHidden: "",
-      mapboxHidden: "hidden",
-      esriUrl: currentStyleOptions.url
+      mapboxHidden: "hidden"
     });
+    //,esriUrl: currentStyleOptions.url
   }
 
   handleMove() {
