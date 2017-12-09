@@ -36,10 +36,14 @@ class MapPage extends Component {
       zoom: 11,
       jsonStyleClass: "jsonStyleViewer close",
       styleJsonStringified: "",
-      mapboxHidden: "",
-      esriHidden: "hidden",
+      mapboxHidden: "hidden",
+      esriHidden: "",
       esriUrl:
-        "http://www.arcgis.com/sharing/rest/content/items/95d4d6b61c0b4690adaf8cbdabb28196/resources/styles/root.json"
+        "http://www.arcgis.com/sharing/rest/content/items/95d4d6b61c0b4690adaf8cbdabb28196/resources/styles/root.json",
+      center: {
+        lng: -122.010406,
+        lat: 36.964643
+      }
     };
 
     this.updateMapStyle = this.updateMapStyle.bind(this);
@@ -120,27 +124,18 @@ class MapPage extends Component {
 
   updateESRI(styleStringOrObject) {
     let currentStyleOptions = styleStringOrObject[1];
-    // esriMap.removeAll();
-    // let VTLayer = new VectorTileLayer({
-    //   url: currentStyleOptions.url
-    // });
-    // esriMap.add(VTLayer);
-    // mapView.goTo({
-    //   center: [
-    //     this.props.mapState.mapMovements.center.lng,
-    //     this.props.mapState.mapMovements.center.lat
-    //   ],
-    //   zoom: Number(this.props.mapState.mapMovements.zoom)
-    // });
-
     this.setState({
       currentStyle: styleStringOrObject[0],
       currentStyleOptions: currentStyleOptions,
-      zoom: 12,
+      esriUrl: styleStringOrObject[0],
+      center: {
+        lng: this.props.mapState.mapMovements.center.lng,
+        lat: this.props.mapState.mapMovements.center.lat
+      },
+      zoom: this.props.mapState.mapMovements.zoom,
       esriHidden: "",
       mapboxHidden: "hidden"
     });
-    //,esriUrl: currentStyleOptions.url
   }
 
   handleMove() {
@@ -203,13 +198,12 @@ class MapPage extends Component {
 
         <ESRIMap
           style={this.state.currentStyle}
-          center={[-122.010406, 36.964643]}
+          center={[this.state.center.lng, this.state.center.lat]}
           accessToken={accessToken}
           zoom={this.state.zoom}
           containerStyle={esriContainerStyle}
           hidden={this.state.esriHidden}
           esriUrl={this.state.esriUrl}
-          mapMovements={this.props.mapState.mapMovements}
         />
 
         <Helmet>

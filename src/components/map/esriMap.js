@@ -11,7 +11,28 @@ class ESRIMap extends Component {
 
     this.esri_map;
     this.mapView;
-    this.vtLayer;
+    this.VectorTileLayer;
+
+    this.updateESRI = this.updateESRI.bind(this);
+  }
+
+  componentWillReceiveProps = (newProps) => {
+    if (this.mapView) {
+      this.updateESRI(newProps);
+      console.log("we received props");
+    }
+  };
+
+  updateESRI(newProps) {
+    this.esri_map.removeAll();
+    let VTLayer = new this.VectorTileLayer({
+      url: newProps.esriUrl
+    });
+    this.esri_map.add(VTLayer);
+    this.mapView.goTo({
+      center: [newProps.center[0], newProps.center[1]],
+      zoom: Number(newProps.zoom)
+    });
   }
 
   createMap = () => {
@@ -23,19 +44,19 @@ class ESRIMap extends Component {
         "esri/widgets/Search"
       ],
       (Map, MapView, VectorTileLayer, Search) => {
-          debugger;
+        this.VectorTileLayer = VectorTileLayer;
         this.esri_map = new Map();
         this.mapView = new MapView({
           container: this.mapContainer,
           map: this.esri_map,
           center: [
-            this.props.mapMovements.center.lng,
-            this.props.mapMovements.center.lat
+            this.props.center[0],
+            this.props.center[1]
           ],
-          zoom: Number(this.props.mapMovements.zoom)
+          zoom: Number(this.props.zoom)
         });
 
-        this.vtLayer = new VectorTileLayer({
+        let VTLayer = new VectorTileLayer({
           url:
             "http://www.arcgis.com/sharing/rest/content/items/95d4d6b61c0b4690adaf8cbdabb28196/resources/styles/root.json"
           // url: this.props.esriUrl
@@ -52,12 +73,7 @@ class ESRIMap extends Component {
           index: 2
         });
 
-        // window.esriMap = esriMap;
-        // window.mapView = view;
-        // window.VectorTileLayer = VectorTileLayer;
-        // window.VTLayer = tileLyr;
-
-        this.esri_map.add(this.vtLayer);
+        this.esri_map.add(VTLayer);
       }
     );
   };
@@ -84,8 +100,7 @@ ESRIMap.propTypes = {
   center: PropTypes.array.isRequired,
   zoom: PropTypes.number.isRequired,
   hidden: PropTypes.string.isRequired,
-  containerStyle: PropTypes.object.isRequired,
-  mapMovements: PropTypes.object.isRequired
+  containerStyle: PropTypes.object.isRequired
 };
 
 export default ESRIMap;
