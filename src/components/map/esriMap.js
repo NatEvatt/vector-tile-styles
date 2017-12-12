@@ -16,10 +16,9 @@ class ESRIMap extends Component {
     this.updateESRI = this.updateESRI.bind(this);
   }
 
-  componentWillReceiveProps = (newProps) => {
-    if (this.mapView) {
+  componentWillReceiveProps = newProps => {
+    if (this.mapView && this.props.esriUrl !== newProps.esriUrl) {
       this.updateESRI(newProps);
-      console.log("we received props");
     }
   };
 
@@ -29,10 +28,23 @@ class ESRIMap extends Component {
       url: newProps.esriUrl
     });
     this.esri_map.add(VTLayer);
-    this.mapView.goTo({
-      center: [newProps.center[0], newProps.center[1]],
-      zoom: Number(newProps.zoom)
+    let theMapView = this.mapView;
+    this.mapView.then(function() {
+      theMapView.goTo({
+        center: [newProps.center[0], newProps.center[1]],
+        zoom: Number(newProps.zoom)
+      });
     });
+  }
+
+  handleMove() {
+    let mapMovements = {
+      zoom: parseFloat(this.mapView.getZoom().toPrecision(3)),
+      center: this.mapView.getCenter(),
+      pitch: Math.floor(this.mapView.getPitch()),
+      bearing: Math.floor(this.mapView.getBearing())
+    };
+    this.props.actions.trackMapMovement(mapMovements);
   }
 
   createMap = () => {
@@ -49,10 +61,7 @@ class ESRIMap extends Component {
         this.mapView = new MapView({
           container: this.mapContainer,
           map: this.esri_map,
-          center: [
-            this.props.center[0],
-            this.props.center[1]
-          ],
+          center: [this.props.center[0], this.props.center[1]],
           zoom: Number(this.props.zoom)
         });
 
@@ -100,7 +109,9 @@ ESRIMap.propTypes = {
   center: PropTypes.array.isRequired,
   zoom: PropTypes.number.isRequired,
   hidden: PropTypes.string.isRequired,
-  containerStyle: PropTypes.object.isRequired
+  containerStyle: PropTypes.object.isRequired,
+  esriUrl: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 export default ESRIMap;

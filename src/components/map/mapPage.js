@@ -36,8 +36,8 @@ class MapPage extends Component {
       zoom: 11,
       jsonStyleClass: "jsonStyleViewer close",
       styleJsonStringified: "",
-      mapboxHidden: "hidden",
-      esriHidden: "",
+      mapboxHidden: "",
+      esriHidden: "hidden",
       esriUrl:
         "http://www.arcgis.com/sharing/rest/content/items/95d4d6b61c0b4690adaf8cbdabb28196/resources/styles/root.json",
       center: {
@@ -51,7 +51,7 @@ class MapPage extends Component {
     this.closeJsonStyleViewer = this.closeJsonStyleViewer.bind(this);
     this.jsonStyleOnclick = this.jsonStyleOnclick.bind(this);
     this.openOptions = this.openOptions.bind(this);
-    this.handleMove = this.handleMove.bind(this);
+    // this.handleMove = this.handleMove.bind(this);
   }
 
   getStyleObjectOrString(styleName) {
@@ -112,11 +112,15 @@ class MapPage extends Component {
   /*eslint-disable */
   updateMapbox(styleStringOrObject) {
     let currentStyleOptions = styleStringOrObject[1];
-    map.setStyle(styleStringOrObject[0]);
+    // map.setStyle(styleStringOrObject[0]);
     this.setState({
       currentStyle: styleStringOrObject[0],
       currentStyleOptions: currentStyleOptions,
-      zoom: 12,
+      zoom: parseFloat(this.props.mapState.mapMovements.zoom),
+      center: {
+        lng: this.props.mapState.mapMovements.center.lng,
+        lat: this.props.mapState.mapMovements.center.lat
+      },
       esriHidden: "hidden",
       mapboxHidden: ""
     });
@@ -132,21 +136,21 @@ class MapPage extends Component {
         lng: this.props.mapState.mapMovements.center.lng,
         lat: this.props.mapState.mapMovements.center.lat
       },
-      zoom: this.props.mapState.mapMovements.zoom,
+      zoom:  parseFloat(this.props.mapState.mapMovements.zoom),
       esriHidden: "",
       mapboxHidden: "hidden"
     });
   }
 
-  handleMove() {
-    let mapMovements = {
-      zoom: map.getZoom().toPrecision(3),
-      center: map.getCenter(),
-      pitch: Math.floor(map.getPitch()),
-      bearing: Math.floor(map.getBearing())
-    };
-    this.props.actions.trackMapMovement(mapMovements);
-  }
+  // handleMove() {
+  //   let mapMovements = {
+  //     zoom: map.getZoom().toPrecision(3),
+  //     center: map.getCenter(),
+  //     pitch: Math.floor(map.getPitch()),
+  //     bearing: Math.floor(map.getBearing())
+  //   };
+  //   this.props.actions.trackMapMovement(mapMovements);
+  // }
   /*eslint-enable  */
 
   render() {
@@ -187,13 +191,12 @@ class MapPage extends Component {
 
         <Map
           style={this.state.currentStyle}
-          center={[-122.010406, 36.964643]}
+          center={this.state.center}
           accessToken={accessToken}
           zoom={this.state.zoom}
           containerStyle={mapboxContainerStyle}
           hidden={this.state.mapboxHidden}
           mapMovements={this.props.mapState.mapMovements}
-          handleMove={this.handleMove}
         />
 
         <ESRIMap
