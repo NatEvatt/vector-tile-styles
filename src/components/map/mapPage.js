@@ -109,7 +109,6 @@ class MapPage extends Component {
     }
   }
 
-  /*eslint-disable */
   updateMapbox(styleStringOrObject) {
     let currentStyleOptions = styleStringOrObject[1];
     // map.setStyle(styleStringOrObject[0]);
@@ -151,7 +150,7 @@ class MapPage extends Component {
   //   };
   //   this.props.actions.trackMapMovement(mapMovements);
   // }
-  /*eslint-enable  */
+
 
   render() {
     let mapboxContainerStyle = {
