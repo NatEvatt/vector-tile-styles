@@ -12,6 +12,7 @@ export function uploadImage(files, mapStyle) {
     formData.append("photo-" + 0, files[0]);
 
     return function(dispatch, getState) {
+        debugger;
       let state = getState();
       let token = state.user.id_token;
       return UploadApi.uploadImage(formData, token, mapStyle)
