@@ -106,16 +106,7 @@ class Overlay extends Component {
       .then(() => {
         this.setState({
           createStyleDisplay: "none",
-          uploadImageDisplay: "block",
-          newStyle: {
-            name: "",
-            url: "",
-            author: "",
-            image: "",
-            github: "",
-            jsonStyle: "",
-            type: "Mapbox_Remote"
-          }
+          uploadImageDisplay: "block"
         });
       })
       .catch(() => {
@@ -166,7 +157,16 @@ class Overlay extends Component {
         newMapStyles[i]["image"] = imageList.download;
         this.setState({
           uploadedImage: imageList.download,
-          mapStyles: newMapStyles
+          mapStyles: newMapStyles,
+          newStyle: {
+            name: "",
+            url: "",
+            author: "",
+            image: "",
+            github: "",
+            jsonStyle: "",
+            type: "Mapbox_Remote"
+          }
         });
       });
   }
@@ -196,7 +196,7 @@ class Overlay extends Component {
             uploadedImage={this.state.uploadedImage}
           />
 
-      <PleaseLogin
+          <PleaseLogin
             notSignedInVisible={this.props.buttonState.loginVisible}
           />
 
