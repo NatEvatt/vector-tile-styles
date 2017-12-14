@@ -81,19 +81,16 @@ class ESRIMap extends Component {
           position: "top-left",
           index: 2
         });
-        let theMapView = this.mapView;
-        this.mapView.on('drag', function(evt){
-            if(evt.action == 'end'){
-                debugger;
-                console.log("the lat is" + theMapView.center.latitude);
-                console.log("the long is" + theMapView.center.longitude);
-                console.log("the zoom is" + theMapView.zoom);
-                console.log('this is it ' + evt.action);
-            }
-
-          // var point = view2d.toMap({x: evt.x, y: evt.y});
-          // bufferPoint(point);
-        });
+        // let theMapView = this.mapView;
+        // this.mapView.on('drag', function(evt){
+        //     if(evt.action == 'end'){
+                // debugger;
+                // console.log("the lat is" + theMapView.center.latitude);
+                // console.log("the long is" + theMapView.center.longitude);
+                // console.log("the zoom is" + theMapView.zoom);
+                // console.log('this is it ' + evt.action);
+        //     }
+        // });
 
         this.esri_map.add(VTLayer);
       }
