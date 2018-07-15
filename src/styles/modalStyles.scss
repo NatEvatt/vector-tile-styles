@@ -41,13 +41,17 @@ $navBlue: #96d4d3;
 }
 
 .myButtons:hover {
-    cursor: pointer;
-    color: #f7f7f7;
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  color: #f7f7f7;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 .myButtons:active {
-    color: #888888;
+  color: #888888;
+}
+
+.map-printer .myButtons {
+  float: left;
 }
 
 .deleteWarning {
@@ -76,6 +80,12 @@ $navBlue: #96d4d3;
 .radioButtonLabel {
   float: left;
   margin-right: 10px;
+}
+
+.map-printer {
+  position: absolute;
+  top: 100px;
+  right: 50px;
 }
 
 #createMapStyleTable td {

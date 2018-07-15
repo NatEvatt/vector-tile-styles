@@ -84,7 +84,6 @@ class MapPage extends Component {
   jsonStyleOnclick(style) {
     let styleStringOrObject = this.getStyleObjectOrString(style)[0];
     let styleJsonStringified = JSON.stringify(styleStringOrObject, null, 2);
-    //here
     // let prettyJsonStyle = JsonDisplayHelper.syntaxHighlight(styleJsonStringified);
     this.setState({
       jsonStyleClass: "open",
@@ -93,7 +92,6 @@ class MapPage extends Component {
   }
 
   closeJsonStyleViewer() {
-    //here
     this.setState({
       jsonStyleClass: "close",
       styleJsonStringified: ""

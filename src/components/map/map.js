@@ -3,6 +3,7 @@ import React from "react";
 import MapboxGeocoder from "mapbox-gl-geocoder";
 import PropTypes from "prop-types";
 import Config from "../../config";
+import MapPrinter from "./mapPrinter";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as mapActions from "../../actions/mapActions";
@@ -12,13 +13,24 @@ class Map extends React.Component {
     super(props);
     this.state = {
       active: false,
-      mapMovements: this.props.mapMovements
+      mapMovements: this.props.mapMovements,
+      mapPrinterState: {
+        printExtentVisible: "block",
+        printZoomVisible: "none",
+        printFinalizeVisible: "none",
+        zoom: "",
+        extent: ""
+      }
     };
 
     this.mapboxMap;
 
     this.updateMapbox = this.updateMapbox.bind(this);
     this.handleMove = this.handleMove.bind(this);
+    this.selectExtentOnClick = this.selectExtentOnClick.bind(this);
+    this.selectZoomOnClick = this.selectZoomOnClick.bind(this);
+    this.printImageOnClick = this.printImageOnClick.bind(this);
+    this.printCancelOnClick = this.printCancelOnClick.bind(this);
   }
 
   componentDidMount() {
@@ -70,15 +82,70 @@ class Map extends React.Component {
     this.props.actions.trackMapMovement(mapMovements);
   }
 
+  selectExtentOnClick() {
+    this.setState(prevState => ({
+      mapPrinterState: {
+        ...prevState.mapPrinterState,
+        printExtentVisible: "none",
+        printZoomVisible: "block",
+        extent: this.mapboxMap.getBounds()
+      }
+    }));
+  }
+
+  selectZoomOnClick() {
+    this.setState(prevState => ({
+      mapPrinterState: {
+        ...prevState.mapPrinterState,
+        printZoomVisible: "none",
+        printFinalizeVisible: "block",
+        zoom: this.mapboxMap.getZoom()
+      }
+    }));
+  }
+
+  printCancelOnClick() {
+    this.setState(prevState => ({
+      mapPrinterState: {
+        ...prevState.mapPrinterState,
+        printFinalizeVisible: "none",
+        zoom: "",
+        extent: ""
+      }
+    }));
+    console.log("The map zoom is " + this.mapboxMap.getZoom());
+  }
+
+  printImageOnClick() {
+    this.setState(prevState => ({
+      mapPrinterState: {
+        ...prevState.mapPrinterState,
+        printFinalizeVisible: "none",
+        zoom: "",
+        extent: ""
+      }
+    }));
+    console.log("The map zoom is " + this.state.mapPrinterState.zoom + " and the extent is " + this.state.mapPrinterState.extent);
+  }
+
   render() {
     return (
-      <div
-        style={this.props.containerStyle}
-        className={this.props.hidden}
-        ref={mapDiv => {
-          this.container = mapDiv;
-        }}
-      />
+      <div>
+        <div
+          style={this.props.containerStyle}
+          className={this.props.hidden}
+          ref={mapDiv => {
+            this.container = mapDiv;
+          }}
+        />
+        <MapPrinter
+          selectExtentOnClick={this.selectExtentOnClick}
+          selectZoomOnClick={this.selectZoomOnClick}
+          printImageOnClick={this.printImageOnClick}
+          printCancelOnClick={this.printCancelOnClick}
+          mapPrinterState={this.state.mapPrinterState}
+        />
+      </div>
     );
   }
 }

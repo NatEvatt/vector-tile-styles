@@ -51,6 +51,10 @@ class SecondHeader extends Component {
     this.setState({ modalIsOpen: true });
   };
 
+  startPrinterOnClick() {
+    console.log("I am going to start printing now");
+  }
+
   deleteStyleCheckOnClick = () => {
     this.setState({ deleteModalIsOpen: true });
   };
@@ -153,6 +157,7 @@ class SecondHeader extends Component {
     const editDisabled = this.props.currentStyleOptions.editable
       ? ""
       : "disabled";
+    const printDisabled = "";
 
     return (
       <div>
@@ -260,11 +265,21 @@ class SecondHeader extends Component {
                 <li>
                   <a
                     className={editDisabled}
+                    onClick={() => this.startPrinterOnClick()}
+                    href="#"
+                  >
+                    Style Printer
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={editDisabled}
                     onClick={() => this.editStyleOnClick()}
                     href="#"
                   >
                     Edit Style
                   </a>
+                  <li />
                   <a
                     className={editDisabled}
                     onClick={() => this.deleteStyleCheckOnClick()}
@@ -299,6 +314,7 @@ SecondHeader.propTypes = {
   openOptions: PropTypes.func.isRequired,
   currentStyleOptions: PropTypes.object.isRequired,
   jsonStyleOnclick: PropTypes.func.isRequired,
+  // startPrinterOnClick: PropTypes.func.isRequired,
   userData: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   mapState: PropTypes.object.isRequired,
