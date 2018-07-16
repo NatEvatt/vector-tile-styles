@@ -6,7 +6,8 @@ import Config from "../../config";
 import MapPrinter from "./mapPrinter";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as mapActions from "../../actions/mapActions";
+import * as MapActions from "../../actions/mapActions";
+import * as MapPrinterActions from "../../actions/mapPrinterActions";
 
 class Map extends React.Component {
   constructor(props) {
@@ -102,6 +103,8 @@ class Map extends React.Component {
         zoom: this.mapboxMap.getZoom()
       }
     }));
+    debugger;
+    MapPrinterActions.getTileInfo();
   }
 
   printCancelOnClick() {
@@ -125,7 +128,12 @@ class Map extends React.Component {
         extent: ""
       }
     }));
-    console.log("The map zoom is " + this.state.mapPrinterState.zoom + " and the extent is " + this.state.mapPrinterState.extent);
+    console.log(
+      "The map zoom is " +
+        this.state.mapPrinterState.zoom +
+        " and the extent is " +
+        this.state.mapPrinterState.extent
+    );
   }
 
   render() {
@@ -158,8 +166,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
+  debugger;
   return {
-    actions: bindActionCreators(mapActions, dispatch)
+    actions: bindActionCreators(MapPrinterActions, dispatch)
   };
 }
 

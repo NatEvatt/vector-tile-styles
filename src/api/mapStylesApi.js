@@ -9,7 +9,7 @@ class MapStylesApi {
       });
   }
 
-  static getMapStylesToken(token) {
+  static getMapStyles(token) {
     return fetch(Congfig.apiRoot + "vts-api/public/get_mapstyles", {
       method: "GET",
       headers: {
@@ -46,10 +46,10 @@ class MapStylesApi {
         "Content-Type": "application/x-www-form-urlencoded"
       }
     })
-    .then(response => response.json())
-    .then(responseJson => {
-      return responseJson;
-    });
+      .then(response => response.json())
+      .then(responseJson => {
+        return responseJson;
+      });
   }
 
   static deleteMapStyle(mapStyle, token) {
@@ -60,8 +60,7 @@ class MapStylesApi {
         Authorization: "Bearer " + token,
         "Content-Type": "application/x-www-form-urlencoded"
       }
-    })
-    .then(response => {
+    }).then(response => {
       return response;
     });
   }

@@ -4,12 +4,14 @@
  import MapStyles from './mapReducer';
  import User from './userReducer';
  import ButtonState from './buttonStateReducer';
+ import MapPrinterReducer from './mapPrinterReducer';
 
  const rootReducer = combineReducers({
    routing: routerReducer,
    mapState: MapStyles,
    user: User,
-   buttonState: ButtonState
+   buttonState: ButtonState,
+   mapPrinterReducer: MapPrinterReducer
  });
 
  export default rootReducer;

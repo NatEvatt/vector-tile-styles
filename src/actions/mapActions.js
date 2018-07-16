@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import mapStylesApi from '../api/mapStylesApi';
+import MapStylesApi from '../api/mapStylesApi';
 
 export function loadMapStylesSuccess(mapStyles){
     return { type: types.LOAD_MAPSTYLES_SUCCESS, mapStyles};
@@ -25,7 +25,7 @@ export function loadMapStyles(){
     return function(dispatch, getState) {
         let state = getState();
         let token = (state.user) ? state.user.id_token : false;
-        let equation = mapStylesApi.getMapStylesToken(token);
+        let equation = MapStylesApi.getMapStyles(token);
         return equation.then(mapStyles => {
             dispatch(loadMapStylesSuccess(mapStyles));
         }).catch(error => {
@@ -44,7 +44,7 @@ export function saveNewStyle(newStyle){
     return function(dispatch, getState) {
         let state = getState();
         let token = state.user.id_token;
-        return mapStylesApi.saveNewMapStyle(newStyle, token).then(id => {
+        return MapStylesApi.saveNewMapStyle(newStyle, token).then(id => {
             newStyle['id'] = id;
             dispatch(saveNewStyleSuccess(newStyle));
         }).catch(error => {
@@ -57,7 +57,7 @@ export function editStyle(edittedStyle){
     return function(dispatch, getState) {
         let state = getState();
         let token = state.user.id_token;
-        return mapStylesApi.editMapStyle(edittedStyle, token).then(() => {
+        return MapStylesApi.editMapStyle(edittedStyle, token).then(() => {
             dispatch(editStyleSuccess(edittedStyle));
         }).catch(error => {
             throw(error);
@@ -69,7 +69,7 @@ export function deleteStyle(mapStyle){
     return function(dispatch, getState) {
         let state = getState();
         let token = state.user.id_token;
-        return mapStylesApi.deleteMapStyle(mapStyle, token).then(() => {
+        return MapStylesApi.deleteMapStyle(mapStyle, token).then(() => {
             dispatch(deleteMapStyleSuccess(mapStyle));
         }).catch(error => {
             throw(error);
