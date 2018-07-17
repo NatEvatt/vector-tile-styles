@@ -103,8 +103,7 @@ class Map extends React.Component {
         zoom: this.mapboxMap.getZoom()
       }
     }));
-    debugger;
-    MapPrinterActions.getTileInfo();
+    this.props.actions.getTileInfo();
   }
 
   printCancelOnClick() {
@@ -166,9 +165,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  debugger;
   return {
-    actions: bindActionCreators(MapPrinterActions, dispatch)
+    actions: bindActionCreators(
+      Object.assign({}, MapPrinterActions, MapActions),
+      dispatch
+    )
   };
 }
 

@@ -6,15 +6,12 @@ export function getTileInfoSuccess(printerTileInfo){
 }
 
 export function getTileInfo(){
-    // return function(dispatch) {
-    //     let tileInfo = MapPrinterApi.getTileInfo();
-    //     return tileInfo.then(printerTileInfo => {
-    //         dispatch(getTileInfoSuccess(printerTileInfo));
-    //     }).catch(error => {
-    //         throw(error);
-    //     });
-    // };
     return function(dispatch) {
-        dispatch(getTileInfoSuccess("hi"));
+        let tileInfo = MapPrinterApi.getTileInfo();
+        return tileInfo.then(printerTileInfo => {
+            dispatch(getTileInfoSuccess(printerTileInfo));
+        }).catch(error => {
+            throw(error);
+        });
     };
 }
