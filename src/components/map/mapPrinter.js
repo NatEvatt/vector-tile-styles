@@ -39,6 +39,12 @@ class MapPrinter extends React.Component {
         >
           Print Image
         </button>
+        <div
+          className="map-printer-comments"
+          style={{display: this.props.mapPrinterState.printFinalizeVisible}} >
+          <p>Your map is going to be { this.props.printerApiData.pixels } pixels and { this.props.printerApiData.tiles } tiles.
+          Are you sure that you want to print?</p>
+        </div>
       </div>
     );
   }

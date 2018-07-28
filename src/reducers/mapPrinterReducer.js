@@ -6,7 +6,7 @@ export default function printerReducer(state = initialState.mapPrinter, action) 
     case types.GET_TILE_INFO_SUCCESS: {
       let newState = Object.assign({}, state);
       newState["tiles"] = action.printerTileInfo[0];
-      newState["pixels"] = action.mapStyles[1];
+      newState["pixels"] = action.printerTileInfo[1];
       return newState;
     }
 

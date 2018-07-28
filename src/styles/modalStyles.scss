@@ -54,6 +54,15 @@ $navBlue: #96d4d3;
   float: left;
 }
 
+.map-printer-comments{
+  float: left;
+  width: 242px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 6px;
+  }
+
 .deleteWarning {
   background-color: #ffd6b4;
   width: 250px;
@@ -86,6 +95,7 @@ $navBlue: #96d4d3;
   position: absolute;
   top: 100px;
   right: 50px;
+  width: 300px;
 }
 
 #createMapStyleTable td {

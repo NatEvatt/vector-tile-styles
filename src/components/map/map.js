@@ -63,6 +63,9 @@ class Map extends React.Component {
     if (this.mapboxMap && this.props.style !== newProps.style) {
       this.updateMapbox(newProps);
     }
+    // if (this.props.printerState !== newProps.printerState) {
+    //   this.updateMapbox(newProps);
+    // }
   };
 
   updateMapbox = newProps => {
@@ -151,6 +154,7 @@ class Map extends React.Component {
           printImageOnClick={this.printImageOnClick}
           printCancelOnClick={this.printCancelOnClick}
           mapPrinterState={this.state.mapPrinterState}
+          printerApiData={this.props.mapPrinter}
         />
       </div>
     );
@@ -160,7 +164,8 @@ class Map extends React.Component {
 function mapStateToProps(state) {
   return {
     mapState: state.mapState,
-    userData: state.user
+    userData: state.user,
+    mapPrinter: state.mapPrinter
   };
 }
 

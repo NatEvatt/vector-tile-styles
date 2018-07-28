@@ -24,7 +24,7 @@ export default {
     logoutVisible: "none"
   },
   mapPrinter: {
-    tiles: null,
+    _mapTiles: null,
     pixels: null
   }
 };

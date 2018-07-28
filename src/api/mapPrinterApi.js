@@ -2,7 +2,6 @@ import Congfig from "../config";
 
 class PrinterApi {
   static getTileInfo() {
-    debugger;
     return fetch(Congfig.apiRoot + "vts-api/public/get_tile_info")
       .then(response => response.json())
       .then(responseJson => {
