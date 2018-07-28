@@ -173,7 +173,7 @@ class Overlay extends Component {
 
   render() {
     const defaultImage =
-      "http://awesome.dev/git/natevatt/vts-api/public/mapPreviews/no_image/thumbs/mapNoImage.png";
+      "http://localhost/git/natevatt/vts-api/public/mapPreviews/no_image/thumbs/mapNoImage.png";
     return (
       <div>
         <Modal
