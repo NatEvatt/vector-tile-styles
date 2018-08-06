@@ -92,21 +92,33 @@ class Map extends React.Component {
         ...prevState.mapPrinterState,
         printExtentVisible: "none",
         printZoomVisible: "block",
-        extent: this.mapboxMap.getBounds()
+        extent: this.cleanBounds(this.mapboxMap.getBounds())
       }
     }));
   }
 
   selectZoomOnClick() {
-    this.setState(prevState => ({
-      mapPrinterState: {
-        ...prevState.mapPrinterState,
-        printZoomVisible: "none",
-        printFinalizeVisible: "block",
-        zoom: this.mapboxMap.getZoom()
-      }
-    }));
-    this.props.actions.getTileInfo();
+    this.setState(
+      prevState => ({
+        mapPrinterState: {
+          ...prevState.mapPrinterState,
+          printZoomVisible: "none",
+          printFinalizeVisible: "block",
+          zoom: this.mapboxMap.getZoom()
+        }
+      }),
+      () => this.props.actions.getTileInfo(this.state.mapPrinterState)
+    );
+  }
+
+  cleanBounds(bounds) {
+    let cleanBounds = {
+      top_left_lat: bounds._ne.lat,
+      top_left_lon: bounds._sw.lng,
+      bottom_right_lat: bounds._sw.lat,
+      bottom_right_lon: bounds._ne.lng
+    };
+    return cleanBounds;
   }
 
   printCancelOnClick() {
@@ -188,4 +200,7 @@ Map.propTypes = {
   actions: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Map);

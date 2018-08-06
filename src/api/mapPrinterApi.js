@@ -1,8 +1,16 @@
 import Congfig from "../config";
 
 class PrinterApi {
-  static getTileInfo() {
-    return fetch(Congfig.apiRoot + "vts-api/public/get_tile_info")
+  static getTileInfo(mapPrinterState, token) {
+    return fetch(Congfig.apiRoot + "vts-api/public/get_tile_info", {
+      headers: {
+        Authorization: "Bearer " + token
+      },
+      method: "POST",
+      body: JSON.stringify({
+        zoom: mapPrinterState.zoom
+      })
+    })
       .then(response => response.json())
       .then(responseJson => {
         return responseJson;
@@ -21,7 +29,6 @@ class PrinterApi {
         return responseJson;
       });
   }
-
 }
 
 export default PrinterApi;
