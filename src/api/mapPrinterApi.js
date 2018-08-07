@@ -4,7 +4,9 @@ class PrinterApi {
   static getTileInfo(mapPrinterState, token) {
     return fetch(Congfig.apiRoot + "vts-api/public/get_tile_info", {
       headers: {
-        Authorization: "Bearer " + token
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
+        "Content-Type": "application/json"
       },
       method: "POST",
       body: JSON.stringify({
@@ -23,11 +25,11 @@ class PrinterApi {
       headers: {
         Authorization: "Bearer " + token
       }
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        return responseJson;
-      });
+    });
+    // .then(response => response.json())
+    // .then(responseJson => {
+    //   return responseJson;
+    // });
   }
 }
 
