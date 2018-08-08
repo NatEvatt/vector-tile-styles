@@ -134,6 +134,7 @@ class Map extends React.Component {
   }
 
   printImageOnClick() {
+    this.props.actions.printImage(this.state.mapPrinterState);
     this.setState(prevState => ({
       mapPrinterState: {
         ...prevState.mapPrinterState,
@@ -142,6 +143,7 @@ class Map extends React.Component {
         extent: ""
       }
     }));
+
     console.log(
       "The map zoom is " +
         this.state.mapPrinterState.zoom +

@@ -5,8 +5,8 @@ export default function printerReducer(state = initialState.mapPrinter, action) 
   switch (action.type) {
     case types.GET_TILE_INFO_SUCCESS: {
       let newState = Object.assign({}, state);
-      newState["tiles"] = action.printerTileInfo[0];
-      newState["pixels"] = action.printerTileInfo[1];
+      newState["tiles"] = action.printerTileInfo.tile_count;
+      newState["pixels"] = action.printerTileInfo.pixel_count;
       return newState;
     }
 

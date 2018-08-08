@@ -17,3 +17,16 @@ export function getTileInfo(mapPrinterState){
         });
     };
 }
+
+export function printImage(mapPrinterState){
+    return function(dispatch, getState) {
+        let state = getState();
+        let token = state.user.id_token;
+        let tileInfo = MapPrinterApi.printImage(mapPrinterState, token);
+        return tileInfo.then(printerTileInfo => {
+            dispatch(getTileInfoSuccess(printerTileInfo));
+        }).catch(error => {
+            throw(error);
+        });
+    };
+}
