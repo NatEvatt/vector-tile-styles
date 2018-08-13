@@ -20,7 +20,8 @@ class Map extends React.Component {
         printZoomVisible: "none",
         printFinalizeVisible: "none",
         zoom: "",
-        extent: ""
+        extent: "",
+        mapStyle: this.props.style
       }
     };
 
@@ -86,13 +87,23 @@ class Map extends React.Component {
     this.props.actions.trackMapMovement(mapMovements);
   }
 
+  cleanStyle(style) {
+    let nameAndStyleId = style.split("//styles/")[1].split("/");
+    let cleanStyle = {
+      userName: nameAndStyleId[0],
+      styleId: nameAndStyleId[1]
+    };
+    return cleanStyle;
+  }
+
   selectExtentOnClick() {
     this.setState(prevState => ({
       mapPrinterState: {
         ...prevState.mapPrinterState,
         printExtentVisible: "none",
         printZoomVisible: "block",
-        extent: this.cleanBounds(this.mapboxMap.getBounds())
+        extent: this.cleanBounds(this.mapboxMap.getBounds()),
+        mapStyle: this.cleanStyle(this.props.style)
       }
     }));
   }

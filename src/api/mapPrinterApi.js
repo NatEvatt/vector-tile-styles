@@ -36,7 +36,9 @@ class PrinterApi {
         top_left_lat: mapPrinterState.extent.top_left_lat,
         top_left_lon: mapPrinterState.extent.top_left_lon,
         bottom_right_lat: mapPrinterState.extent.bottom_right_lat,
-        bottom_right_lon: mapPrinterState.extent.bottom_right_lon
+        bottom_right_lon: mapPrinterState.extent.bottom_right_lon,
+        styleId: mapPrinterState.mapStyle.styleId,
+        userName: mapPrinterState.mapStyle.userName
       })
     })
       .then(response => response.json())
