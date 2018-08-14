@@ -42,7 +42,11 @@ class MapPrinter extends React.Component {
         <div
           className="map-printer-comments"
           style={{display: this.props.mapPrinterState.printFinalizeVisible}} >
-          <p>Your map is going to be { this.props.printerApiData.pixels[0] } by { this.props.printerApiData.pixels[1] } pixels and { this.props.printerApiData.tiles[0] } by { this.props.printerApiData.tiles[1] } tiles.
+
+          <p>Your map is going to be {this.props.printerApiData.pixels ? this.props.printerApiData.pixels[0] : ''}
+          by { this.props.printerApiData.pixels ? this.props.printerApiData.pixels[1] : ''} pixels
+          and { this.props.printerApiData.tiles ? this.props.printerApiData.tiles[0] : '' } by
+          { this.props.printerApiData.tiles ? this.props.printerApiData.tiles[1] : '' } tiles.
           Are you sure that you want to print?</p>
         </div>
       </div>

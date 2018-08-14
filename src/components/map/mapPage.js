@@ -30,8 +30,8 @@ class MapPage extends Component {
           "https://api.mapbox.com/styles/v1/mapbox/light-v9/static/-70.878491,6.049648,4.41,0.00,0.00/600x400?access_token=pk.eyJ1IjoibmF0ZXZhdHQiLCJhIjoiR1hVR1ZIdyJ9.gFwSyghJZIERfjLkzgTx6A"
       }, //here
       currentStyle: "mapbox://styles/mapbox/light-v9",
-      height: window.innerHeight - 83 + "px",
-      width: window.innerWidth + "px",
+      height: window.innerHeight - 100 + "px",
+      width: window.innerWidth - 2 + "px",
       overlayClass: "overlay open",
       zoom: 11,
       jsonStyleClass: "jsonStyleViewer close",
@@ -204,6 +204,7 @@ class MapPage extends Component {
           containerStyle={esriContainerStyle}
           hidden={this.state.esriHidden}
           esriUrl={this.state.esriUrl}
+          actions={this.props.actions}
         />
 
         <Helmet>

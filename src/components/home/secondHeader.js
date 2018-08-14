@@ -236,7 +236,7 @@ class SecondHeader extends Component {
 
         <div id="secondHeader">
           <div className="navLeft">
-            <li className="sub-menu-parent">
+            <div className="sub-menu-parent">
               <span className="dotOptions">⋮</span>
               <ul className="sub-menu">
                 <li>
@@ -279,7 +279,8 @@ class SecondHeader extends Component {
                   >
                     Edit Style
                   </a>
-                  <li />
+                </li>
+                <li>
                   <a
                     className={editDisabled}
                     onClick={() => this.deleteStyleCheckOnClick()}
@@ -289,7 +290,7 @@ class SecondHeader extends Component {
                   </a>
                 </li>
               </ul>
-            </li>
+            </div >
           </div>
           <div className="openButton" onClick={this.handleOpen}>
             <p>Select a Map Style</p>
