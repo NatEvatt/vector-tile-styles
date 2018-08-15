@@ -21,7 +21,10 @@ export default {
   },
   buttonDisplay: {
     loginVisible: "block",
-    logoutVisible: "none"
+    logoutVisible: "none",
+    printExtentVisible: "none",
+    printZoomVisible: "none",
+    printFinalizeVisible: "none"
   },
   mapPrinter: {
     _mapTiles: null,

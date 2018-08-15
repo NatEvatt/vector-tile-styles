@@ -12,7 +12,7 @@ class MapPrinter extends React.Component {
         <button
           className="myButtons"
           onClick={() => this.props.selectExtentOnClick()}
-          style={{display: this.props.mapPrinterState.printExtentVisible}}
+          style={{display: this.props.buttonState.printExtentVisible}}
         >
           Select Map Extent
         </button>

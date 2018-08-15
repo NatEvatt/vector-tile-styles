@@ -8,6 +8,7 @@ import Map from "./map";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as mapActions from "../../actions/mapActions";
+import * as ButtonStateActions from "../../actions/buttonStateActions";
 import PropTypes from "prop-types";
 import Config from "../../config";
 import { Helmet } from "react-helmet";
@@ -43,7 +44,8 @@ class MapPage extends Component {
       center: {
         lng: -122.010406,
         lat: 36.964643
-      }
+      },
+      printExtentVisible: "none"
     };
 
     this.updateMapStyle = this.updateMapStyle.bind(this);
@@ -51,6 +53,7 @@ class MapPage extends Component {
     this.closeJsonStyleViewer = this.closeJsonStyleViewer.bind(this);
     this.jsonStyleOnclick = this.jsonStyleOnclick.bind(this);
     this.openOptions = this.openOptions.bind(this);
+    this.startPrinterOnClick = this.startPrinterOnClick.bind(this);
     // this.handleMove = this.handleMove.bind(this);
   }
 
@@ -133,10 +136,14 @@ class MapPage extends Component {
         lng: this.props.mapState.mapMovements.center.lng,
         lat: this.props.mapState.mapMovements.center.lat
       },
-      zoom:  parseFloat(this.props.mapState.mapMovements.zoom),
+      zoom: parseFloat(this.props.mapState.mapMovements.zoom),
       esriHidden: "",
       mapboxHidden: "hidden"
     });
+  }
+
+  startPrinterOnClick() {
+    this.props.actions.togglePrinterButtonExtent();
   }
 
   // handleMove() {
@@ -148,7 +155,6 @@ class MapPage extends Component {
   //   };
   //   this.props.actions.trackMapMovement(mapMovements);
   // }
-
 
   render() {
     let mapboxContainerStyle = {
@@ -178,6 +184,7 @@ class MapPage extends Component {
           openOptions={this.openOptions}
           jsonStyleOnclick={this.jsonStyleOnclick}
           userData={this.props.userData}
+          startPrinterOnClick={this.startPrinterOnClick}
         />
 
         <JsonStyleVierwer
@@ -194,6 +201,7 @@ class MapPage extends Component {
           containerStyle={mapboxContainerStyle}
           hidden={this.state.mapboxHidden}
           mapMovements={this.props.mapState.mapMovements}
+          printExtentVisible={this.state.printExtentVisible}
         />
 
         <ESRIMap
@@ -227,7 +235,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(mapActions, dispatch)
+    actions: bindActionCreators(
+      Object.assign({}, ButtonStateActions, mapActions),
+      dispatch
+    )
   };
 }
 
@@ -237,4 +248,7 @@ MapPage.propTypes = {
   userData: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MapPage);

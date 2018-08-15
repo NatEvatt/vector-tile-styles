@@ -16,7 +16,7 @@ class Map extends React.Component {
       active: false,
       mapMovements: this.props.mapMovements,
       mapPrinterState: {
-        printExtentVisible: "block",
+        printExtentVisible: "none",
         printZoomVisible: "none",
         printFinalizeVisible: "none",
         zoom: "",
@@ -53,9 +53,6 @@ class Map extends React.Component {
     );
     this.mapboxMap.addControl(new mapboxgl.NavigationControl(), "bottom-right");
 
-    // map.flyTo({ center: this.props.center, zoom: this.props.zoom })
-
-    // window.map = map;
     this.setState({ active: true });
     this.mapboxMap.on("moveend", this.handleMove);
   }
@@ -64,9 +61,14 @@ class Map extends React.Component {
     if (this.mapboxMap && this.props.style !== newProps.style) {
       this.updateMapbox(newProps);
     }
-    // if (this.props.printerState !== newProps.printerState) {
-    //   this.updateMapbox(newProps);
-    // }
+    if (
+      this.state.mapPrinterState.printExtentVisible !==
+      newProps.printExtentVisible
+    ) {
+      let mapPrinterState = { ...this.state.mapPrinterState };
+      mapPrinterState.printExtentVisible = newProps.printExtentVisible;
+      this.setState({ mapPrinterState });
+    }
   };
 
   updateMapbox = newProps => {
@@ -180,6 +182,7 @@ class Map extends React.Component {
           printCancelOnClick={this.printCancelOnClick}
           mapPrinterState={this.state.mapPrinterState}
           printerApiData={this.props.mapPrinter}
+          buttonState={this.props.buttonState}
         />
       </div>
     );
@@ -190,7 +193,8 @@ function mapStateToProps(state) {
   return {
     mapState: state.mapState,
     userData: state.user,
-    mapPrinter: state.mapPrinter
+    mapPrinter: state.mapPrinter,
+    buttonState: state.buttonState,
   };
 }
 
