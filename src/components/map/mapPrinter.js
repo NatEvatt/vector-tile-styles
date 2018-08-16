@@ -8,11 +8,14 @@ class MapPrinter extends React.Component {
 
   render() {
     return (
-      <div className="map-printer">
+      <div
+        className="map-printer"
+        style={{ display: this.props.buttonState.printExtentVisible }}
+      >
         <button
           className="myButtons"
           onClick={() => this.props.selectExtentOnClick()}
-          style={{display: this.props.buttonState.printExtentVisible}}
+          // style={{display: this.props.buttonState.printExtentVisible}}
         >
           Select Map Extent
         </button>
@@ -20,7 +23,7 @@ class MapPrinter extends React.Component {
         <button
           className="myButtons"
           onClick={() => this.props.selectZoomOnClick()}
-          style={{display: this.props.mapPrinterState.printZoomVisible}}
+          // style={{display: this.props.mapPrinterState.printZoomVisible}}
         >
           Select Map Zoom
         </button>
@@ -28,26 +31,53 @@ class MapPrinter extends React.Component {
         <button
           className="myButtons"
           onClick={() => this.props.printCancelOnClick()}
-          style={{display: this.props.mapPrinterState.printFinalizeVisible}}
         >
           Cancel
         </button>
         <button
           className="myButtons"
           onClick={() => this.props.printImageOnClick()}
-          style={{display: this.props.mapPrinterState.printFinalizeVisible}}
+          style={{ display: this.props.mapPrinterState.printFinalizeVisible }}
         >
           Print Image
         </button>
-        <div
-          className="map-printer-comments"
-          style={{display: this.props.mapPrinterState.printFinalizeVisible}} >
-
-          <p>Your map is going to be {this.props.printerApiData.pixels ? this.props.printerApiData.pixels[0] : ''}
-          by { this.props.printerApiData.pixels ? this.props.printerApiData.pixels[1] : ''} pixels
-          and { this.props.printerApiData.tiles ? this.props.printerApiData.tiles[0] : '' } by
-          { this.props.printerApiData.tiles ? this.props.printerApiData.tiles[1] : '' } tiles.
-          Are you sure that you want to print?</p>
+        <div>
+          <table>
+            <tr>
+              <td>Zoom</td>
+              <td>{this.props.mapPrinterState.zoomUpdate}</td>
+              <td></td>
+              <td>{this.props.mapPrinterState.zoom}</td>
+            </tr>
+            <tr>
+              <td>Tiles</td>
+              <td>
+                {this.props.printerApiData.tiles
+                  ? this.props.printerApiData.tiles[0]
+                  : ""}
+              </td>
+              <td> x </td>
+              <td>
+                {this.props.printerApiData.tiles
+                  ? this.props.printerApiData.tiles[1]
+                  : ""}
+              </td>
+            </tr>
+            <tr>
+              <td>Pixels</td>
+              <td>
+                {this.props.printerApiData.pixels
+                  ? this.props.printerApiData.pixels[0]
+                  : ""}
+              </td>
+              <td> x </td>
+              <td>
+                {this.props.printerApiData.pixels
+                  ? this.props.printerApiData.pixels[1]
+                  : ""}
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     );

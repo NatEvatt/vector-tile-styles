@@ -52,16 +52,17 @@ $navBlue: #96d4d3;
 
 .map-printer .myButtons {
   float: left;
+  margin: 6px;
 }
 
-.map-printer-comments{
+.map-printer-comments {
   float: left;
   width: 242px;
   border-radius: 4px;
   background-color: #ffffff;
   padding: 10px;
   margin: 6px;
-  }
+}
 
 .deleteWarning {
   background-color: #ffd6b4;
@@ -95,7 +96,11 @@ $navBlue: #96d4d3;
   position: absolute;
   top: 100px;
   right: 50px;
-  width: 250px;
+  width: 275px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 6px;
 }
 
 #createMapStyleTable td {

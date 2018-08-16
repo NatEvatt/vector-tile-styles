@@ -7,6 +7,7 @@ import MapPrinter from "./mapPrinter";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as MapActions from "../../actions/mapActions";
+import * as ButtonStateActions from "../../actions/buttonStateActions";
 import * as MapPrinterActions from "../../actions/mapPrinterActions";
 
 class Map extends React.Component {
@@ -20,6 +21,7 @@ class Map extends React.Component {
         printZoomVisible: "none",
         printFinalizeVisible: "none",
         zoom: "",
+        zoomUpdate: "",
         extent: "",
         mapStyle: this.props.style
       }
@@ -86,6 +88,12 @@ class Map extends React.Component {
       pitch: Math.floor(this.mapboxMap.getPitch()),
       bearing: Math.floor(this.mapboxMap.getBearing())
     };
+    this.setState(prevState => ({
+      mapPrinterState: {
+        ...prevState.mapPrinterState,
+        zoomUpdate: parseFloat(this.mapboxMap.getZoom().toPrecision(3))
+      }
+    }));
     this.props.actions.trackMapMovement(mapMovements);
   }
 
@@ -117,7 +125,7 @@ class Map extends React.Component {
           ...prevState.mapPrinterState,
           printZoomVisible: "none",
           printFinalizeVisible: "block",
-          zoom: this.mapboxMap.getZoom()
+          zoom: this.mapboxMap.getZoom().toPrecision(3)
         }
       }),
       () => this.props.actions.getTileInfo(this.state.mapPrinterState)
@@ -135,6 +143,8 @@ class Map extends React.Component {
   }
 
   printCancelOnClick() {
+    //here
+    this.props.actions.togglePrinterButtonExtent();
     this.setState(prevState => ({
       mapPrinterState: {
         ...prevState.mapPrinterState,
@@ -143,10 +153,10 @@ class Map extends React.Component {
         extent: ""
       }
     }));
-    console.log("The map zoom is " + this.mapboxMap.getZoom());
   }
 
   printImageOnClick() {
+    this.printCancelOnClick();
     this.props.actions.printImage(this.state.mapPrinterState);
     this.setState(prevState => ({
       mapPrinterState: {
@@ -156,13 +166,6 @@ class Map extends React.Component {
         extent: ""
       }
     }));
-
-    console.log(
-      "The map zoom is " +
-        this.state.mapPrinterState.zoom +
-        " and the extent is " +
-        this.state.mapPrinterState.extent
-    );
   }
 
   render() {
@@ -194,14 +197,14 @@ function mapStateToProps(state) {
     mapState: state.mapState,
     userData: state.user,
     mapPrinter: state.mapPrinter,
-    buttonState: state.buttonState,
+    buttonState: state.buttonState
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      Object.assign({}, MapPrinterActions, MapActions),
+      Object.assign({}, MapPrinterActions, MapActions, ButtonStateActions),
       dispatch
     )
   };
