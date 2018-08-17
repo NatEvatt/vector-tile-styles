@@ -10,6 +10,13 @@ export default function printerReducer(state = initialState.mapPrinter, action) 
       return newState;
     }
 
+    case types.CLEAR_PRINTER_DATA_SUCCESS: {
+      let newState = Object.assign({}, state);
+      newState["tiles"] = [];
+      newState["pixels"] = [];
+      return newState;
+    }
+
     default: {
       return state;
     }

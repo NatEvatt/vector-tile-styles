@@ -5,6 +5,10 @@ export function getTileInfoSuccess(printerTileInfo){
     return { type: types.GET_TILE_INFO_SUCCESS, printerTileInfo };
 }
 
+export function clearPrinterDataSuccess(){
+    return { type: types.CLEAR_PRINTER_DATA_SUCCESS };
+}
+
 export function getTileInfo(mapPrinterState){
     return function(dispatch, getState) {
         let state = getState();
@@ -18,6 +22,13 @@ export function getTileInfo(mapPrinterState){
     };
 }
 
+export function clearPrinterData(){
+  return function(dispatch) {
+      dispatch(clearPrinterDataSuccess());
+  };
+}
+
+//@TODO still need to do something with the return, download?
 export function printImage(mapPrinterState){
     return function(dispatch, getState) {
         let state = getState();

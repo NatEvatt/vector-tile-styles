@@ -82,18 +82,32 @@ class Map extends React.Component {
   };
 
   handleMove() {
+    let currentZoom = this.mapboxMap.getZoom().toPrecision(3);
     let mapMovements = {
-      zoom: parseFloat(this.mapboxMap.getZoom().toPrecision(3)),
-      center: this.mapboxMap.getCenter(),
+      zoom: parseFloat(),
+      center: this.mapboxMap.getCenter(currentZoom),
       pitch: Math.floor(this.mapboxMap.getPitch()),
       bearing: Math.floor(this.mapboxMap.getBearing())
     };
-    this.setState(prevState => ({
-      mapPrinterState: {
-        ...prevState.mapPrinterState,
-        zoomUpdate: parseFloat(this.mapboxMap.getZoom().toPrecision(3))
-      }
-    }));
+    this.handleZoomUpdate(currentZoom);
+  }
+
+  handleZoomUpdate(currentZoom) {
+    if (this.state.mapPrinterState.zoomUpdate !== currentZoom) {
+      this.setState(
+        prevState => ({
+          mapPrinterState: {
+            ...prevState.mapPrinterState,
+            zoomUpdate: parseFloat(this.mapboxMap.getZoom().toPrecision(3))
+          }
+        }),
+        () => {
+          if (this.state.mapPrinterState.extent !== "") {
+            this.props.actions.getTileInfo(this.state.mapPrinterState);
+          }
+        }
+      );
+    }
     this.props.actions.trackMapMovement(mapMovements);
   }
 
@@ -110,7 +124,6 @@ class Map extends React.Component {
     this.setState(prevState => ({
       mapPrinterState: {
         ...prevState.mapPrinterState,
-        printExtentVisible: "none",
         printZoomVisible: "block",
         extent: this.cleanBounds(this.mapboxMap.getBounds()),
         mapStyle: this.cleanStyle(this.props.style)
@@ -123,7 +136,6 @@ class Map extends React.Component {
       prevState => ({
         mapPrinterState: {
           ...prevState.mapPrinterState,
-          printZoomVisible: "none",
           printFinalizeVisible: "block",
           zoom: this.mapboxMap.getZoom().toPrecision(3)
         }
@@ -143,16 +155,17 @@ class Map extends React.Component {
   }
 
   printCancelOnClick() {
-    //here
     this.props.actions.togglePrinterButtonExtent();
     this.setState(prevState => ({
-      mapPrinterState: {
+      mapPrinterState: {//here
         ...prevState.mapPrinterState,
+        printZoomVisible: "none",
         printFinalizeVisible: "none",
         zoom: "",
         extent: ""
       }
     }));
+    this.props.actions.clearPrinterData()
   }
 
   printImageOnClick() {

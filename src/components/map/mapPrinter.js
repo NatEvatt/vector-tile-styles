@@ -23,7 +23,7 @@ class MapPrinter extends React.Component {
         <button
           className="myButtons"
           onClick={() => this.props.selectZoomOnClick()}
-          // style={{display: this.props.mapPrinterState.printZoomVisible}}
+          style={{display: this.props.mapPrinterState.printZoomVisible}}
         >
           Select Map Zoom
         </button>

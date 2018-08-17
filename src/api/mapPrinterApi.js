@@ -2,6 +2,10 @@ import Congfig from "../config";
 
 class PrinterApi {
   static getTileInfo(mapPrinterState, token) {
+    let zoomToPost =
+      mapPrinterState.zoom !== ""
+        ? mapPrinterState.zoom
+        : mapPrinterState.zoomUpdate;
     return fetch(Congfig.apiRoot + "vts-api/public/get_tile_info", {
       headers: {
         Authorization: "Bearer " + token,
@@ -10,7 +14,7 @@ class PrinterApi {
       },
       method: "POST",
       body: JSON.stringify({
-        zoom: mapPrinterState.zoom,
+        zoom: zoomToPost,
         top_left_lat: mapPrinterState.extent.top_left_lat,
         top_left_lon: mapPrinterState.extent.top_left_lon,
         bottom_right_lat: mapPrinterState.extent.bottom_right_lat,
