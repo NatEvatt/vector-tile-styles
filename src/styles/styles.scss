@@ -691,6 +691,16 @@ pre {
   position: relative;
 }
 
+.map-printer-table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.map-printer-table td{
+  padding: 2px;
+  border: 1px solid #ccc;
+}
+
 // .mapboxgl-ctrl-top-left{
 //   top: 85px;
 // }

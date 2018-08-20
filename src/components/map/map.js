@@ -23,7 +23,9 @@ class Map extends React.Component {
         zoom: "",
         zoomUpdate: "",
         extent: "",
-        mapStyle: this.props.style
+        mapStyle: this.props.style,
+        retina: 'N',
+        pixelCount: 256
       }
     };
 
@@ -35,6 +37,8 @@ class Map extends React.Component {
     this.selectZoomOnClick = this.selectZoomOnClick.bind(this);
     this.printImageOnClick = this.printImageOnClick.bind(this);
     this.printCancelOnClick = this.printCancelOnClick.bind(this);
+    this.pixelCountOnChange = this.pixelCountOnChange.bind(this);
+    this.retinaOnChange = this.retinaOnChange.bind(this);
   }
 
   componentDidMount() {
@@ -101,14 +105,16 @@ class Map extends React.Component {
             zoomUpdate: parseFloat(this.mapboxMap.getZoom().toPrecision(3))
           }
         }),
-        () => {
-          if (this.state.mapPrinterState.extent !== "") {
-            this.props.actions.getTileInfo(this.state.mapPrinterState);
-          }
-        }
+        () => this.checkGetTileInfo()
       );
     }
     this.props.actions.trackMapMovement(mapMovements);
+  }
+
+  checkGetTileInfo() {
+    if (this.state.mapPrinterState.extent !== "") {
+      this.props.actions.getTileInfo(this.state.mapPrinterState);
+    }
   }
 
   cleanStyle(style) {
@@ -157,7 +163,8 @@ class Map extends React.Component {
   printCancelOnClick() {
     this.props.actions.togglePrinterButtonExtent();
     this.setState(prevState => ({
-      mapPrinterState: {//here
+      mapPrinterState: {
+        //here
         ...prevState.mapPrinterState,
         printZoomVisible: "none",
         printFinalizeVisible: "none",
@@ -165,7 +172,7 @@ class Map extends React.Component {
         extent: ""
       }
     }));
-    this.props.actions.clearPrinterData()
+    this.props.actions.clearPrinterData();
   }
 
   printImageOnClick() {
@@ -179,6 +186,30 @@ class Map extends React.Component {
         extent: ""
       }
     }));
+  }
+
+  pixelCountOnChange(e) {
+    this.setState(
+      prevState => ({
+        mapPrinterState: {
+          ...prevState.mapPrinterState,
+          pixelCount: e.target.value
+        }
+      }),
+      () => this.checkGetTileInfo()
+    );
+  }
+
+  retinaOnChange(e) {
+    this.setState(
+      prevState => ({
+        mapPrinterState: {
+          ...prevState.mapPrinterState,
+          retina: e.target.value
+        }
+      }),
+      () => this.checkGetTileInfo()
+    );
   }
 
   render() {
@@ -199,6 +230,8 @@ class Map extends React.Component {
           mapPrinterState={this.state.mapPrinterState}
           printerApiData={this.props.mapPrinter}
           buttonState={this.props.buttonState}
+          pixelCountOnChange={this.pixelCountOnChange}
+          retinaOnChange={this.retinaOnChange}
         />
       </div>
     );

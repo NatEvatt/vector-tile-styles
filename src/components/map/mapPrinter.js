@@ -23,7 +23,7 @@ class MapPrinter extends React.Component {
         <button
           className="myButtons"
           onClick={() => this.props.selectZoomOnClick()}
-          style={{display: this.props.mapPrinterState.printZoomVisible}}
+          style={{ display: this.props.mapPrinterState.printZoomVisible }}
         >
           Select Map Zoom
         </button>
@@ -42,11 +42,58 @@ class MapPrinter extends React.Component {
           Print Image
         </button>
         <div>
-          <table>
+          <table className="map-printer-table">
+            <tr>
+              <td>Retina</td>
+              <td>
+                <input
+                  type="radio"
+                  name="retinaRadio"
+                  value="no"
+                  onChange={e => {
+                    this.props.retinaOnChange(e);
+                  }}
+                />{" "}
+                No
+              </td>
+              <td>
+                <input
+                  type="radio"
+                  name="retinaRadio"
+                  value="yes"
+                  onChange={e => {
+                    this.props.retinaOnChange(e);
+                  }}
+                />{" "}
+                Yes
+              </td>
+            </tr>
+            <tr>
+              <td>Pixel Count</td>
+              <td>
+                <input
+                  type="radio"
+                  name="pixelRadio"
+                  value="256"
+                  onChange={e => {
+                    this.props.pixelCountOnChange(e);
+                  }}
+                />256
+              </td>
+              <td>
+                <input
+                  type="radio"
+                  name="pixelRadio"
+                  value="512"
+                  onChange={e => {
+                    this.props.pixelCountOnChange(e);
+                  }}
+                />512
+              </td>
+            </tr>
             <tr>
               <td>Zoom</td>
               <td>{this.props.mapPrinterState.zoomUpdate}</td>
-              <td></td>
               <td>{this.props.mapPrinterState.zoom}</td>
             </tr>
             <tr>
@@ -56,7 +103,6 @@ class MapPrinter extends React.Component {
                   ? this.props.printerApiData.tiles[0]
                   : ""}
               </td>
-              <td> x </td>
               <td>
                 {this.props.printerApiData.tiles
                   ? this.props.printerApiData.tiles[1]
@@ -70,7 +116,6 @@ class MapPrinter extends React.Component {
                   ? this.props.printerApiData.pixels[0]
                   : ""}
               </td>
-              <td> x </td>
               <td>
                 {this.props.printerApiData.pixels
                   ? this.props.printerApiData.pixels[1]
