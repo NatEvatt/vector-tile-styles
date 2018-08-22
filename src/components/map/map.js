@@ -79,20 +79,23 @@ class Map extends React.Component {
 
   updateMapbox = newProps => {
     this.mapboxMap.setStyle(newProps.style);
-    this.mapboxMap.flyTo({
-      center: newProps.center,
-      zoom: Number(newProps.zoom)
-    });
+    if(newProps.center && newProps.zoom){
+      this.mapboxMap.flyTo({
+        center: newProps.center,
+        zoom: Number(newProps.zoom)
+      });
+    }
   };
 
   handleMove() {
     let currentZoom = this.mapboxMap.getZoom().toPrecision(3);
     let mapMovements = {
-      zoom: parseFloat(),
+      zoom: currentZoom,
       center: this.mapboxMap.getCenter(currentZoom),
       pitch: Math.floor(this.mapboxMap.getPitch()),
       bearing: Math.floor(this.mapboxMap.getBearing())
     };
+    this.props.actions.trackMapMovement(mapMovements);
     this.handleZoomUpdate(currentZoom);
   }
 
@@ -108,7 +111,6 @@ class Map extends React.Component {
         () => this.checkGetTileInfo()
       );
     }
-    this.props.actions.trackMapMovement(mapMovements);
   }
 
   checkGetTileInfo() {
