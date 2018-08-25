@@ -49,10 +49,9 @@ class MapPrinter extends React.Component {
                 <input
                   type="radio"
                   name="retinaRadio"
-                  value="no"
-                  onChange={e => {
-                    this.props.retinaOnChange(e);
-                  }}
+                  value="N"
+                  checked={this.props.mapPrinterState.retina == "N"}
+                  onChange={this.props.retinaOnChange}
                 />{" "}
                 No
               </td>
@@ -60,10 +59,9 @@ class MapPrinter extends React.Component {
                 <input
                   type="radio"
                   name="retinaRadio"
-                  value="yes"
-                  onChange={e => {
-                    this.props.retinaOnChange(e);
-                  }}
+                  value="Y"
+                  checked={this.props.mapPrinterState.retina == "Y"}
+                  onChange={this.props.retinaOnChange}
                 />{" "}
                 Yes
               </td>
@@ -75,9 +73,8 @@ class MapPrinter extends React.Component {
                   type="radio"
                   name="pixelRadio"
                   value="256"
-                  onChange={e => {
-                    this.props.pixelCountOnChange(e);
-                  }}
+                  checked={this.props.mapPrinterState.pixelCount == 256}
+                  onChange={this.props.pixelCountOnChange}
                 />256
               </td>
               <td>
@@ -85,9 +82,8 @@ class MapPrinter extends React.Component {
                   type="radio"
                   name="pixelRadio"
                   value="512"
-                  onChange={e => {
-                    this.props.pixelCountOnChange(e);
-                  }}
+                  checked={this.props.mapPrinterState.pixelCount == 512}
+                  onChange={this.props.pixelCountOnChange}
                 />512
               </td>
             </tr>

@@ -191,11 +191,12 @@ class Map extends React.Component {
   }
 
   pixelCountOnChange(e) {
+    let val = e.target.value;
     this.setState(
       prevState => ({
         mapPrinterState: {
           ...prevState.mapPrinterState,
-          pixelCount: e.target.value
+          pixelCount: val
         }
       }),
       () => this.checkGetTileInfo()
@@ -203,11 +204,12 @@ class Map extends React.Component {
   }
 
   retinaOnChange(e) {
+    let val = e.target.value;
     this.setState(
       prevState => ({
         mapPrinterState: {
           ...prevState.mapPrinterState,
-          retina: e.target.value
+          retina: val
         }
       }),
       () => this.checkGetTileInfo()
